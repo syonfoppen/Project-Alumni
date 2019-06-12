@@ -4,20 +4,1123 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Project_AlumniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="Project_AlumniModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="Project_AlumniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="addresses">
+          <Key>
+            <PropertyRef Name="addressid" />
+          </Key>
+          <Property Name="addressid" Type="int" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="25" />
+          <Property Name="state" Type="nvarchar" MaxLength="25" />
+          <Property Name="city" Type="nvarchar" MaxLength="25" />
+          <Property Name="street" Type="nvarchar" MaxLength="25" />
+          <Property Name="streetnumber" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="courseid" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="addresses_addressid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genders">
+          <Key>
+            <PropertyRef Name="genderid" />
+          </Key>
+          <Property Name="genderid" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="messageid" />
+          </Key>
+          <Property Name="messageid" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="users_userid1" Type="int" Nullable="false" />
+          <Property Name="users_userid" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="picture" Type="varbinary" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="newsid" />
+          </Key>
+          <Property Name="newsid" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="users_userid" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pictures">
+          <Key>
+            <PropertyRef Name="pictureid" />
+          </Key>
+          <Property Name="news_newsid" Type="int" Nullable="false" />
+          <Property Name="pictureid" Type="int" Nullable="false" />
+          <Property Name="picture" Type="varbinary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="posts">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="users_userid" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="replies">
+          <Key>
+            <PropertyRef Name="repliesid" />
+          </Key>
+          <Property Name="repliesid" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="posts_postid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reports">
+          <Key>
+            <PropertyRef Name="reportid" />
+          </Key>
+          <Property Name="vacancies_vacancyid" Type="int" Nullable="false" />
+          <Property Name="posts_postid" Type="int" Nullable="false" />
+          <Property Name="reportid" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="roleid" />
+          </Key>
+          <Property Name="roleid" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="tagid" />
+          </Key>
+          <Property Name="tagid" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usercourses">
+          <Key>
+            <PropertyRef Name="courses_courseid" />
+            <PropertyRef Name="users_userid" />
+          </Key>
+          <Property Name="graduationyear" Type="char" MaxLength="4" />
+          <Property Name="courses_courseid" Type="int" Nullable="false" />
+          <Property Name="users_userid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userroles">
+          <Key>
+            <PropertyRef Name="users_userid" />
+            <PropertyRef Name="roles_roleid" />
+          </Key>
+          <Property Name="users_userid" Type="int" Nullable="false" />
+          <Property Name="roles_roleid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="25" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="addresses_addressid" Type="int" />
+          <Property Name="dateofbirth" Type="date" />
+          <Property Name="profilepicture" Type="varbinary" MaxLength="1" />
+          <Property Name="genders_genderid" Type="int" />
+        </EntityType>
+        <EntityType Name="usertags">
+          <Key>
+            <PropertyRef Name="users_userid" />
+            <PropertyRef Name="tags_tagid" />
+          </Key>
+          <Property Name="users_userid" Type="int" Nullable="false" />
+          <Property Name="tags_tagid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancies">
+          <Key>
+            <PropertyRef Name="vacancyid" />
+          </Key>
+          <Property Name="vacancyid" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="users_userid" Type="int" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancytags">
+          <Key>
+            <PropertyRef Name="vacancies_vacancyid" />
+            <PropertyRef Name="tags_tagid" />
+          </Key>
+          <Property Name="vacancies_vacancyid" Type="int" Nullable="false" />
+          <Property Name="tags_tagid" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="courses_addresses_fk">
+          <End Role="addresses" Type="Self.addresses" Multiplicity="1" />
+          <End Role="courses" Type="Self.courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="courses">
+              <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messages_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messages_users_fkv2">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="users_userid1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="news_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pictures_news_fk">
+          <End Role="news" Type="Self.news" Multiplicity="1" />
+          <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="newsid" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="news_newsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="posts_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="posts" Type="Self.posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_28_tags_fk">
+          <End Role="tags" Type="Self.tags" Multiplicity="1" />
+          <End Role="usertags" Type="Self.usertags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="tagid" />
+            </Principal>
+            <Dependent Role="usertags">
+              <PropertyRef Name="tags_tagid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_28_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="usertags" Type="Self.usertags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="usertags">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_29_tags_fk">
+          <End Role="tags" Type="Self.tags" Multiplicity="1" />
+          <End Role="vacancytags" Type="Self.vacancytags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="tagid" />
+            </Principal>
+            <Dependent Role="vacancytags">
+              <PropertyRef Name="tags_tagid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_29_vacancies_fk">
+          <End Role="vacancies" Type="Self.vacancies" Multiplicity="1" />
+          <End Role="vacancytags" Type="Self.vacancytags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancies">
+              <PropertyRef Name="vacancyid" />
+            </Principal>
+            <Dependent Role="vacancytags">
+              <PropertyRef Name="vacancies_vacancyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_30_roles_fk">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="userroles" Type="Self.userroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="roleid" />
+            </Principal>
+            <Dependent Role="userroles">
+              <PropertyRef Name="roles_roleid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_30_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userroles" Type="Self.userroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="userroles">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="replies_posts_fk">
+          <End Role="posts" Type="Self.posts" Multiplicity="1" />
+          <End Role="replies" Type="Self.replies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posts">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="replies">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_posts_fk">
+          <End Role="posts" Type="Self.posts" Multiplicity="1" />
+          <End Role="reports" Type="Self.reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posts">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="reports">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_vacancies_fk">
+          <End Role="vacancies" Type="Self.vacancies" Multiplicity="1" />
+          <End Role="reports" Type="Self.reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancies">
+              <PropertyRef Name="vacancyid" />
+            </Principal>
+            <Dependent Role="reports">
+              <PropertyRef Name="vacancies_vacancyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usercourses_courses_fk">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="usercourses" Type="Self.usercourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="courseid" />
+            </Principal>
+            <Dependent Role="usercourses">
+              <PropertyRef Name="courses_courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usercourses_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="usercourses" Type="Self.usercourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="usercourses">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_addresses_fk">
+          <End Role="addresses" Type="Self.addresses" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_genders_fk">
+          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="genderid" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="genders_genderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vacancies_users_fk">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="vacancies" Type="Self.vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="vacancies">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Project_AlumniModelStoreContainer">
+          <EntitySet Name="addresses" EntityType="Self.addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genders" EntityType="Self.genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="messages" EntityType="Self.messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pictures" EntityType="Self.pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="replies" EntityType="Self.replies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reports" EntityType="Self.reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usercourses" EntityType="Self.usercourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userroles" EntityType="Self.userroles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usertags" EntityType="Self.usertags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacancies" EntityType="Self.vacancies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacancytags" EntityType="Self.vacancytags" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="courses_addresses_fk" Association="Self.courses_addresses_fk">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="courses" EntitySet="courses" />
+          </AssociationSet>
+          <AssociationSet Name="messages_users_fk" Association="Self.messages_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="messages_users_fkv2" Association="Self.messages_users_fkv2">
+            <End Role="users" EntitySet="users" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="news_users_fk" Association="Self.news_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="pictures_news_fk" Association="Self.pictures_news_fk">
+            <End Role="news" EntitySet="news" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="posts_users_fk" Association="Self.posts_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="relation_28_tags_fk" Association="Self.relation_28_tags_fk">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="usertags" EntitySet="usertags" />
+          </AssociationSet>
+          <AssociationSet Name="relation_28_users_fk" Association="Self.relation_28_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="usertags" EntitySet="usertags" />
+          </AssociationSet>
+          <AssociationSet Name="relation_29_tags_fk" Association="Self.relation_29_tags_fk">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="vacancytags" EntitySet="vacancytags" />
+          </AssociationSet>
+          <AssociationSet Name="relation_29_vacancies_fk" Association="Self.relation_29_vacancies_fk">
+            <End Role="vacancies" EntitySet="vacancies" />
+            <End Role="vacancytags" EntitySet="vacancytags" />
+          </AssociationSet>
+          <AssociationSet Name="relation_30_roles_fk" Association="Self.relation_30_roles_fk">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="userroles" EntitySet="userroles" />
+          </AssociationSet>
+          <AssociationSet Name="relation_30_users_fk" Association="Self.relation_30_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="userroles" EntitySet="userroles" />
+          </AssociationSet>
+          <AssociationSet Name="replies_posts_fk" Association="Self.replies_posts_fk">
+            <End Role="posts" EntitySet="posts" />
+            <End Role="replies" EntitySet="replies" />
+          </AssociationSet>
+          <AssociationSet Name="reports_posts_fk" Association="Self.reports_posts_fk">
+            <End Role="posts" EntitySet="posts" />
+            <End Role="reports" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="reports_vacancies_fk" Association="Self.reports_vacancies_fk">
+            <End Role="vacancies" EntitySet="vacancies" />
+            <End Role="reports" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="usercourses_courses_fk" Association="Self.usercourses_courses_fk">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="usercourses" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="usercourses_users_fk" Association="Self.usercourses_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="usercourses" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="users_addresses_fk" Association="Self.users_addresses_fk">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="users_genders_fk" Association="Self.users_genders_fk">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="vacancies_users_fk" Association="Self.vacancies_users_fk">
+            <End Role="users" EntitySet="users" />
+            <End Role="vacancies" EntitySet="vacancies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Project_AlumniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Project_AlumniEntities" annotation:LazyLoadingEnabled="true" />
+        <EntityContainer Name="Project_AlumniEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="addresses" EntityType="Project_AlumniModel.address" />
+          <EntitySet Name="courses" EntityType="Project_AlumniModel.cours" />
+          <EntitySet Name="genders" EntityType="Project_AlumniModel.gender" />
+          <EntitySet Name="messages" EntityType="Project_AlumniModel.message" />
+          <EntitySet Name="news" EntityType="Project_AlumniModel.news" />
+          <EntitySet Name="pictures" EntityType="Project_AlumniModel.picture" />
+          <EntitySet Name="posts" EntityType="Project_AlumniModel.post" />
+          <EntitySet Name="replies" EntityType="Project_AlumniModel.reply" />
+          <EntitySet Name="reports" EntityType="Project_AlumniModel.report" />
+          <EntitySet Name="roles" EntityType="Project_AlumniModel.role" />
+          <EntitySet Name="tags" EntityType="Project_AlumniModel.tag" />
+          <EntitySet Name="users" EntityType="Project_AlumniModel.user" />
+          <EntitySet Name="vacancies" EntityType="Project_AlumniModel.vacancy" />
+          <EntitySet Name="usercourses" EntityType="Project_AlumniModel.usercours" />
+          <AssociationSet Name="courses_addresses_fk" Association="Project_AlumniModel.courses_addresses_fk">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="cours" EntitySet="courses" />
+          </AssociationSet>
+          <AssociationSet Name="users_addresses_fk" Association="Project_AlumniModel.users_addresses_fk">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="usercourses_courses_fk" Association="Project_AlumniModel.usercourses_courses_fk">
+            <End Role="cours" EntitySet="courses" />
+            <End Role="usercours" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="users_genders_fk" Association="Project_AlumniModel.users_genders_fk">
+            <End Role="gender" EntitySet="genders" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="messages_users_fk" Association="Project_AlumniModel.messages_users_fk">
+            <End Role="user" EntitySet="users" />
+            <End Role="message" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="messages_users_fkv2" Association="Project_AlumniModel.messages_users_fkv2">
+            <End Role="user" EntitySet="users" />
+            <End Role="message" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="news_users_fk" Association="Project_AlumniModel.news_users_fk">
+            <End Role="user" EntitySet="users" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="pictures_news_fk" Association="Project_AlumniModel.pictures_news_fk">
+            <End Role="news" EntitySet="news" />
+            <End Role="picture" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="posts_users_fk" Association="Project_AlumniModel.posts_users_fk">
+            <End Role="user" EntitySet="users" />
+            <End Role="post" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="replies_posts_fk" Association="Project_AlumniModel.replies_posts_fk">
+            <End Role="post" EntitySet="posts" />
+            <End Role="reply" EntitySet="replies" />
+          </AssociationSet>
+          <AssociationSet Name="reports_posts_fk" Association="Project_AlumniModel.reports_posts_fk">
+            <End Role="post" EntitySet="posts" />
+            <End Role="report" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="reports_vacancies_fk" Association="Project_AlumniModel.reports_vacancies_fk">
+            <End Role="vacancy" EntitySet="vacancies" />
+            <End Role="report" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="usercourses_users_fk" Association="Project_AlumniModel.usercourses_users_fk">
+            <End Role="user" EntitySet="users" />
+            <End Role="usercours" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="vacancies_users_fk" Association="Project_AlumniModel.vacancies_users_fk">
+            <End Role="user" EntitySet="users" />
+            <End Role="vacancy" EntitySet="vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="userroles" Association="Project_AlumniModel.userroles">
+            <End Role="role" EntitySet="roles" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="usertags" Association="Project_AlumniModel.usertags">
+            <End Role="tag" EntitySet="tags" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="vacancytags" Association="Project_AlumniModel.vacancytags">
+            <End Role="tag" EntitySet="tags" />
+            <End Role="vacancy" EntitySet="vacancies" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="addressid" />
+          </Key>
+          <Property Name="addressid" Type="Int32" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="streetnumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="courses" Relationship="Project_AlumniModel.courses_addresses_fk" FromRole="address" ToRole="cours" />
+          <NavigationProperty Name="users" Relationship="Project_AlumniModel.users_addresses_fk" FromRole="address" ToRole="user" />
+        </EntityType>
+        <EntityType Name="cours">
+          <Key>
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="courseid" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="addresses_addressid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Project_AlumniModel.courses_addresses_fk" FromRole="cours" ToRole="address" />
+          <NavigationProperty Name="usercourses" Relationship="Project_AlumniModel.usercourses_courses_fk" FromRole="cours" ToRole="usercours" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="genderid" />
+          </Key>
+          <Property Name="genderid" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="Project_AlumniModel.users_genders_fk" FromRole="gender" ToRole="user" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="messageid" />
+          </Key>
+          <Property Name="messageid" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="users_userid1" Type="Int32" Nullable="false" />
+          <Property Name="users_userid" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="picture" Type="Binary" MaxLength="1" FixedLength="false" />
+          <NavigationProperty Name="user" Relationship="Project_AlumniModel.messages_users_fk" FromRole="message" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Project_AlumniModel.messages_users_fkv2" FromRole="message" ToRole="user" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="newsid" />
+          </Key>
+          <Property Name="newsid" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="users_userid" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="user" Relationship="Project_AlumniModel.news_users_fk" FromRole="news" ToRole="user" />
+          <NavigationProperty Name="pictures" Relationship="Project_AlumniModel.pictures_news_fk" FromRole="news" ToRole="picture" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="pictureid" />
+          </Key>
+          <Property Name="news_newsid" Type="Int32" Nullable="false" />
+          <Property Name="pictureid" Type="Int32" Nullable="false" />
+          <Property Name="picture1" Type="Binary" Nullable="false" MaxLength="1" FixedLength="false" />
+          <NavigationProperty Name="news" Relationship="Project_AlumniModel.pictures_news_fk" FromRole="picture" ToRole="news" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="users_userid" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="user" Relationship="Project_AlumniModel.posts_users_fk" FromRole="post" ToRole="user" />
+          <NavigationProperty Name="replies" Relationship="Project_AlumniModel.replies_posts_fk" FromRole="post" ToRole="reply" />
+          <NavigationProperty Name="reports" Relationship="Project_AlumniModel.reports_posts_fk" FromRole="post" ToRole="report" />
+        </EntityType>
+        <EntityType Name="reply">
+          <Key>
+            <PropertyRef Name="repliesid" />
+          </Key>
+          <Property Name="repliesid" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="posts_postid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="post" Relationship="Project_AlumniModel.replies_posts_fk" FromRole="reply" ToRole="post" />
+        </EntityType>
+        <EntityType Name="report">
+          <Key>
+            <PropertyRef Name="reportid" />
+          </Key>
+          <Property Name="vacancies_vacancyid" Type="Int32" Nullable="false" />
+          <Property Name="posts_postid" Type="Int32" Nullable="false" />
+          <Property Name="reportid" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="post" Relationship="Project_AlumniModel.reports_posts_fk" FromRole="report" ToRole="post" />
+          <NavigationProperty Name="vacancy" Relationship="Project_AlumniModel.reports_vacancies_fk" FromRole="report" ToRole="vacancy" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="roleid" />
+          </Key>
+          <Property Name="roleid" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="Project_AlumniModel.userroles" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="tagid" />
+          </Key>
+          <Property Name="tagid" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="Project_AlumniModel.usertags" FromRole="tag" ToRole="user" />
+          <NavigationProperty Name="vacancies" Relationship="Project_AlumniModel.vacancytags" FromRole="tag" ToRole="vacancy" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="phonenumber" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="addresses_addressid" Type="Int32" />
+          <Property Name="dateofbirth" Type="DateTime" Precision="0" />
+          <Property Name="profilepicture" Type="Binary" MaxLength="1" FixedLength="false" />
+          <Property Name="genders_genderid" Type="Int32" />
+          <NavigationProperty Name="address" Relationship="Project_AlumniModel.users_addresses_fk" FromRole="user" ToRole="address" />
+          <NavigationProperty Name="gender" Relationship="Project_AlumniModel.users_genders_fk" FromRole="user" ToRole="gender" />
+          <NavigationProperty Name="messages" Relationship="Project_AlumniModel.messages_users_fk" FromRole="user" ToRole="message" />
+          <NavigationProperty Name="messages1" Relationship="Project_AlumniModel.messages_users_fkv2" FromRole="user" ToRole="message" />
+          <NavigationProperty Name="news" Relationship="Project_AlumniModel.news_users_fk" FromRole="user" ToRole="news" />
+          <NavigationProperty Name="posts" Relationship="Project_AlumniModel.posts_users_fk" FromRole="user" ToRole="post" />
+          <NavigationProperty Name="usercourses" Relationship="Project_AlumniModel.usercourses_users_fk" FromRole="user" ToRole="usercours" />
+          <NavigationProperty Name="vacancies" Relationship="Project_AlumniModel.vacancies_users_fk" FromRole="user" ToRole="vacancy" />
+          <NavigationProperty Name="roles" Relationship="Project_AlumniModel.userroles" FromRole="user" ToRole="role" />
+          <NavigationProperty Name="tags" Relationship="Project_AlumniModel.usertags" FromRole="user" ToRole="tag" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="vacancyid" />
+          </Key>
+          <Property Name="vacancyid" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="users_userid" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="reports" Relationship="Project_AlumniModel.reports_vacancies_fk" FromRole="vacancy" ToRole="report" />
+          <NavigationProperty Name="user" Relationship="Project_AlumniModel.vacancies_users_fk" FromRole="vacancy" ToRole="user" />
+          <NavigationProperty Name="tags" Relationship="Project_AlumniModel.vacancytags" FromRole="vacancy" ToRole="tag" />
+        </EntityType>
+        <EntityType Name="usercours">
+          <Key>
+            <PropertyRef Name="courses_courseid" />
+            <PropertyRef Name="users_userid" />
+          </Key>
+          <Property Name="graduationyear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="courses_courseid" Type="Int32" Nullable="false" />
+          <Property Name="users_userid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cours" Relationship="Project_AlumniModel.usercourses_courses_fk" FromRole="usercours" ToRole="cours" />
+          <NavigationProperty Name="user" Relationship="Project_AlumniModel.usercourses_users_fk" FromRole="usercours" ToRole="user" />
+        </EntityType>
+        <Association Name="courses_addresses_fk">
+          <End Type="Project_AlumniModel.address" Role="address" Multiplicity="1" />
+          <End Type="Project_AlumniModel.cours" Role="cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="cours">
+              <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_addresses_fk">
+          <End Type="Project_AlumniModel.address" Role="address" Multiplicity="0..1" />
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usercourses_courses_fk">
+          <End Type="Project_AlumniModel.cours" Role="cours" Multiplicity="1" />
+          <End Type="Project_AlumniModel.usercours" Role="usercours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cours">
+              <PropertyRef Name="courseid" />
+            </Principal>
+            <Dependent Role="usercours">
+              <PropertyRef Name="courses_courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="users_genders_fk">
+          <End Type="Project_AlumniModel.gender" Role="gender" Multiplicity="0..1" />
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="genderid" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="genders_genderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messages_users_fk">
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="1" />
+          <End Type="Project_AlumniModel.message" Role="message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messages_users_fkv2">
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="1" />
+          <End Type="Project_AlumniModel.message" Role="message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="users_userid1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="news_users_fk">
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="1" />
+          <End Type="Project_AlumniModel.news" Role="news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pictures_news_fk">
+          <End Type="Project_AlumniModel.news" Role="news" Multiplicity="1" />
+          <End Type="Project_AlumniModel.picture" Role="picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="newsid" />
+            </Principal>
+            <Dependent Role="picture">
+              <PropertyRef Name="news_newsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="posts_users_fk">
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="1" />
+          <End Type="Project_AlumniModel.post" Role="post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="post">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="replies_posts_fk">
+          <End Type="Project_AlumniModel.post" Role="post" Multiplicity="1" />
+          <End Type="Project_AlumniModel.reply" Role="reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="reply">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_posts_fk">
+          <End Type="Project_AlumniModel.post" Role="post" Multiplicity="1" />
+          <End Type="Project_AlumniModel.report" Role="report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="post">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="report">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_vacancies_fk">
+          <End Type="Project_AlumniModel.vacancy" Role="vacancy" Multiplicity="1" />
+          <End Type="Project_AlumniModel.report" Role="report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancy">
+              <PropertyRef Name="vacancyid" />
+            </Principal>
+            <Dependent Role="report">
+              <PropertyRef Name="vacancies_vacancyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usercourses_users_fk">
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="1" />
+          <End Type="Project_AlumniModel.usercours" Role="usercours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="usercours">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="vacancies_users_fk">
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="1" />
+          <End Type="Project_AlumniModel.vacancy" Role="vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="vacancy">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userroles">
+          <End Type="Project_AlumniModel.role" Role="role" Multiplicity="*" />
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="*" />
+        </Association>
+        <Association Name="usertags">
+          <End Type="Project_AlumniModel.tag" Role="tag" Multiplicity="*" />
+          <End Type="Project_AlumniModel.user" Role="user" Multiplicity="*" />
+        </Association>
+        <Association Name="vacancytags">
+          <End Type="Project_AlumniModel.tag" Role="tag" Multiplicity="*" />
+          <End Type="Project_AlumniModel.vacancy" Role="vacancy" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Project_AlumniModelStoreContainer" CdmEntityContainer="Project_AlumniEntities" />
+        <EntityContainerMapping StorageEntityContainer="Project_AlumniModelStoreContainer" CdmEntityContainer="Project_AlumniEntities" >
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="Project_AlumniModel.address">
+              <MappingFragment StoreEntitySet="addresses">
+                <ScalarProperty Name="streetnumber" ColumnName="streetnumber" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="addressid" ColumnName="addressid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="Project_AlumniModel.cours">
+              <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="addresses_addressid" ColumnName="addresses_addressid" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genders">
+            <EntityTypeMapping TypeName="Project_AlumniModel.gender">
+              <MappingFragment StoreEntitySet="genders">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="genderid" ColumnName="genderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="Project_AlumniModel.message">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="users_userid1" ColumnName="users_userid1" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="messageid" ColumnName="messageid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="Project_AlumniModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="newsid" ColumnName="newsid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="Project_AlumniModel.picture">
+              <MappingFragment StoreEntitySet="pictures">
+                <ScalarProperty Name="picture1" ColumnName="picture" />
+                <ScalarProperty Name="pictureid" ColumnName="pictureid" />
+                <ScalarProperty Name="news_newsid" ColumnName="news_newsid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posts">
+            <EntityTypeMapping TypeName="Project_AlumniModel.post">
+              <MappingFragment StoreEntitySet="posts">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="postid" ColumnName="postid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="replies">
+            <EntityTypeMapping TypeName="Project_AlumniModel.reply">
+              <MappingFragment StoreEntitySet="replies">
+                <ScalarProperty Name="posts_postid" ColumnName="posts_postid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="repliesid" ColumnName="repliesid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reports">
+            <EntityTypeMapping TypeName="Project_AlumniModel.report">
+              <MappingFragment StoreEntitySet="reports">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="reportid" ColumnName="reportid" />
+                <ScalarProperty Name="posts_postid" ColumnName="posts_postid" />
+                <ScalarProperty Name="vacancies_vacancyid" ColumnName="vacancies_vacancyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="Project_AlumniModel.role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="roleid" ColumnName="roleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tags">
+            <EntityTypeMapping TypeName="Project_AlumniModel.tag">
+              <MappingFragment StoreEntitySet="tags">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="tagid" ColumnName="tagid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="Project_AlumniModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="genders_genderid" ColumnName="genders_genderid" />
+                <ScalarProperty Name="profilepicture" ColumnName="profilepicture" />
+                <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+                <ScalarProperty Name="addresses_addressid" ColumnName="addresses_addressid" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacancies">
+            <EntityTypeMapping TypeName="Project_AlumniModel.vacancy">
+              <MappingFragment StoreEntitySet="vacancies">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="vacancyid" ColumnName="vacancyid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usercourses">
+            <EntityTypeMapping TypeName="Project_AlumniModel.usercours">
+              <MappingFragment StoreEntitySet="usercourses">
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="courses_courseid" ColumnName="courses_courseid" />
+                <ScalarProperty Name="graduationyear" ColumnName="graduationyear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="userroles" TypeName="Project_AlumniModel.userroles" StoreEntitySet="userroles">
+            <EndProperty Name="user">
+              <ScalarProperty Name="userid" ColumnName="users_userid" />
+            </EndProperty>
+            <EndProperty Name="role">
+              <ScalarProperty Name="roleid" ColumnName="roles_roleid" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="usertags" TypeName="Project_AlumniModel.usertags" StoreEntitySet="usertags">
+            <EndProperty Name="user">
+              <ScalarProperty Name="userid" ColumnName="users_userid" />
+            </EndProperty>
+            <EndProperty Name="tag">
+              <ScalarProperty Name="tagid" ColumnName="tags_tagid" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="vacancytags" TypeName="Project_AlumniModel.vacancytags" StoreEntitySet="vacancytags">
+            <EndProperty Name="vacancy">
+              <ScalarProperty Name="vacancyid" ColumnName="vacancies_vacancyid" />
+            </EndProperty>
+            <EndProperty Name="tag">
+              <ScalarProperty Name="tagid" ColumnName="tags_tagid" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

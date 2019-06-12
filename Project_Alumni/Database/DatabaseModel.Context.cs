@@ -25,5 +25,19 @@ namespace Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<address> addresses { get; set; }
+        public virtual DbSet<cours> courses { get; set; }
+        public virtual DbSet<gender> genders { get; set; }
+        public virtual DbSet<message> messages { get; set; }
+        public virtual DbSet<news> news { get; set; }
+        public virtual DbSet<picture> pictures { get; set; }
+        public virtual DbSet<post> posts { get; set; }
+        public virtual DbSet<reply> replies { get; set; }
+        public virtual DbSet<report> reports { get; set; }
+        public virtual DbSet<role> roles { get; set; }
+        public virtual DbSet<tag> tags { get; set; }
+        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<vacancy> vacancies { get; set; }
+        public virtual DbSet<usercours> usercourses { get; set; }
     }
 }

@@ -96,9 +96,6 @@
     <Compile Include="role.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="tag.cs">
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>

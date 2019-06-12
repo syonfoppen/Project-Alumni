@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Project_Alumni
+namespace ProjectAlumni
 {
     public class FilterConfig
     {

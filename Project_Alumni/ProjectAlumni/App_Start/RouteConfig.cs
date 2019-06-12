@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Project_Alumni
+namespace ProjectAlumni
 {
     public class RouteConfig
     {

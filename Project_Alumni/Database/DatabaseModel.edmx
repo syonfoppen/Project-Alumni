@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="addressid" />
           </Key>
-          <Property Name="addressid" Type="int" Nullable="false" />
+          <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="country" Type="nvarchar" MaxLength="25" />
           <Property Name="state" Type="nvarchar" MaxLength="25" />
           <Property Name="city" Type="nvarchar" MaxLength="25" />
@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="courseid" />
           </Key>
-          <Property Name="courseid" Type="int" Nullable="false" />
+          <Property Name="courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="addresses_addressid" Type="int" Nullable="false" />
         </EntityType>
@@ -35,7 +35,7 @@
           <Key>
             <PropertyRef Name="messageid" />
           </Key>
-          <Property Name="messageid" Type="int" Nullable="false" />
+          <Property Name="messageid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" />
           <Property Name="users_userid1" Type="int" Nullable="false" />
           <Property Name="users_userid" Type="int" Nullable="false" />
@@ -46,7 +46,7 @@
           <Key>
             <PropertyRef Name="newsid" />
           </Key>
-          <Property Name="newsid" Type="int" Nullable="false" />
+          <Property Name="newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="users_userid" Type="int" Nullable="false" />
@@ -57,14 +57,14 @@
             <PropertyRef Name="pictureid" />
           </Key>
           <Property Name="news_newsid" Type="int" Nullable="false" />
-          <Property Name="pictureid" Type="int" Nullable="false" />
+          <Property Name="pictureid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="picture" Type="varbinary" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="posts">
           <Key>
             <PropertyRef Name="postid" />
           </Key>
-          <Property Name="postid" Type="int" Nullable="false" />
+          <Property Name="postid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="users_userid" Type="int" Nullable="false" />
@@ -74,7 +74,7 @@
           <Key>
             <PropertyRef Name="repliesid" />
           </Key>
-          <Property Name="repliesid" Type="int" Nullable="false" />
+          <Property Name="repliesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="posts_postid" Type="int" Nullable="false" />
@@ -85,7 +85,7 @@
           </Key>
           <Property Name="vacancies_vacancyid" Type="int" Nullable="false" />
           <Property Name="posts_postid" Type="int" Nullable="false" />
-          <Property Name="reportid" Type="int" Nullable="false" />
+          <Property Name="reportid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
@@ -93,7 +93,7 @@
           <Key>
             <PropertyRef Name="roleid" />
           </Key>
-          <Property Name="roleid" Type="int" Nullable="false" />
+          <Property Name="roleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -110,7 +110,7 @@
           <Key>
             <PropertyRef Name="tagid" />
           </Key>
-          <Property Name="tagid" Type="int" Nullable="false" />
+          <Property Name="tagid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="usercourses">
@@ -134,7 +134,7 @@
           <Key>
             <PropertyRef Name="userid" />
           </Key>
-          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="nvarchar" MaxLength="25" Nullable="false" />
           <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="25" Nullable="false" />
@@ -157,7 +157,7 @@
           <Key>
             <PropertyRef Name="vacancyid" />
           </Key>
-          <Property Name="vacancyid" Type="int" Nullable="false" />
+          <Property Name="vacancyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="users_userid" Type="int" Nullable="false" />

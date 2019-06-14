@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;

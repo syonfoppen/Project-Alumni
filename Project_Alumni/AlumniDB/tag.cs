@@ -7,25 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class cours
+    public partial class tag
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cours()
+        public tag()
         {
-            this.usercourses = new HashSet<usercours>();
+            this.users = new HashSet<user>();
+            this.vacancies = new HashSet<vacancy>();
         }
     
-        public int courseid { get; set; }
+        public int tagid { get; set; }
         public string NAME { get; set; }
-        public int addresses_addressid { get; set; }
     
-        public virtual address address { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<usercours> usercourses { get; set; }
+        public virtual ICollection<user> users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<vacancy> vacancies { get; set; }
     }
 }

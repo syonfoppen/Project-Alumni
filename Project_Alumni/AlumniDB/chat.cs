@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class usercours
+    public partial class chat
     {
-        public string graduationyear { get; set; }
-        public int courses_courseid { get; set; }
-        public int users_userid { get; set; }
+        public int id { get; set; }
+        public string message { get; set; }
+        public int sender_id { get; set; }
+        public int reciever_id { get; set; }
+        public System.DateTime created_at { get; set; }
+        public string status { get; set; }
     
-        public virtual cours cours { get; set; }
         public virtual user user { get; set; }
+        public virtual user user1 { get; set; }
     }
 }

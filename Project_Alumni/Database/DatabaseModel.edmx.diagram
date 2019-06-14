@@ -5,38 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ccbea993f7e940a683194b8ecb7bf755" Name="Diagram1" ZoomLevel="93" >
-        <EntityTypeShape EntityType="Project_AlumniModel.address" Width="1.5" PointX="0.75" PointY="12.25" />
-        <EntityTypeShape EntityType="Project_AlumniModel.cours" Width="1.5" PointX="6" PointY="2.5" />
-        <EntityTypeShape EntityType="Project_AlumniModel.gender" Width="1.5" PointX="0.75" PointY="6.875" />
-        <EntityTypeShape EntityType="Project_AlumniModel.message" Width="1.5" PointX="5.25" PointY="18.5" />
-        <EntityTypeShape EntityType="Project_AlumniModel.news" Width="1.5" PointX="5.25" PointY="15.375" />
-        <EntityTypeShape EntityType="Project_AlumniModel.picture" Width="1.5" PointX="7.5" PointY="15.625" />
-        <EntityTypeShape EntityType="Project_AlumniModel.post" Width="1.5" PointX="5.25" PointY="6" />
-        <EntityTypeShape EntityType="Project_AlumniModel.reply" Width="1.5" PointX="7.5" PointY="9.375" />
-        <EntityTypeShape EntityType="Project_AlumniModel.report" Width="1.5" PointX="7.5" PointY="6.125" />
-        <EntityTypeShape EntityType="Project_AlumniModel.role" Width="1.5" PointX="0.75" PointY="15.5" />
-        <EntityTypeShape EntityType="Project_AlumniModel.tag" Width="1.5" PointX="0.75" PointY="9.625" />
-        <EntityTypeShape EntityType="Project_AlumniModel.user" Width="1.5" PointX="3" PointY="8" />
-        <EntityTypeShape EntityType="Project_AlumniModel.vacancy" Width="1.5" PointX="5.25" PointY="10.25" />
-        <EntityTypeShape EntityType="Project_AlumniModel.usercours" Width="1.5" PointX="8.25" PointY="12.5" />
-        <AssociationConnector Association="Project_AlumniModel.courses_addresses_fk" />
-        <AssociationConnector Association="Project_AlumniModel.users_addresses_fk" />
-        <AssociationConnector Association="Project_AlumniModel.usercourses_courses_fk" />
-        <AssociationConnector Association="Project_AlumniModel.users_genders_fk" />
-        <AssociationConnector Association="Project_AlumniModel.messages_users_fk" />
-        <AssociationConnector Association="Project_AlumniModel.messages_users_fkv2" />
-        <AssociationConnector Association="Project_AlumniModel.news_users_fk" />
-        <AssociationConnector Association="Project_AlumniModel.pictures_news_fk" />
-        <AssociationConnector Association="Project_AlumniModel.posts_users_fk" />
-        <AssociationConnector Association="Project_AlumniModel.replies_posts_fk" />
-        <AssociationConnector Association="Project_AlumniModel.reports_posts_fk" />
-        <AssociationConnector Association="Project_AlumniModel.reports_vacancies_fk" />
-        <AssociationConnector Association="Project_AlumniModel.usercourses_users_fk" />
-        <AssociationConnector Association="Project_AlumniModel.vacancies_users_fk" />
-        <AssociationConnector Association="Project_AlumniModel.userroles" />
-        <AssociationConnector Association="Project_AlumniModel.usertags" />
-        <AssociationConnector Association="Project_AlumniModel.vacancytags" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

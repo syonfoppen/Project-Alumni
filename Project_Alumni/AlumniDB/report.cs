@@ -7,18 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class reply
+    public partial class report
     {
-        public int repliesid { get; set; }
+        public int vacancies_vacancyid { get; set; }
+        public int posts_postid { get; set; }
+        public int reportid { get; set; }
         public string text { get; set; }
         public System.DateTime date { get; set; }
-        public int posts_postid { get; set; }
     
         public virtual post post { get; set; }
+        public virtual vacancy vacancy { get; set; }
     }
 }

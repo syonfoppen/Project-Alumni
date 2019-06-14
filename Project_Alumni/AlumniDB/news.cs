@@ -7,30 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class address
+    public partial class news
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public address()
+        public news()
         {
-            this.courses = new HashSet<cours>();
-            this.users = new HashSet<user>();
+            this.pictures = new HashSet<picture>();
         }
     
-        public int addressid { get; set; }
-        public string country { get; set; }
-        public string state { get; set; }
-        public string city { get; set; }
-        public string street { get; set; }
-        public string streetnumber { get; set; }
+        public int newsid { get; set; }
+        public string title { get; set; }
+        public string text { get; set; }
+        public int users_userid { get; set; }
+        public System.DateTime date { get; set; }
     
+        public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cours> courses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<picture> pictures { get; set; }
     }
 }

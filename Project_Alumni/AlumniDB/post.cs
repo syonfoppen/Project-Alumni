@@ -7,23 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class role
+    public partial class post
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public role()
+        public post()
         {
-            this.users = new HashSet<user>();
+            this.replies = new HashSet<reply>();
+            this.reports = new HashSet<report>();
         }
     
-        public int roleid { get; set; }
-        public string NAME { get; set; }
+        public int postid { get; set; }
+        public string title { get; set; }
+        public string text { get; set; }
+        public int users_userid { get; set; }
+        public System.DateTime date { get; set; }
     
+        public virtual user user { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<reply> replies { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<report> reports { get; set; }
     }
 }

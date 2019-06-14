@@ -7,21 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class message
+    public partial class reply
     {
-        public int messageid { get; set; }
+        public int repliesid { get; set; }
         public string text { get; set; }
-        public int users_userid1 { get; set; }
-        public int users_userid { get; set; }
         public System.DateTime date { get; set; }
-        public byte[] picture { get; set; }
+        public int posts_postid { get; set; }
     
-        public virtual user user { get; set; }
-        public virtual user user1 { get; set; }
+        public virtual post post { get; set; }
     }
 }

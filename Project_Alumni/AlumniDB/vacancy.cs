@@ -7,23 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Database
+namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class gender
+    public partial class vacancy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public gender()
+        public vacancy()
         {
-            this.users = new HashSet<user>();
+            this.reports = new HashSet<report>();
+            this.tags = new HashSet<tag>();
         }
     
-        public int genderid { get; set; }
-        public string NAME { get; set; }
+        public int vacancyid { get; set; }
+        public string title { get; set; }
+        public string text { get; set; }
+        public int users_userid { get; set; }
+        public System.DateTime date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<report> reports { get; set; }
+        public virtual user user { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tag> tags { get; set; }
     }
 }

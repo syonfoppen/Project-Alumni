@@ -11,7 +11,8 @@ namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class address
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,7 @@ namespace AlumniDB
             this.courses = new HashSet<cours>();
             this.users = new HashSet<user>();
         }
-    
+        [Key]
         public int addressid { get; set; }
         public string country { get; set; }
         public string state { get; set; }

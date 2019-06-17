@@ -16,7 +16,6 @@ namespace AlumniDB
     public partial class usercours
     {
         [Key]
-
         public string graduationyear { get; set; }
         public int courses_courseid { get; set; }
         public int users_userid { get; set; }

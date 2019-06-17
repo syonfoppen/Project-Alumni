@@ -11,7 +11,8 @@ namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +27,7 @@ namespace AlumniDB
             this.roles = new HashSet<role>();
             this.tags = new HashSet<tag>();
         }
-    
+        [Key]
         public int userid { get; set; }
         public string NAME { get; set; }
         public string password { get; set; }

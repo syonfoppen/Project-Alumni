@@ -11,7 +11,8 @@ namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class news
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,7 @@ namespace AlumniDB
         {
             this.pictures = new HashSet<picture>();
         }
-    
+        [Key]
         public int newsid { get; set; }
         public string title { get; set; }
         public string text { get; set; }

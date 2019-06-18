@@ -11,11 +11,9 @@ namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class reply
     {
-        [Key]
         public int repliesid { get; set; }
         public string text { get; set; }
         public System.DateTime date { get; set; }

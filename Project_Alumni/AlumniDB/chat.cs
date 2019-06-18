@@ -11,11 +11,9 @@ namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class chat
     {
-        [Key]
         public int id { get; set; }
         public string message { get; set; }
         public int sender_id { get; set; }

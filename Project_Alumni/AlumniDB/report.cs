@@ -11,13 +11,10 @@ namespace AlumniDB
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class report
     {
-        [Key]
         public int vacancies_vacancyid { get; set; }
-        [Key]
         public int posts_postid { get; set; }
         public int reportid { get; set; }
         public string text { get; set; }

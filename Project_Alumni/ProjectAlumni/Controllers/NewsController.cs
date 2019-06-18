@@ -10,113 +10,112 @@ using AlumniDB;
 
 namespace ProjectAlumni.Controllers
 {
-    public class PostController : Controller
+    public class NewsController : Controller
     {
         private AlumniEntities db = new AlumniEntities();
 
-        // GET: post
+        // GET: News
         public ActionResult Index()
         {
-            var posts = db.posts.Include(p => p.user);
-            return View(posts.ToList());
+            var news = db.news.Include(n => n.user);
+            return View(news.ToList());
         }
 
-        // GET: post/Details/5
+        // GET: News/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            post post = db.posts.Find(id);
-            if (post == null)
+            news news = db.news.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(news);
         }
 
-        // GET: post/Create
+        // GET: News/Create
         public ActionResult Create()
         {
             ViewBag.users_userid = new SelectList(db.users, "userid", "NAME");
             return View();
         }
 
-        // POST: post/Create
+        // POST: News/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "postid,title,text,users_userid,date")] post post)
+        public ActionResult Create([Bind(Include = "newsid,title,text,users_userid,date")] news news)
         {
             if (ModelState.IsValid)
-            {  
-                
-                db.posts.Add(post);
+            {
+                db.news.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", post.users_userid);
-            return View(post);
+            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", news.users_userid);
+            return View(news);
         }
 
-        // GET: post/Edit/5
+        // GET: News/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            post post = db.posts.Find(id);
-            if (post == null)
+            news news = db.news.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", post.users_userid);
-            return View(post);
+            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", news.users_userid);
+            return View(news);
         }
 
-        // POST: post/Edit/5
+        // POST: News/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "postid,title,text,users_userid,date")] post post)
+        public ActionResult Edit([Bind(Include = "newsid,title,text,users_userid,date")] news news)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", post.users_userid);
-            return View(post);
+            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", news.users_userid);
+            return View(news);
         }
 
-        // GET: post/Delete/5
+        // GET: News/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            post post = db.posts.Find(id);
-            if (post == null)
+            news news = db.news.Find(id);
+            if (news == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(news);
         }
 
-        // POST: post/Delete/5
+        // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            post post = db.posts.Find(id);
-            db.posts.Remove(post);
+            news news = db.news.Find(id);
+            db.news.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

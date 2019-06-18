@@ -79,9 +79,8 @@ html {
 
 .pc-footer {
     position: absolute;
-    top:auto;
-    bottom:0px;
-	display: block;
+    top:310vh;
+    bottom:0;
 	height: 300px;
     width: 100vw;
 	color: white;

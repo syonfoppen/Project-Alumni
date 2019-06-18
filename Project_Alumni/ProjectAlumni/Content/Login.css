@@ -1,0 +1,70 @@
+html {
+    overflow-x: hidden;
+}
+body {
+    background-color: #b70116;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    font-size: 1em;
+}
+h1{
+    font-weight:bold;
+    text-align:center;
+    font-size: 8em;
+    color:white;
+    margin:-2% 0 4% 0;
+}
+ input{
+	background-color:white;
+	
+}
+.background {
+	z-index: -100;
+	position: absolute;
+	top: -100vh;
+	left: -80vw;
+	width: 170vw;
+	height: 190vh;
+	background-color: #e2001a;
+	box-shadow: 0px 10px 30px black;
+	transform: rotate(-45deg);
+}
+.register {
+    font-weight:bold;
+    font-size: 1.2em;
+    
+    z-index: 100;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: block;
+}
+    .register a {
+        color: white;
+    }
+.email input {
+    margin: auto;
+}   
+.password input {
+    margin: auto;
+}
+.login-container{
+    width:100%;
+}
+.checkbox{
+    text-align:center;
+}
+.checkbox label{
+    font-weight: 800;
+    color:white;
+}
+.submit{
+    margin:auto;
+}
+.form-horizontal{
+    width:100%;
+}
+.checkbox input{
+    margin: auto;
+}

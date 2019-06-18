@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="206.61" height="182.969" viewBox="0 0 206.61 182.969">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e2001a;
+        stroke: #707070;
+        stroke-linecap: round;
+      }
+
+      .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+        stroke-width: 6px;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+
+      .cls-5 {
+        filter: url(#Path_9);
+      }
+    </style>
+    <filter id="Path_9" x="0" y="0" width="206.61" height="182.969" filterUnits="userSpaceOnUse">
+      <feOffset dy="10" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feFlood flood-opacity="0.722"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="search" transform="matrix(0.883, -0.469, 0.469, 0.883, -214.521, 161.864)">
+    <g class="cls-5" transform="matrix(0.88, 0.47, -0.47, 0.88, 265.4, -42.21)">
+      <path id="Path_9-2" data-name="Path 9" class="cls-1" d="M2345,147.882H2229.6l33.432,91.969H2345Z" transform="translate(-2183.89 -112.38)"/>
+    </g>
+    <g id="Ellipse_1" data-name="Ellipse 1" class="cls-2" transform="translate(308 50)">
+      <ellipse class="cls-3" cx="20.5" cy="20" rx="20.5" ry="20"/>
+      <ellipse class="cls-4" cx="20.5" cy="20" rx="17.5" ry="17"/>
+    </g>
+    <line id="Line_5" data-name="Line 5" class="cls-2" x1="7" y1="29" transform="translate(332.5 87.5)"/>
+  </g>
+</svg>

@@ -159,7 +159,7 @@ html {
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
     .navbar a:hover{
-        background-color:rgbs(0 ,0 ,0 , 0.2);
+        background-color:rgba(0 ,0 ,0 , 0.2);
     }
 
 	.navbar ul {
@@ -169,3 +169,6 @@ html {
     display: table-cell;
     vertical-align: middle; */
 	}
+    .login{
+
+    }

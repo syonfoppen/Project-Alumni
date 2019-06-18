@@ -1,0 +1,159 @@
+﻿/* home no login ----------------------------------------------------------------------------------------------------------*/
+html {
+	overflow-x: hidden;
+}
+
+@keyframes background {
+	0% {
+		background-image: url('../Media/foto/background-restaurant1@2x.png');
+	}
+
+	100% {
+		background-image: url('../Media/foto/restaurants-background-2@2x.png');
+	}
+}
+
+.pc-header {
+	transition: background-image 0.5s;
+	background-image: url('../Media/foto/background-restaurant1@2x.png');
+	animation: background 6s;
+	height: 100%;
+	margin: 0px -3vw auto -3vw;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+	.pc-header h1 {
+		position: relative;
+		margin-top: 0px;
+		padding-top: 200px;
+		font-family: 'Segoe UI';
+		font-size: 6em;
+		font-weight: 800;
+		color: white;
+		text-align: center;
+	}
+
+	.pc-header h2 {
+		position: relative;
+		padding-left: 70px;
+		font-family: 'Segoe UI';
+		font-size: 3em;
+		color: white;
+		text-align: left;
+	}
+
+	.pc-header hr {
+		color: white;
+	}
+
+.seperation {
+	width: 100vw;
+	height: 740px;
+	background-image: url("../Media/svg/informatie.svg");
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 100vw auto;
+	margin-top: -20vh;
+}
+
+.information {
+	background-image: url("../Media/svg/information-background.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 40px;
+	width: 80%;
+	min-height: 100vh;
+	margin: 0px auto 200px auto;
+	box-shadow: 8px 8px 25px black;
+}
+
+.pc-footer {
+	display: block;
+	height: 300px;
+	color: white;
+	font-family: 'Segoe UI';
+	background-image: url("../media/svg/footer.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	list-style-type: none;
+}
+
+	.pc-footer h2 {
+		font-weight: bold;
+	}
+
+	.pc-footer .info {
+		display: inline-block;
+		list-style: none;
+		margin-top: 105px;
+		margin-left: 5%;
+		bottom: 60px;
+	}
+
+#menu g:hover {
+	filter: url(#pictureFilter);
+}
+
+.newsBox {
+	width: 90%;
+	color: white;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	min-height: 200px;
+	border-radius: 20px;
+	margin: 5% auto;
+	/* background-color:rgba(0, 0, 0, 0.575); */
+}
+
+	.newsBox .text {
+		padding: 5%;
+	}
+
+	.newsBox h2 {
+		text-align: center;
+	}
+
+.container {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.navbar {
+	top: -12vh;
+	left: auto;
+	right: -5vw;
+	position: absolute;
+	width: 50vw;
+	height: 20vh;
+	border-radius: 10vh;
+	background-color: rgb(5, 5, 129);
+	color: white;
+	z-index: 10;
+	display: table-cell;
+	vertical-align: middle;
+	display: table;
+}
+
+	.navbar ul li {
+		width: 15%;
+		margin-left: 10px;
+		float: left;
+		list-style-type: none;
+	}
+
+	.navbar a {
+		text-decoration: none;
+		color: white;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
+
+	.navbar ul {
+		margin-left: 7vw;
+		margin-top: 14vh;
+		/* text-align: center;
+    display: table-cell;
+    vertical-align: middle; */
+	}

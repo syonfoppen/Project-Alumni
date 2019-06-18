@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 public class LoginController
 {
-	public class LoginController : Controller
+	public class logincontroller : Controller
 	{
         //
         // GET: /Login/

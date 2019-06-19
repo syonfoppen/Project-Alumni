@@ -18,6 +18,7 @@ namespace ProjectAlumni.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private DatabaseEntities db = new DatabaseEntities();
 
         public AccountController()
         {
@@ -156,7 +157,6 @@ namespace ProjectAlumni.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // Roles.AddUserToRole(user.UserName, "Leerling");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

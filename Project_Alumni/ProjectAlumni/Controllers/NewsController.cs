@@ -10,17 +10,20 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [Authorize]
     public class NewsController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();
 
         // GET: News
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var news = db.news.Include(n => n.AspNetUser);
             return View(news.ToList());
         }
 
+        [AllowAnonymous]
         // GET: News/Details/5
         public ActionResult Details(int? id)
         {
@@ -39,6 +42,7 @@ namespace ProjectAlumni.Controllers
         // GET: News/Create
         public ActionResult Create()
         {
+
             ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
@@ -52,6 +56,17 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Get the user id of the current user and add it to the News item
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+                news.users_userid = user.Id;
+
+                //Get the current data and add it to the News item
+                news.date = DateTime.Now;
+
+                
+
                 db.news.Add(news);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,6 +101,7 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

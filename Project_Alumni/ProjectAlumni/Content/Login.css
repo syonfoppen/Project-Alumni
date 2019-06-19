@@ -1,5 +1,5 @@
 html {
-    overflow-x: hidden;
+    overflow-y: hidden;
 }
 body {
     background-color: #b70116;
@@ -11,13 +11,12 @@ body {
 h1{
     font-weight:bold;
     text-align:center;
-    font-size: 8em;
+    font-size: 6em;
     color:white;
     margin:-2% 0 4% 0;
 }
  input{
 	background-color:white;
-	
 }
 .background {
 	z-index: -100;
@@ -32,39 +31,50 @@ h1{
 }
 .register {
     font-weight:bold;
-    font-size: 1.2em;
-    
+    font-size: 1em;
     z-index: 100;
     position: fixed;
     top: 10px;
     left: 10px;
     display: block;
 }
-    .register a {
-        color: white;
-    }
-.email input {
-    margin: auto;
-}   
-.password input {
-    margin: auto;
+.register a {
+    color: white;
 }
-.login-container{
-    width:100%;
+.row input{
+    padding: 0 10px;
+    display:block;
+    height:50px;
+    width:500px;
+    margin:10px auto;
+    border:none;
+    border-radius:0;
 }
-.checkbox{
+.row{
+    width: 100%;
     text-align:center;
 }
-.checkbox label{
-    font-weight: 800;
+.row .submit{
+    width: 50%;
+    height:30px;
+    border:none;
+}
+.row .checkbox{
+    background-color:white;
+    display:inline;
+    float:left;
+    width: 20px;
+    height:20px;
+}
+.row label{
     color:white;
+    align-self: center;
+    display:inline;
+    text-align:center;
 }
-.submit{
+.row div{
+    width:280px;
+    text-align:center;
+    height: 30px;
     margin:auto;
-}
-.form-horizontal{
-    width:100%;
-}
-.checkbox input{
-    margin: auto;
 }

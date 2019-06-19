@@ -17,8 +17,6 @@ namespace ProjectAlumni.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            var userid = db.AspNetUsers.SqlQuery("SELECT Id FROM AspNetUsers WHERE UserName = " + "'" + User.Identity.Name.ToString() + "'").ToList();
-            string test = Convert.ToString(userid[0]);
             var posts = db.posts.Include(p => p.AspNetUser);
             return View(posts.ToList());
         }
@@ -54,10 +52,14 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Get the user id of the current user and add it to the post
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+                post.users_userid = user.Id;
 
-
-
-
+                //Get the current data and add it to the post
+                post.date = DateTime.Now;
 
                 db.posts.Add(post);
                 db.SaveChanges();

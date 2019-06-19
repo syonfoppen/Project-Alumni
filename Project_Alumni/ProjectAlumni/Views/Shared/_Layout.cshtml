@@ -12,7 +12,11 @@
 </head>
 <body>
     @RenderBody()
-    <span class="triangle" onclick="nav()"></span>
+    <div class="hamburger" onclick="nav()">
+        <div class="icon"></div>
+        <div" class="logo"></div">
+    </div>
+    
     <nav class="navbar" id="navbar">
         <ul class="nav">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
@@ -32,6 +36,7 @@
         </ul>
         <ul class="userbar">
             @Html.Partial("_LoginPartial")
+            <li class="empty2"></li><!--leave this empty-->
         </ul>
     </nav>
 </body>

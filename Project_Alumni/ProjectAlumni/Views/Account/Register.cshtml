@@ -10,19 +10,20 @@
         {
 
     <div style="width:0;height:0;">@Html.AntiForgeryToken()</div>
-    <div style="width:0;height:0;">
-        @Html.ValidationSummary("", new { @class = "text-danger" })</div>
                 @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", @class = "email" })
                 @Html.TextBoxFor(m => m.Username, new { placeholder = "Gebruikersnaam", @class = "email" })
                 @Html.PasswordFor(m => m.Password, new { placeholder = "Wachtwoord", @class = "password" })
                 @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Bevestig Wachtwoord", @class = "password" })
-
+    
                 <input type="submit" class="submit" value="Register" />
                 <p class="register">
                     @Html.ActionLink("Inloggen", "login")
                 </p>
                 }
             </div>
+    <div class="error-messege">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+    </div>
 <div class="background"></div>
 
 

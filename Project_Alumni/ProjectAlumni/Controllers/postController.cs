@@ -17,6 +17,8 @@ namespace ProjectAlumni.Controllers
         // GET: Post
         public ActionResult Index()
         {
+            var userid = db.AspNetUsers.SqlQuery("SELECT Id FROM AspNetUsers WHERE UserName = " + "'" + User.Identity.Name.ToString() + "'").ToList();
+            string test = Convert.ToString(userid[0]);
             var posts = db.posts.Include(p => p.AspNetUser);
             return View(posts.ToList());
         }
@@ -52,6 +54,11 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+
+
+
                 db.posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");

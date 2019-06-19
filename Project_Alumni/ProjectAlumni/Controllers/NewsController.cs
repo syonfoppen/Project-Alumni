@@ -6,18 +6,18 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AlumniDB;
+using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
     public class NewsController : Controller
     {
-        private AlumniEntities db = new AlumniEntities();
+        private DatabaseEntities db = new DatabaseEntities();
 
         // GET: News
         public ActionResult Index()
         {
-            var news = db.news.Include(n => n.user);
+            var news = db.news.Include(n => n.AspNetUser);
             return View(news.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace ProjectAlumni.Controllers
         // GET: News/Create
         public ActionResult Create()
         {
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME");
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace ProjectAlumni.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", news.users_userid);
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", news.users_userid);
             return View(news);
         }
 
@@ -73,7 +73,7 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", news.users_userid);
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", news.users_userid);
             return View(news);
         }
 
@@ -90,7 +90,7 @@ namespace ProjectAlumni.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", news.users_userid);
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", news.users_userid);
             return View(news);
         }
 

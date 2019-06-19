@@ -6,22 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using AlumniDB;
+using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
     public class PostController : Controller
     {
-        private AlumniEntities db = new AlumniEntities();
+        private DatabaseEntities db = new DatabaseEntities();
 
-        // GET: post
+        // GET: Post
         public ActionResult Index()
         {
-            var posts = db.posts.Include(p => p.user);
+            var userid = db.AspNetUsers.SqlQuery("SELECT Id FROM AspNetUsers WHERE UserName = " + "'" + User.Identity.Name.ToString() + "'").ToList();
+            string test = Convert.ToString(userid[0]);
+            var posts = db.posts.Include(p => p.AspNetUser);
             return View(posts.ToList());
         }
 
-        // GET: post/Details/5
+        // GET: Post/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,14 +38,14 @@ namespace ProjectAlumni.Controllers
             return View(post);
         }
 
-        // GET: post/Create
+        // GET: Post/Create
         public ActionResult Create()
         {
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME");
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
-        // POST: post/Create
+        // POST: Post/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -51,18 +53,22 @@ namespace ProjectAlumni.Controllers
         public ActionResult Create([Bind(Include = "postid,title,text,users_userid,date")] post post)
         {
             if (ModelState.IsValid)
-            {  
-                
+            {
+
+
+
+
+
                 db.posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", post.users_userid);
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", post.users_userid);
             return View(post);
         }
 
-        // GET: post/Edit/5
+        // GET: Post/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,11 +80,11 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", post.users_userid);
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", post.users_userid);
             return View(post);
         }
 
-        // POST: post/Edit/5
+        // POST: Post/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -91,11 +97,11 @@ namespace ProjectAlumni.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.users_userid = new SelectList(db.users, "userid", "NAME", post.users_userid);
+            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", post.users_userid);
             return View(post);
         }
 
-        // GET: post/Delete/5
+        // GET: Post/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +116,7 @@ namespace ProjectAlumni.Controllers
             return View(post);
         }
 
-        // POST: post/Delete/5
+        // POST: Post/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

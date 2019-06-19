@@ -1,4 +1,4 @@
-﻿@model AlumniDB.news
+﻿@model ProjectAlumni.Models.news
 
 @{
     ViewBag.Title = "Details";
@@ -35,11 +35,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.user.NAME)
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.user.NAME)
+            @Html.DisplayFor(model => model.AspNetUser.Email)
         </dd>
 
     </dl>

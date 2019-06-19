@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AlumniDB.news>
+﻿@model IEnumerable<ProjectAlumni.Models.news>
 
 @{
     ViewBag.Title = "Index";
@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.user.NAME)
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
         </th>
         <th></th>
     </tr>
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.user.NAME)
+            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.newsid }) |

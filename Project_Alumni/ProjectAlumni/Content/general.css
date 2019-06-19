@@ -30,7 +30,7 @@ nav, .triangle{
     left: auto;
     right: -10px;
     position: absolute;
-    width: 450px;
+    min-width: 450px;
     border-radius:  0 100px;
     background-color: rgb(5, 5, 129);
     color: white;
@@ -64,11 +64,13 @@ nav, .triangle{
     border-radius:  0 50px;
 }
 .userbar a {
-    
     color:white;
     padding: 13px 5px 13px 5px;
     font-size: 0.9em;
 }
 .userbar li{
     margin-top: 0px;
+}
+.empty{
+    padding-right:140px;
 }

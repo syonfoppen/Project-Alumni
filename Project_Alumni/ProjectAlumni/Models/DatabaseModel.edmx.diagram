@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="45a3699612ec4072b46617a631ea8ef3" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="DatabaseModel.address" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.AspNetRole" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.AspNetUser" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.chat" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.cours" Width="1.5" PointX="3" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.gender" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.news" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.picture" Width="1.5" PointX="7.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.post" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.reply" Width="1.5" PointX="7.5" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.report" Width="1.5" PointX="7.5" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.tag" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.usercours" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.vacancy" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.courses_addresses_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_AspNetUsers_addresses" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_AspNetUsers_genders" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_chat_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_chat_AspNetUsers1" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_news_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_posts_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_usercourses_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_vacancies_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.usercourses_courses_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.pictures_news_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.replies_posts_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.reports_posts_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.reports_vacancies_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.usertags" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.vacancytags" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

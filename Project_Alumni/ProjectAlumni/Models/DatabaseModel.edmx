@@ -1,0 +1,1300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="addresses">
+          <Key>
+            <PropertyRef Name="addressid" />
+          </Key>
+          <Property Name="addressid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="25" />
+          <Property Name="state" Type="nvarchar" MaxLength="25" />
+          <Property Name="city" Type="nvarchar" MaxLength="25" />
+          <Property Name="street" Type="nvarchar" MaxLength="25" />
+          <Property Name="streetnumber" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="ProfilePicture" Type="varbinary(max)" />
+          <Property Name="AddressId" Type="int" />
+          <Property Name="genderid" Type="int" />
+          <Property Name="hasBeenAccepted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sender_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="reciever_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="created_at" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="courses">
+          <Key>
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="courseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="addresses_addressid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genders">
+          <Key>
+            <PropertyRef Name="genderid" />
+          </Key>
+          <Property Name="genderid" Type="int" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="newsid" />
+          </Key>
+          <Property Name="newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pictures">
+          <Key>
+            <PropertyRef Name="pictureid" />
+          </Key>
+          <Property Name="news_newsid" Type="int" Nullable="false" />
+          <Property Name="pictureid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="picture" Type="varbinary" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="posts">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="replies">
+          <Key>
+            <PropertyRef Name="repliesid" />
+          </Key>
+          <Property Name="repliesid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="posts_postid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="reports">
+          <Key>
+            <PropertyRef Name="reportid" />
+          </Key>
+          <Property Name="vacancies_vacancyid" Type="int" Nullable="false" />
+          <Property Name="posts_postid" Type="int" Nullable="false" />
+          <Property Name="reportid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="tagid" />
+          </Key>
+          <Property Name="tagid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usercourses">
+          <Key>
+            <PropertyRef Name="courses_courseid" />
+            <PropertyRef Name="users_userid" />
+          </Key>
+          <Property Name="graduationyear" Type="char" MaxLength="4" />
+          <Property Name="courses_courseid" Type="int" Nullable="false" />
+          <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usertags">
+          <Key>
+            <PropertyRef Name="users_userid" />
+            <PropertyRef Name="tags_tagid" />
+          </Key>
+          <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="tags_tagid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancies">
+          <Key>
+            <PropertyRef Name="vacancyid" />
+          </Key>
+          <Property Name="vacancyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vacancytags">
+          <Key>
+            <PropertyRef Name="vacancies_vacancyid" />
+            <PropertyRef Name="tags_tagid" />
+          </Key>
+          <Property Name="vacancies_vacancyid" Type="int" Nullable="false" />
+          <Property Name="tags_tagid" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="courses_addresses_fk">
+          <End Role="addresses" Type="Self.addresses" Multiplicity="1" />
+          <End Role="courses" Type="Self.courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="courses">
+              <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_addresses">
+          <End Role="addresses" Type="Self.addresses" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_genders">
+          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="genderid" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="genderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chat_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="reciever_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chat_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="sender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_posts_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="posts" Type="Self.posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usercourses_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="usercourses" Type="Self.usercourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usercourses">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usertags_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="usertags" Type="Self.usertags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usertags">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancies_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="vacancies" Type="Self.vacancies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="vacancies">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pictures_news_fk">
+          <End Role="news" Type="Self.news" Multiplicity="1" />
+          <End Role="pictures" Type="Self.pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="newsid" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="news_newsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_28_tags_fk">
+          <End Role="tags" Type="Self.tags" Multiplicity="1" />
+          <End Role="usertags" Type="Self.usertags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="tagid" />
+            </Principal>
+            <Dependent Role="usertags">
+              <PropertyRef Name="tags_tagid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_29_tags_fk">
+          <End Role="tags" Type="Self.tags" Multiplicity="1" />
+          <End Role="vacancytags" Type="Self.vacancytags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="tagid" />
+            </Principal>
+            <Dependent Role="vacancytags">
+              <PropertyRef Name="tags_tagid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="relation_29_vacancies_fk">
+          <End Role="vacancies" Type="Self.vacancies" Multiplicity="1" />
+          <End Role="vacancytags" Type="Self.vacancytags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancies">
+              <PropertyRef Name="vacancyid" />
+            </Principal>
+            <Dependent Role="vacancytags">
+              <PropertyRef Name="vacancies_vacancyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="replies_posts_fk">
+          <End Role="posts" Type="Self.posts" Multiplicity="1" />
+          <End Role="replies" Type="Self.replies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posts">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="replies">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_posts_fk">
+          <End Role="posts" Type="Self.posts" Multiplicity="1" />
+          <End Role="reports" Type="Self.reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posts">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="reports">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_vacancies_fk">
+          <End Role="vacancies" Type="Self.vacancies" Multiplicity="1" />
+          <End Role="reports" Type="Self.reports" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancies">
+              <PropertyRef Name="vacancyid" />
+            </Principal>
+            <Dependent Role="reports">
+              <PropertyRef Name="vacancies_vacancyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usercourses_courses_fk">
+          <End Role="courses" Type="Self.courses" Multiplicity="1" />
+          <End Role="usercourses" Type="Self.usercourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="courseid" />
+            </Principal>
+            <Dependent Role="usercourses">
+              <PropertyRef Name="courses_courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="addresses" EntityType="Self.addresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat" EntityType="Self.chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="courses" EntityType="Self.courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genders" EntityType="Self.genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="news" EntityType="Self.news" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pictures" EntityType="Self.pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="replies" EntityType="Self.replies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="reports" EntityType="Self.reports" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usercourses" EntityType="Self.usercourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usertags" EntityType="Self.usertags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacancies" EntityType="Self.vacancies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacancytags" EntityType="Self.vacancytags" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="courses_addresses_fk" Association="Self.courses_addresses_fk">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="courses" EntitySet="courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_addresses" Association="Self.FK_AspNetUsers_addresses">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_genders" Association="Self.FK_AspNetUsers_genders">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chat_AspNetUsers" Association="Self.FK_chat_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chat_AspNetUsers1" Association="Self.FK_chat_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_AspNetUsers" Association="Self.FK_news_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_posts_AspNetUsers" Association="Self.FK_posts_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usercourses_AspNetUsers" Association="Self.FK_usercourses_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="usercourses" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usertags_AspNetUsers" Association="Self.FK_usertags_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="usertags" EntitySet="usertags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancies_AspNetUsers" Association="Self.FK_vacancies_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="vacancies" EntitySet="vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="pictures_news_fk" Association="Self.pictures_news_fk">
+            <End Role="news" EntitySet="news" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="relation_28_tags_fk" Association="Self.relation_28_tags_fk">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="usertags" EntitySet="usertags" />
+          </AssociationSet>
+          <AssociationSet Name="relation_29_tags_fk" Association="Self.relation_29_tags_fk">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="vacancytags" EntitySet="vacancytags" />
+          </AssociationSet>
+          <AssociationSet Name="relation_29_vacancies_fk" Association="Self.relation_29_vacancies_fk">
+            <End Role="vacancies" EntitySet="vacancies" />
+            <End Role="vacancytags" EntitySet="vacancytags" />
+          </AssociationSet>
+          <AssociationSet Name="replies_posts_fk" Association="Self.replies_posts_fk">
+            <End Role="posts" EntitySet="posts" />
+            <End Role="replies" EntitySet="replies" />
+          </AssociationSet>
+          <AssociationSet Name="reports_posts_fk" Association="Self.reports_posts_fk">
+            <End Role="posts" EntitySet="posts" />
+            <End Role="reports" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="reports_vacancies_fk" Association="Self.reports_vacancies_fk">
+            <End Role="vacancies" EntitySet="vacancies" />
+            <End Role="reports" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="usercourses_courses_fk" Association="Self.usercourses_courses_fk">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="usercourses" EntitySet="usercourses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="addressid" />
+          </Key>
+          <Property Name="addressid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="streetnumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="courses" Relationship="Self.courses_addresses_fk" FromRole="addresses" ToRole="courses" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_addresses" FromRole="addresses" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="ProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AddressId" Type="Int32" />
+          <Property Name="genderid" Type="Int32" />
+          <Property Name="hasBeenAccepted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.FK_AspNetUsers_addresses" FromRole="AspNetUsers" ToRole="addresses" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="gender" Relationship="Self.FK_AspNetUsers_genders" FromRole="AspNetUsers" ToRole="genders" />
+          <NavigationProperty Name="chats" Relationship="Self.FK_chat_AspNetUsers" FromRole="AspNetUsers" ToRole="chat" />
+          <NavigationProperty Name="chats1" Relationship="Self.FK_chat_AspNetUsers1" FromRole="AspNetUsers" ToRole="chat" />
+          <NavigationProperty Name="news" Relationship="Self.FK_news_AspNetUsers" FromRole="AspNetUsers" ToRole="news" />
+          <NavigationProperty Name="posts" Relationship="Self.FK_posts_AspNetUsers" FromRole="AspNetUsers" ToRole="posts" />
+          <NavigationProperty Name="usercourses" Relationship="Self.FK_usercourses_AspNetUsers" FromRole="AspNetUsers" ToRole="usercourses" />
+          <NavigationProperty Name="vacancies" Relationship="Self.FK_vacancies_AspNetUsers" FromRole="AspNetUsers" ToRole="vacancies" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <NavigationProperty Name="tags" Relationship="Self.usertags" FromRole="AspNetUsers" ToRole="tags" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sender_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="reciever_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_chat_AspNetUsers" FromRole="chat" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.FK_chat_AspNetUsers1" FromRole="chat" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="cours">
+          <Key>
+            <PropertyRef Name="courseid" />
+          </Key>
+          <Property Name="courseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="addresses_addressid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.courses_addresses_fk" FromRole="courses" ToRole="addresses" />
+          <NavigationProperty Name="usercourses" Relationship="Self.usercourses_courses_fk" FromRole="courses" ToRole="usercourses" />
+        </EntityType>
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="genderid" />
+          </Key>
+          <Property Name="genderid" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_genders" FromRole="genders" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="newsid" />
+          </Key>
+          <Property Name="newsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="users_userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_news_AspNetUsers" FromRole="news" ToRole="AspNetUsers" />
+          <NavigationProperty Name="pictures" Relationship="Self.pictures_news_fk" FromRole="news" ToRole="pictures" />
+        </EntityType>
+        <EntityType Name="picture">
+          <Key>
+            <PropertyRef Name="pictureid" />
+          </Key>
+          <Property Name="news_newsid" Type="Int32" Nullable="false" />
+          <Property Name="pictureid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="picture1" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="news" Relationship="Self.pictures_news_fk" FromRole="pictures" ToRole="news" />
+        </EntityType>
+        <EntityType Name="post">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="users_userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_posts_AspNetUsers" FromRole="posts" ToRole="AspNetUsers" />
+          <NavigationProperty Name="replies" Relationship="Self.replies_posts_fk" FromRole="posts" ToRole="replies" />
+          <NavigationProperty Name="reports" Relationship="Self.reports_posts_fk" FromRole="posts" ToRole="reports" />
+        </EntityType>
+        <EntityType Name="reply">
+          <Key>
+            <PropertyRef Name="repliesid" />
+          </Key>
+          <Property Name="repliesid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="posts_postid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="post" Relationship="Self.replies_posts_fk" FromRole="replies" ToRole="posts" />
+        </EntityType>
+        <EntityType Name="report">
+          <Key>
+            <PropertyRef Name="reportid" />
+          </Key>
+          <Property Name="vacancies_vacancyid" Type="Int32" Nullable="false" />
+          <Property Name="posts_postid" Type="Int32" Nullable="false" />
+          <Property Name="reportid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="post" Relationship="Self.reports_posts_fk" FromRole="reports" ToRole="posts" />
+          <NavigationProperty Name="vacancy" Relationship="Self.reports_vacancies_fk" FromRole="reports" ToRole="vacancies" />
+        </EntityType>
+        <EntityType Name="tag">
+          <Key>
+            <PropertyRef Name="tagid" />
+          </Key>
+          <Property Name="tagid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.usertags" FromRole="tags" ToRole="AspNetUsers" />
+          <NavigationProperty Name="vacancies" Relationship="Self.vacancytags" FromRole="tags" ToRole="vacancies" />
+        </EntityType>
+        <EntityType Name="usercours">
+          <Key>
+            <PropertyRef Name="courses_courseid" />
+            <PropertyRef Name="users_userid" />
+          </Key>
+          <Property Name="graduationyear" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="courses_courseid" Type="Int32" Nullable="false" />
+          <Property Name="users_userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_usercourses_AspNetUsers" FromRole="usercourses" ToRole="AspNetUsers" />
+          <NavigationProperty Name="cours" Relationship="Self.usercourses_courses_fk" FromRole="usercourses" ToRole="courses" />
+        </EntityType>
+        <EntityType Name="vacancy">
+          <Key>
+            <PropertyRef Name="vacancyid" />
+          </Key>
+          <Property Name="vacancyid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="users_userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_vacancies_AspNetUsers" FromRole="vacancies" ToRole="AspNetUsers" />
+          <NavigationProperty Name="reports" Relationship="Self.reports_vacancies_fk" FromRole="vacancies" ToRole="reports" />
+          <NavigationProperty Name="tags" Relationship="Self.vacancytags" FromRole="vacancies" ToRole="tags" />
+        </EntityType>
+        <Association Name="courses_addresses_fk">
+          <End Role="addresses" Type="Self.address" Multiplicity="1" />
+          <End Role="courses" Type="Self.cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="courses">
+              <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_addresses">
+          <End Role="addresses" Type="Self.address" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_genders">
+          <End Role="genders" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="genderid" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="genderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chat_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="reciever_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chat_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="sender_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_news_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="news" Type="Self.news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_posts_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="posts" Type="Self.post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usercourses_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="usercourses" Type="Self.usercours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usercourses">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vacancies_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="vacancies" Type="Self.vacancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="vacancies">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usercourses_courses_fk">
+          <End Role="courses" Type="Self.cours" Multiplicity="1" />
+          <End Role="usercourses" Type="Self.usercours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="courses">
+              <PropertyRef Name="courseid" />
+            </Principal>
+            <Dependent Role="usercourses">
+              <PropertyRef Name="courses_courseid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pictures_news_fk">
+          <End Role="news" Type="Self.news" Multiplicity="1" />
+          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="newsid" />
+            </Principal>
+            <Dependent Role="pictures">
+              <PropertyRef Name="news_newsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="replies_posts_fk">
+          <End Role="posts" Type="Self.post" Multiplicity="1" />
+          <End Role="replies" Type="Self.reply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posts">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="replies">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_posts_fk">
+          <End Role="posts" Type="Self.post" Multiplicity="1" />
+          <End Role="reports" Type="Self.report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="posts">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="reports">
+              <PropertyRef Name="posts_postid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="reports_vacancies_fk">
+          <End Role="vacancies" Type="Self.vacancy" Multiplicity="1" />
+          <End Role="reports" Type="Self.report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacancies">
+              <PropertyRef Name="vacancyid" />
+            </Principal>
+            <Dependent Role="reports">
+              <PropertyRef Name="vacancies_vacancyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="usertags">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <End Role="tags" Type="Self.tag" Multiplicity="*" />
+        </Association>
+        <Association Name="vacancytags">
+          <End Role="tags" Type="Self.tag" Multiplicity="*" />
+          <End Role="vacancies" Type="Self.vacancy" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="addresses" EntityType="Self.address" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="chats" EntityType="Self.chat" />
+          <EntitySet Name="courses" EntityType="Self.cours" />
+          <EntitySet Name="genders" EntityType="Self.gender" />
+          <EntitySet Name="news" EntityType="Self.news" />
+          <EntitySet Name="pictures" EntityType="Self.picture" />
+          <EntitySet Name="posts" EntityType="Self.post" />
+          <EntitySet Name="replies" EntityType="Self.reply" />
+          <EntitySet Name="reports" EntityType="Self.report" />
+          <EntitySet Name="tags" EntityType="Self.tag" />
+          <EntitySet Name="usercourses" EntityType="Self.usercours" />
+          <EntitySet Name="vacancies" EntityType="Self.vacancy" />
+          <AssociationSet Name="courses_addresses_fk" Association="Self.courses_addresses_fk">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="courses" EntitySet="courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_addresses" Association="Self.FK_AspNetUsers_addresses">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_genders" Association="Self.FK_AspNetUsers_genders">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chat_AspNetUsers" Association="Self.FK_chat_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="chat" EntitySet="chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chat_AspNetUsers1" Association="Self.FK_chat_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="chat" EntitySet="chats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_news_AspNetUsers" Association="Self.FK_news_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="FK_posts_AspNetUsers" Association="Self.FK_posts_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usercourses_AspNetUsers" Association="Self.FK_usercourses_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="usercourses" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vacancies_AspNetUsers" Association="Self.FK_vacancies_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="vacancies" EntitySet="vacancies" />
+          </AssociationSet>
+          <AssociationSet Name="usercourses_courses_fk" Association="Self.usercourses_courses_fk">
+            <End Role="courses" EntitySet="courses" />
+            <End Role="usercourses" EntitySet="usercourses" />
+          </AssociationSet>
+          <AssociationSet Name="pictures_news_fk" Association="Self.pictures_news_fk">
+            <End Role="news" EntitySet="news" />
+            <End Role="pictures" EntitySet="pictures" />
+          </AssociationSet>
+          <AssociationSet Name="replies_posts_fk" Association="Self.replies_posts_fk">
+            <End Role="posts" EntitySet="posts" />
+            <End Role="replies" EntitySet="replies" />
+          </AssociationSet>
+          <AssociationSet Name="reports_posts_fk" Association="Self.reports_posts_fk">
+            <End Role="posts" EntitySet="posts" />
+            <End Role="reports" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="reports_vacancies_fk" Association="Self.reports_vacancies_fk">
+            <End Role="vacancies" EntitySet="vacancies" />
+            <End Role="reports" EntitySet="reports" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="usertags" Association="Self.usertags">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="tags" EntitySet="tags" />
+          </AssociationSet>
+          <AssociationSet Name="vacancytags" Association="Self.vacancytags">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="vacancies" EntitySet="vacancies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="DatabaseModel.address">
+              <MappingFragment StoreEntitySet="addresses">
+                <ScalarProperty Name="addressid" ColumnName="addressid" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="streetnumber" ColumnName="streetnumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="DatabaseModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="DatabaseModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="DatabaseModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DatabaseModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="genderid" ColumnName="genderid" />
+                <ScalarProperty Name="hasBeenAccepted" ColumnName="hasBeenAccepted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chats">
+            <EntityTypeMapping TypeName="DatabaseModel.chat">
+              <MappingFragment StoreEntitySet="chat">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="sender_id" ColumnName="sender_id" />
+                <ScalarProperty Name="reciever_id" ColumnName="reciever_id" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="courses">
+            <EntityTypeMapping TypeName="DatabaseModel.cours">
+              <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="courseid" ColumnName="courseid" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="addresses_addressid" ColumnName="addresses_addressid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genders">
+            <EntityTypeMapping TypeName="DatabaseModel.gender">
+              <MappingFragment StoreEntitySet="genders">
+                <ScalarProperty Name="genderid" ColumnName="genderid" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="DatabaseModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="newsid" ColumnName="newsid" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pictures">
+            <EntityTypeMapping TypeName="DatabaseModel.picture">
+              <MappingFragment StoreEntitySet="pictures">
+                <ScalarProperty Name="news_newsid" ColumnName="news_newsid" />
+                <ScalarProperty Name="pictureid" ColumnName="pictureid" />
+                <ScalarProperty Name="picture1" ColumnName="picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="posts">
+            <EntityTypeMapping TypeName="DatabaseModel.post">
+              <MappingFragment StoreEntitySet="posts">
+                <ScalarProperty Name="postid" ColumnName="postid" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="replies">
+            <EntityTypeMapping TypeName="DatabaseModel.reply">
+              <MappingFragment StoreEntitySet="replies">
+                <ScalarProperty Name="repliesid" ColumnName="repliesid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="posts_postid" ColumnName="posts_postid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reports">
+            <EntityTypeMapping TypeName="DatabaseModel.report">
+              <MappingFragment StoreEntitySet="reports">
+                <ScalarProperty Name="vacancies_vacancyid" ColumnName="vacancies_vacancyid" />
+                <ScalarProperty Name="posts_postid" ColumnName="posts_postid" />
+                <ScalarProperty Name="reportid" ColumnName="reportid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tags">
+            <EntityTypeMapping TypeName="DatabaseModel.tag">
+              <MappingFragment StoreEntitySet="tags">
+                <ScalarProperty Name="tagid" ColumnName="tagid" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usercourses">
+            <EntityTypeMapping TypeName="DatabaseModel.usercours">
+              <MappingFragment StoreEntitySet="usercourses">
+                <ScalarProperty Name="graduationyear" ColumnName="graduationyear" />
+                <ScalarProperty Name="courses_courseid" ColumnName="courses_courseid" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacancies">
+            <EntityTypeMapping TypeName="DatabaseModel.vacancy">
+              <MappingFragment StoreEntitySet="vacancies">
+                <ScalarProperty Name="vacancyid" ColumnName="vacancyid" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="DatabaseModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="usertags" TypeName="DatabaseModel.usertags" StoreEntitySet="usertags">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="users_userid" />
+            </EndProperty>
+            <EndProperty Name="tags">
+              <ScalarProperty Name="tagid" ColumnName="tags_tagid" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="vacancytags" TypeName="DatabaseModel.vacancytags" StoreEntitySet="vacancytags">
+            <EndProperty Name="tags">
+              <ScalarProperty Name="tagid" ColumnName="tags_tagid" />
+            </EndProperty>
+            <EndProperty Name="vacancies">
+              <ScalarProperty Name="vacancyid" ColumnName="vacancies_vacancyid" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

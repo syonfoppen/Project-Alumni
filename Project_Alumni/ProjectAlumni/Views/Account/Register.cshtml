@@ -16,13 +16,13 @@
                 @Html.PasswordFor(m => m.Password, new { placeholder = "Password", @class = "password" })
                 @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "Password", @class = "password" })
                 <input type="submit" class="submit" value="Register" />
-
+                <p class="register">
+                    @Html.ActionLink("Inloggen", "login")
+                </p>
                 }
             </div>
 <div class="background"></div>
-<p class="register">
-    @Html.ActionLink("Inloggen", "login")
-</p>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

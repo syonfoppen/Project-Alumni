@@ -66,6 +66,7 @@ html {
 }
 
 .information {
+    padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -73,7 +74,7 @@ html {
 	border-radius: 40px;
 	width: 80%;
 	min-height: 100vh;
-	margin: 0px auto 200px auto;
+	margin: 0px auto 400px auto;
 	box-shadow: 8px 8px 25px black;
 }
 
@@ -81,6 +82,7 @@ html {
     position: absolute;
     top:310vh;
     bottom:0;
+    margin-top: 200px;
 	height: 300px;
     width: 100vw;
 	color: white;
@@ -109,25 +111,18 @@ html {
 }
 
 .newsBox {
-	width: 90%;
-	color: white;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	min-height: 200px;
-	border-radius: 20px;
-	margin: 2% auto;
-	background-color:rgba(0, 0, 0, 0.575);
+    margin: 2% 1%;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 200px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.575);
 }
-
 	.newsBox .text {
 		padding: 5%;
 	}
-
 	.newsBox h2 {
 		text-align: center;
 	}
 
-.container {
-	display: grid;
-	grid-template-columns: 100%;
-}
 

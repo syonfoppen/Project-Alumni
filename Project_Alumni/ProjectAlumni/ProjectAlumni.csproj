@@ -258,6 +258,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Forum.css" />
     <Content Include="Content\general.css" />
     <Content Include="Content\Home.css" />
     <Content Include="Content\Login.css" />

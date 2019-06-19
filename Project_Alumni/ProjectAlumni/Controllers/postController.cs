@@ -10,6 +10,7 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();
@@ -116,6 +117,12 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Fin the user id
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+                post.date = DateTime.Now;
+                post.users_userid = user.Id;
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

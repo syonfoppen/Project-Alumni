@@ -30,7 +30,7 @@ nav, .triangle{
     left: auto;
     right: -10px;
     position: absolute;
-    width: 420px;
+    width: 450px;
     border-radius:  0 100px;
     background-color: rgb(5, 5, 129);
     color: white;
@@ -52,7 +52,7 @@ nav, .triangle{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .navbar a:hover {
-    background-color: rgba(0,0,0, 0.2);
+    background-color: rgba(0,0,0, 0.2) !important;
 }
 .userbar {
     position: absolute;

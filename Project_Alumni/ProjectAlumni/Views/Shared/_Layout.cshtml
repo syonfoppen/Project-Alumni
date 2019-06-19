@@ -16,8 +16,18 @@
     <nav class="navbar" id="navbar">
         <ul class="nav">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("News", "Index", "News")</li>
+            @if (User.Identity.IsAuthenticated)
+            {
+
+                <li>@Html.ActionLink("Forum", "Index", "Post")</li>
+            }
+            @if (User.IsInRole("Admin"))
+            {
+                <li>@Html.ActionLink("Admin Panel", "Index", "Roles")</li>
+            }
+
+
             <li class="empty"></li><!--leave this empty-->
         </ul>
         <ul class="userbar">

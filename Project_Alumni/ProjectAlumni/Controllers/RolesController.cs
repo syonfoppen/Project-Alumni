@@ -10,7 +10,7 @@ using ProjectAlumni.Models;
 namespace ProjectAlumni.Controllers
 {
 
-    public class RolesController : Controller
+    public class TagsController : Controller
     {
 
 

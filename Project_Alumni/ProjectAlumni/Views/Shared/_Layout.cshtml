@@ -7,7 +7,6 @@
     @Styles.Render("~/Content/css")
     <link href="@Url.Content("~/Content/General.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" /> 
-    
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/frontend.js"></script>
 </head>
@@ -15,7 +14,7 @@
     @RenderBody()
     <span class="triangle" onclick="nav()"></span>
     <nav class="navbar" id="navbar">
-        <ul>
+        <ul class="nav">
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("About", "About", "Home")</li>
             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

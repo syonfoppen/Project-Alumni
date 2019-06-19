@@ -177,7 +177,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
-    <Compile Include="Controllers\postController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,10 +194,25 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\general.css" />
     <Content Include="Content\Home.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Media\foto\background-restaurant1%402x.png" />
+    <Content Include="Media\foto\background-roc-almelo%402x.png" />
+    <Content Include="Media\foto\contract-7%402x.png" />
+    <Content Include="Media\foto\menu.svg" />
+    <Content Include="Media\foto\restaurants-background-2%402x.png" />
+    <Content Include="Media\foto\search.svg" />
+    <Content Include="Media\foto\user-7%402x.png" />
+    <Content Include="Media\svg\footer.svg" />
+    <Content Include="Media\svg\informatie.svg" />
+    <Content Include="Media\svg\information-background.svg" />
+    <Content Include="Media\svg\menu.svg" />
+    <Content Include="Media\svg\roc-logo.svg" />
+    <Content Include="Media\svg\roc-menu.svg" />
+    <Content Include="Media\svg\search.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

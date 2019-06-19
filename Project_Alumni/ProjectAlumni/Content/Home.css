@@ -128,44 +128,6 @@ html {
 
 .container {
 	display: grid;
-	grid-template-columns: 50% 50%;
+	grid-template-columns: 100%;
 }
 
-.navbar {
-	top: -12vh;
-	left: auto;
-	right: -10px;
-	position: absolute;
-	width: 430px;
-	height: 20vh;
-	border-radius: 10vh;
-	background-color: rgb(5, 5, 129);
-	color: white;
-	z-index: 10;
-	display: table-cell;
-	vertical-align: middle;
-}
-
-	.navbar ul li {
-
-		float: left;
-		list-style-type: none;
-	}
-
-    .navbar a {
-        padding: 20px 10px 20px 10px;
-        text-decoration: none;
-        color: white;
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
-    .navbar a:hover{
-        background-color:rgbs(0 ,0 ,0 , 0.2);
-    }
-
-	.navbar ul {
-		margin-left: 50px;
-		margin-top: 14vh;
-		/* text-align: center;
-    display: table-cell;
-    vertical-align: middle; */
-	}

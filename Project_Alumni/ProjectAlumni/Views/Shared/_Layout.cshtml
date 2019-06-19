@@ -6,7 +6,8 @@
     <title>@ViewBag.Title - Alumni</title>
     @Styles.Render("~/Content/css")
     <link href="@Url.Content("~/Content/General.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" /> 
+    
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/frontend.js"></script>
 </head>
@@ -18,6 +19,9 @@
             <li>@Html.ActionLink("Home", "Index", "Home")</li>
             <li>@Html.ActionLink("About", "About", "Home")</li>
             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+        </ul>
+        <ul class="userbar">
+            @Html.Partial("_LoginPartial")
         </ul>
     </nav>
 </body>

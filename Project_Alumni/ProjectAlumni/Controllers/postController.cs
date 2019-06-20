@@ -41,6 +41,8 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
+            var replies = db.replies.SqlQuery("SELECT * FROM replies WHERE posts_postid = " + "'" + post.postid + "'").ToList();
+            ViewBag.replies = replies;
             return View(post);
         }
 

@@ -2,44 +2,51 @@
 html {
 	overflow-x: hidden;
 }
-
 @keyframes background {
-	0% {
-		background-image: url('../Media/foto/background-restaurant1@2x.png');
-	}
+    0% {
+        filter: grayscale();
+        background-image: url('../Media/foto/background-restaurant1@2x.png');
+    }
 
-	100% {
-		background-image: url('../Media/foto/restaurants-background-2@2x.png');
-		animation: background 6s;
-	}
+    50% {
+        filter: grayscale();
+        background-image: url('../Media/foto/restaurants-background-2@2x.png');
+    }
+    100% {
+        filter: grayscale();
+        background-image: url('../Media/foto/background-restaurant1@2x.png');
+    }
 }
 
 .pc-header {
-	top:-1vw;
-	z-index: -1;
-	position: absolute;
-	transition: background-image 0.5s;
-	background-image: url('../Media/foto/background-restaurant1@2x.png');
-	animation: background 6s;
-	height: 100vh;
-	width:110vw;
-	margin: 0px -3vw auto -3vw;
-	background-position: bottom;
-	background-repeat: no-repeat;
-	background-size: cover;
+    top: -1vw;
+    z-index: -1;
+    position: absolute;
+    transition: background-image 0.5s;
+    transition-timing-function: ease-in-out;
+    animation: background 13s;
+    animation-iteration-count: infinite;
+    height: 100vh;
+    width: 110vw;
+    margin: 0px -5vw auto -5vw;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-	.pc-header h1 {
-		width: 100vw;
-		position: relative;
-		margin-top: 0px;
-		padding-top: 150px;
-		font-family: 'Segoe UI';
-		font-size: 6em;
-		font-weight: 800;
-		color: white;
-		text-align: center;
-	}
+    .pc-header::before {
+        filter: grayscale(100%);
+    }
+    .pc-header h1 {
+        width: 100%;
+        position: relative;
+        margin-top: 0px;
+        padding-top: 150px;
+        font-family: 'Segoe UI';
+        font-size: 6em;
+        font-weight: 800;
+        color: white;
+        text-align: center;
+    }
 
 	.pc-header h2 {
 		position: relative;
@@ -50,36 +57,33 @@ html {
 		text-align: left;
 	}
 
-	.pc-header hr {
-		color: white;
-	}
 
 .seperation {
 	width: 100vw;
-	height: 740px;
+	min-height: 800px;
 	z-index: 150;
+    display:block;
 	background-image: url("../Media/svg/informatie.svg");
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100vw auto;
-	margin-top: 70vh;
+	margin-top: 60vh;
 }
 
 .information {
+    padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	border-radius: 40px;
-	width: 80%;
+	width: 90%;
 	min-height: 100vh;
-	margin: 0px auto 200px auto;
+	margin: 100px auto 100px auto;
 	box-shadow: 8px 8px 25px black;
 }
 
-.pc-footer {
-    position: absolute;
-    top:310vh;
+.pc-footer {    
     bottom:0;
 	height: 300px;
     width: 100vw;
@@ -109,25 +113,18 @@ html {
 }
 
 .newsBox {
-	width: 90%;
-	color: white;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	min-height: 200px;
-	border-radius: 20px;
-	margin: 2% auto;
-	background-color:rgba(0, 0, 0, 0.575);
+    margin: 2% 1%;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 200px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.575);
 }
-
 	.newsBox .text {
 		padding: 5%;
 	}
-
 	.newsBox h2 {
 		text-align: center;
 	}
 
-.container {
-	display: grid;
-	grid-template-columns: 100%;
-}
 

@@ -39,7 +39,9 @@ namespace ProjectAlumni.Controllers
             return View(news);
         }
 
+
         // GET: News/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
 
@@ -52,6 +54,7 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "newsid,title,text,users_userid,date")] news news)
         {
             if (ModelState.IsValid)
@@ -77,6 +80,7 @@ namespace ProjectAlumni.Controllers
         }
 
         // GET: News/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,6 +101,7 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "newsid,title,text,users_userid,date")] news news)
         {
             if (ModelState.IsValid)
@@ -111,6 +116,7 @@ namespace ProjectAlumni.Controllers
         }
 
         // GET: News/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -128,6 +134,7 @@ namespace ProjectAlumni.Controllers
         // POST: News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             news news = db.news.Find(id);

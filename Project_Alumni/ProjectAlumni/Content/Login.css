@@ -1,6 +1,9 @@
 html {
     overflow-y: hidden;
 }
+span{
+    color:white !important;
+}
 body {
     background-color: #b70116;
     width: 100vw;
@@ -45,14 +48,15 @@ h1{
     padding: 0 10px;
     display:block;
     height:50px;
-    width:500px;
+    width:600px;
     margin:10px auto;
     border:none;
     border-radius:0;
 }
 .row{
-    width: 100%;
+    width: 100vw;
     text-align:center;
+    margin:0;
 }
 .row .submit{
     width: 50%;
@@ -78,3 +82,21 @@ h1{
     height: 30px;
     margin:auto;
 }
+.error-messege {
+    height: 500px;
+}
+
+    .error-messege li {
+        text-align:center;
+        background-color: #0063ad;
+        color: white;
+        margin-left: 35%;
+        margin-right:35%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        list-style: none;
+        box-shadow: 0px 10px 30px black;
+        border-radius: 10px;
+    }

@@ -10,6 +10,7 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();
@@ -17,6 +18,13 @@ namespace ProjectAlumni.Controllers
         // GET: Post
         public ActionResult Index()
         {
+            //Get the user id of the current user and put it in a viewbag
+            string username = User.Identity.Name.ToString();
+            var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+            AspNetUser user = userid[0];
+            ViewBag.userid = user.Id;
+
+
             var posts = db.posts.Include(p => p.AspNetUser);
             return View(posts.ToList());
         }
@@ -39,6 +47,7 @@ namespace ProjectAlumni.Controllers
         // GET: Post/Create
         public ActionResult Create()
         {
+            
             ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
@@ -82,8 +91,21 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", post.users_userid);
-            return View(post);
+
+            //look if the user has permisions to edite the file
+            string username = User.Identity.Name.ToString();
+            var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+            AspNetUser user = userid[0];
+
+            if (post.users_userid == user.Id || User.IsInRole("Admin"))
+            {
+                ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", post.users_userid);
+                return View(post);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // POST: Post/Edit/5
@@ -95,6 +117,12 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Fin the user id
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+                post.date = DateTime.Now;
+                post.users_userid = user.Id;
                 db.Entry(post).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -115,7 +143,22 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            return View(post);
+            
+
+            //look if the user has permisions to edite the file
+            string username = User.Identity.Name.ToString();
+            var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+            AspNetUser user = userid[0];
+
+            if (post.users_userid == user.Id || User.IsInRole("Admin"))
+            {
+                ViewBag.users_userid = new SelectList(db.AspNetUsers, "Id", "Email", post.users_userid);
+                return View(post);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // POST: Post/Delete/5

@@ -25,7 +25,7 @@ namespace ProjectAlumni.Controllers
             ViewBag.userid = user.Id;
 
 
-            var posts = db.posts.Include(p => p.AspNetUser);
+            var posts = db.posts.OrderByDescending(x => x.postid).Include(p => p.AspNetUser);
             return View(posts.ToList());
         }
 

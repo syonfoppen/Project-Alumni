@@ -1,0 +1,17 @@
+﻿body {
+}
+
+.actions {
+    width: 100%;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.row{
+    padding-bottom: 10px;
+}
+
+.post{
+    border-left: 2px solid black;
+    padding-left: 10px;
+}

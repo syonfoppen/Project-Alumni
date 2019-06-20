@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
         </th>
         <th></th>
     </tr>
@@ -38,12 +38,18 @@
             @Html.DisplayFor(modelItem => item.date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+            @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.newsid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.newsid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.newsid })
+            @{
+                if (User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.newsid }) <br />
+                    @Html.ActionLink("Delete", "Delete", new { id = item.newsid }) <br />
+                }
+            }
+            @Html.ActionLink("Lees Meer...", "Details", new { id = item.newsid })
+
         </td>
     </tr>
 }

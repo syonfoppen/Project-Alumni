@@ -4,48 +4,51 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link href="@Url.Content("~/Content/Forum.css")" rel="stylesheet" type="text/css" />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.postid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.postid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.postid })
-        </td>
-    </tr>
-}
+<div class="container">
+    <h2>Index</h2>
+    <p>
+        @Html.ActionLink("Nieuw Bericht", "Create", null, new { @class = "btn btn-danger" })
+    </p>
+    <div style="overflow-y: auto; height: 80vh;">
+        @foreach (var item in Model)
+        {
+            <div class="well" >
+                <div class="row" >
+                    <div class="col-sm-2">
+                        <b>@Html.DisplayFor(modelItem => item.AspNetUser.UserName)</b><br />
+                        <b style="font-size: 12px">Voor het laatst bewerkt:</b><br />
+                        <p style="font-size: 12px"><b>@Html.DisplayFor(modelItem => item.date)</b></p>
+                    </div>
+                    <div class="post col-sm-8" style="max-height: 400px; overflow-y:auto">
+                        <h2>@Html.DisplayFor(modelItem => item.title)</h2>
+                        <p>@Html.DisplayFor(modelItem => item.text)</p>
+                    </div>
+                    <div class="col-sm-2">
 
-</table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-3">
+                        @Html.ActionLink("Reacties", "Details", new { id = item.postid }, new { @class = " actions btn btn-danger " })
+                    </div>
+                    @if (Convert.ToString(ViewBag.userid) == Convert.ToString(item.users_userid) || User.IsInRole("Admin"))
+                    {
+                        <div class="col-sm-3">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.postid }, new { @class = "actions btn btn-danger" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.ActionLink("Delete", "Delete", new { id = item.postid }, new { @class = "actions btn btn-danger" })
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

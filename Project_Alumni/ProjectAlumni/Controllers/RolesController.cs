@@ -9,7 +9,7 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
 

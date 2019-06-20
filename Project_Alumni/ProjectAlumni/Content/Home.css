@@ -49,8 +49,9 @@ html {
     }
 
 	.pc-header h2 {
-		position: relative;
-		padding-left: 70px;
+        left: 3vw;;
+		position: absolute;
+		padding-left: 3vw;
 		font-family: 'Segoe UI';
 		font-size: 3em;
 		color: white;
@@ -59,17 +60,25 @@ html {
 
 
 .seperation {
-	width: 100vw;
+    color:white;
+    transform: rotate(-7deg);
+	width: 120vw;
 	min-height: 800px;
 	z-index: 150;
     display:block;
 	background-image: url("../Media/svg/informatie.svg");
 	background-position: top;
 	background-repeat: no-repeat;
-	background-size: 100vw auto;
-	margin-top: 60vh;
+	background-size: 120vw auto;
+    margin: 60vh -10vw auto -10vw;
 }
-
+.seperation div{
+    height:270px;
+    transform: rotate(7deg);
+    width: 55%;
+    margin:auto;
+    padding-top: 10%;
+}
 .information {
     padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
@@ -84,6 +93,8 @@ html {
 }
 
 .pc-footer {    
+    margin-left:-1vw;
+    margin-right: -1vw;
     bottom:0;
 	height: 300px;
     width: 100vw;

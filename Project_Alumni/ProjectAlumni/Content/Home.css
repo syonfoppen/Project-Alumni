@@ -47,7 +47,6 @@ html {
         color: white;
         text-align: center;
     }
-
 	.pc-header h2 {
         top:5vw;
         left: 3vw;;
@@ -62,7 +61,7 @@ html {
 
 .seperation {
     color:white;
-    transform: rotate(-7deg);
+    transform: rotate(-5deg);
 	width: 120vw;
 	min-height: 800px;
 	z-index: 150;
@@ -75,7 +74,7 @@ html {
 }
 .seperation div{
     height:270px;
-    transform: rotate(7deg);
+    transform: rotate(5deg);
     width: 55%;
     margin:auto;
     padding-top: 10%;
@@ -92,7 +91,6 @@ html {
 	margin: 100px auto 100px auto;
 	box-shadow: 8px 8px 25px black;
 }
-
 .pc-footer {    
     margin-left:-1vw;
     margin-right: -1vw;

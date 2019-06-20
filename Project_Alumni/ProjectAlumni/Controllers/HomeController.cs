@@ -13,8 +13,8 @@ namespace ProjectAlumni.Controllers
         public ActionResult Index()
         {
 
-            var posts = db.news;
-            return View(posts.ToList());
+            var news = db.posts.OrderByDescending(x => x.postid).Take(3).ToList(); ;
+            return View(news);
         }
 
         public ActionResult About()

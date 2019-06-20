@@ -59,8 +59,16 @@ namespace ProjectAlumni.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                return View();
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+            
         }
 
         //
@@ -141,7 +149,14 @@ namespace ProjectAlumni.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         //

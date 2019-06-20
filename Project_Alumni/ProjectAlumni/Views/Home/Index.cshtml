@@ -8,12 +8,16 @@
     <h1>Hotel School Almelo</h1>
 </header>
 <div class="seperation">
+    <div>
+        
+    </div>
+    
 </div>
 <div class="row information">
     @foreach (var item in Model)
     {
         <div class="col-sm-12 newsBox">
-            <h2>@Html.DisplayFor(modelItem => item.title)</h2>   <!--plaats hier de naam van de nieuws of informatie-->
+            <h2>@Html.DisplayFor(modelItem => item.title)</h2>
             <div class="text">
                 @Html.DisplayFor(modelItem => item.text)
             </div><!--plaats hier de nieuws of informatie-->

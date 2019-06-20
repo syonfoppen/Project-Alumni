@@ -28,7 +28,7 @@ html {
     animation-iteration-count: infinite;
     height: 100vh;
     width: 110vw;
-    margin: 0px -5vw auto -5vw;
+    margin: -5vw -5vw auto -5vw;
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,7 +39,7 @@ html {
     .pc-header h1 {
         width: 100%;
         position: relative;
-        margin-top: 0px;
+        margin-top: 10vw;;
         padding-top: 150px;
         font-family: 'Segoe UI';
         font-size: 6em;
@@ -47,10 +47,11 @@ html {
         color: white;
         text-align: center;
     }
-
 	.pc-header h2 {
-		position: relative;
-		padding-left: 70px;
+        top:5vw;
+        left: 3vw;;
+		position: absolute;
+		padding-left: 3vw;
 		font-family: 'Segoe UI';
 		font-size: 3em;
 		color: white;
@@ -59,17 +60,25 @@ html {
 
 
 .seperation {
-	width: 100vw;
+    color:white;
+    transform: rotate(-5deg);
+	width: 120vw;
 	min-height: 800px;
 	z-index: 150;
     display:block;
 	background-image: url("../Media/svg/informatie.svg");
 	background-position: top;
 	background-repeat: no-repeat;
-	background-size: 100vw auto;
-	margin-top: 60vh;
+	background-size: 120vw auto;
+    margin: 55vh -10vw auto -10vw;
 }
-
+.seperation div{
+    height:270px;
+    transform: rotate(5deg);
+    width: 55%;
+    margin:auto;
+    padding-top: 10%;
+}
 .information {
     padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
@@ -82,8 +91,9 @@ html {
 	margin: 100px auto 100px auto;
 	box-shadow: 8px 8px 25px black;
 }
-
 .pc-footer {    
+    margin-left:-1vw;
+    margin-right: -1vw;
     bottom:0;
 	height: 300px;
     width: 100vw;

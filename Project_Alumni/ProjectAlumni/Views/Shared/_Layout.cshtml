@@ -19,8 +19,8 @@
     
     <nav class="navbar" id="navbar">
         <ul class="nav">
-            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-            <li>@Html.ActionLink("News", "Index", "News")</li>
+            <li>@Html.ActionLink("Startpagina", "Index", "Home")</li>
+            <li>@Html.ActionLink("Nieuws", "Index", "News")</li>
             @if (User.Identity.IsAuthenticated)
             {
 
@@ -28,7 +28,7 @@
             }
             @if (User.IsInRole("Admin"))
             {
-                <li>@Html.ActionLink("Admin Panel", "Index", "Admin")</li>
+                <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
             }
 
 

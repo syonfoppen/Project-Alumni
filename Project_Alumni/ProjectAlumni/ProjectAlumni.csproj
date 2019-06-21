@@ -277,6 +277,7 @@
     <Content Include="Media\foto\restaurants-background-2%402x.png" />
     <Content Include="Media\foto\search.svg" />
     <Content Include="Media\foto\user-7%402x.png" />
+    <Content Include="Media\svg\background2.svg" />
     <Content Include="Media\svg\footer.svg" />
     <Content Include="Media\svg\informatie.svg" />
     <Content Include="Media\svg\information-background.svg" />

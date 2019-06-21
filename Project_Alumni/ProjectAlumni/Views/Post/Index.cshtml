@@ -7,12 +7,12 @@
 <link href="@Url.Content("~/Content/Forum.css")" rel="stylesheet" type="text/css" />
 
 
-<div class="container">
-    <h2>Index</h2>
+<div class="container" style="background-color:rgba(0,0,0,0.6);padding: 5%;border-radius: 40px;">
+    <h2 style="color:white;">Forum</h2>
     <p>
         @Html.ActionLink("Nieuw Bericht", "Create", null, new { @class = "btn btn-danger" })
     </p>
-    <div style="overflow-y: auto; height: 80vh;">
+    <div style="">
         @foreach (var item in Model)
         {
             <div class="well" >
@@ -45,10 +45,11 @@
                             @Html.ActionLink("Delete", "Delete", new { id = item.postid }, new { @class = "actions btn btn-danger" })
                         </div>
                     }
-
                 </div>
             </div>
         }
     </div>
+</div>
+<div class="background">
 
 </div>

@@ -17,12 +17,22 @@
 <div class="row information">
     @foreach (var item in Model)
     {
-        <div class="col-sm-12 newsBox">
-            <h2>@Html.DisplayFor(modelItem => item.title)</h2>
-            <div class="text">
-                @Html.DisplayFor(modelItem => item.text)
-            </div><!--plaats hier de nieuws of informatie-->
-        </div>
+
+    <div class="col-sm-12 newsBox">
+
+        <h2>@Html.DisplayFor(modelItem => item.title)</h2>
+        @{
+            if (item.thumbnail != null && item.thumbnail.Length > 0)
+            {
+                var base64 = Convert.ToBase64String(item.thumbnail);
+                var imgSrc = String.Format("data:image;base64,{0}", base64);
+                <img src="@imgSrc" />
+            }
+        }
+        <div class="text">
+            @Html.DisplayFor(modelItem => item.text)
+        </div><!--plaats hier de nieuws of informatie-->
+    </div>
 
     }
 </div>

@@ -66,6 +66,15 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ProfilePicture" Type="varbinary(max)" />
+          <Property Name="AdressId" Type="int" />
+          <Property Name="GenderId" Type="int" />
+          <Property Name="HasBeenAccepted" Type="bit" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" />
+          <Property Name="Lastname" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime2" Precision="7" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="GraduationYear" Type="int" />
         </EntityType>
         <EntityType Name="chat">
           <Key>
@@ -98,18 +107,19 @@
             <PropertyRef Name="newsid" />
           </Key>
           <Property Name="newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="thumbnail" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="pictures">
           <Key>
             <PropertyRef Name="pictureid" />
           </Key>
-          <Property Name="news_newsid" Type="int" Nullable="false" />
-          <Property Name="pictureid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="picture" Type="varbinary" MaxLength="1" Nullable="false" />
+          <Property Name="news_newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pictureid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="picture" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="posts">
           <Key>
@@ -191,6 +201,30 @@
             </Principal>
             <Dependent Role="courses">
               <PropertyRef Name="addresses_addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_addresses">
+          <End Role="addresses" Type="Self.addresses" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="addresses">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_genders">
+          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="genderid" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="GenderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -454,6 +488,14 @@
             <End Role="addresses" EntitySet="addresses" />
             <End Role="courses" EntitySet="courses" />
           </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_addresses" Association="Self.FK_AspNetUsers_addresses">
+            <End Role="addresses" EntitySet="addresses" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_genders" Association="Self.FK_AspNetUsers_genders">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_chat_AspNetUsers" Association="Self.FK_chat_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="chat" EntitySet="chat" />
@@ -546,6 +588,7 @@
           <Property Name="street" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="streetnumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="courses" Relationship="Self.courses_addresses_fk" FromRole="addresses" ToRole="courses" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DatabaseModel.FK_AspNetUsers_addresses" FromRole="address" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -596,12 +639,23 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="chats" Relationship="Self.FK_chat_AspNetUsers" FromRole="AspNetUsers" ToRole="chat" />
           <NavigationProperty Name="chats1" Relationship="Self.FK_chat_AspNetUsers1" FromRole="AspNetUsers" ToRole="chat" />
-          <NavigationProperty Name="news" Relationship="Self.FK_news_AspNetUsers" FromRole="AspNetUsers" ToRole="news" />
           <NavigationProperty Name="posts" Relationship="Self.FK_posts_AspNetUsers" FromRole="AspNetUsers" ToRole="posts" />
           <NavigationProperty Name="usercourses" Relationship="Self.FK_usercourses_AspNetUsers" FromRole="AspNetUsers" ToRole="usercourses" />
           <NavigationProperty Name="vacancies" Relationship="Self.FK_vacancies_AspNetUsers" FromRole="AspNetUsers" ToRole="vacancies" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
           <NavigationProperty Name="tags" Relationship="Self.usertags" FromRole="AspNetUsers" ToRole="tags" />
+          <Property Name="ProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AdressId" Type="Int32" />
+          <Property Name="GenderId" Type="Int32" />
+          <Property Name="HasBeenAccepted" Type="Boolean" />
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GraduationYear" Type="Int32" />
+          <NavigationProperty Name="address" Relationship="DatabaseModel.FK_AspNetUsers_addresses" FromRole="AspNetUser" ToRole="address" />
+          <NavigationProperty Name="gender" Relationship="DatabaseModel.FK_AspNetUsers_genders" FromRole="AspNetUser" ToRole="gender" />
+          <NavigationProperty Name="news" Relationship="DatabaseModel.FK_news_AspNetUsers" FromRole="AspNetUser" ToRole="news" />
         </EntityType>
         <EntityType Name="chat">
           <Key>
@@ -632,18 +686,7 @@
           </Key>
           <Property Name="genderid" Type="Int32" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="news">
-          <Key>
-            <PropertyRef Name="newsid" />
-          </Key>
-          <Property Name="newsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="users_userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_news_AspNetUsers" FromRole="news" ToRole="AspNetUsers" />
-          <NavigationProperty Name="pictures" Relationship="Self.pictures_news_fk" FromRole="news" ToRole="pictures" />
+          <NavigationProperty Name="AspNetUsers" Relationship="DatabaseModel.FK_AspNetUsers_genders" FromRole="gender" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="picture">
           <Key>
@@ -651,8 +694,8 @@
           </Key>
           <Property Name="news_newsid" Type="Int32" Nullable="false" />
           <Property Name="pictureid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="picture1" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
-          <NavigationProperty Name="news" Relationship="Self.pictures_news_fk" FromRole="pictures" ToRole="news" />
+          <Property Name="picture1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="news" Relationship="DatabaseModel.pictures_news_fk" FromRole="picture" ToRole="news" />
         </EntityType>
         <EntityType Name="post">
           <Key>
@@ -786,18 +829,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_news_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="news" Type="Self.news" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="news">
-              <PropertyRef Name="users_userid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_posts_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="posts" Type="Self.post" Multiplicity="*" />
@@ -843,18 +874,6 @@
             </Principal>
             <Dependent Role="usercourses">
               <PropertyRef Name="courses_courseid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="pictures_news_fk">
-          <End Role="news" Type="Self.news" Multiplicity="1" />
-          <End Role="pictures" Type="Self.picture" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="news">
-              <PropertyRef Name="newsid" />
-            </Principal>
-            <Dependent Role="pictures">
-              <PropertyRef Name="news_newsid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -915,7 +934,6 @@
           <EntitySet Name="chats" EntityType="Self.chat" />
           <EntitySet Name="courses" EntityType="Self.cours" />
           <EntitySet Name="genders" EntityType="Self.gender" />
-          <EntitySet Name="news" EntityType="Self.news" />
           <EntitySet Name="pictures" EntityType="Self.picture" />
           <EntitySet Name="posts" EntityType="Self.post" />
           <EntitySet Name="replies" EntityType="Self.reply" />
@@ -943,10 +961,6 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="chat" EntitySet="chats" />
           </AssociationSet>
-          <AssociationSet Name="FK_news_AspNetUsers" Association="Self.FK_news_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="news" EntitySet="news" />
-          </AssociationSet>
           <AssociationSet Name="FK_posts_AspNetUsers" Association="Self.FK_posts_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="posts" EntitySet="posts" />
@@ -962,10 +976,6 @@
           <AssociationSet Name="usercourses_courses_fk" Association="Self.usercourses_courses_fk">
             <End Role="courses" EntitySet="courses" />
             <End Role="usercourses" EntitySet="usercourses" />
-          </AssociationSet>
-          <AssociationSet Name="pictures_news_fk" Association="Self.pictures_news_fk">
-            <End Role="news" EntitySet="news" />
-            <End Role="pictures" EntitySet="pictures" />
           </AssociationSet>
           <AssociationSet Name="replies_posts_fk" Association="Self.replies_posts_fk">
             <End Role="posts" EntitySet="posts" />
@@ -991,7 +1001,85 @@
             <End Role="tags" EntitySet="tags" />
             <End Role="vacancies" EntitySet="vacancies" />
           </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_addresses" Association="DatabaseModel.FK_AspNetUsers_addresses">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUsers_genders" Association="DatabaseModel.FK_AspNetUsers_genders">
+            <End Role="gender" EntitySet="genders" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="news" EntityType="DatabaseModel.news" />
+          <AssociationSet Name="FK_news_AspNetUsers" Association="DatabaseModel.FK_news_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="news" EntitySet="news" />
+          </AssociationSet>
+          <AssociationSet Name="pictures_news_fk" Association="DatabaseModel.pictures_news_fk">
+            <End Role="news" EntitySet="news" />
+            <End Role="picture" EntitySet="pictures" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_AspNetUsers_addresses">
+          <End Type="DatabaseModel.address" Role="address" Multiplicity="0..1" />
+          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="addressid" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="AdressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUsers_genders">
+          <End Type="DatabaseModel.gender" Role="gender" Multiplicity="0..1" />
+          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gender">
+              <PropertyRef Name="genderid" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="newsid" />
+          </Key>
+          <Property Name="newsid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="users_userid" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DatabaseModel.FK_news_AspNetUsers" FromRole="news" ToRole="AspNetUser" />
+          <NavigationProperty Name="pictures" Relationship="DatabaseModel.pictures_news_fk" FromRole="news" ToRole="picture" />
+          <Property Name="thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_news_AspNetUsers">
+          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DatabaseModel.news" Role="news" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="news">
+              <PropertyRef Name="users_userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pictures_news_fk">
+          <End Type="DatabaseModel.news" Role="news" Multiplicity="1" />
+          <End Type="DatabaseModel.picture" Role="picture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="news">
+              <PropertyRef Name="newsid" />
+            </Principal>
+            <Dependent Role="picture">
+              <PropertyRef Name="news_newsid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1040,6 +1128,15 @@
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="DatabaseModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="GraduationYear" ColumnName="GraduationYear" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="HasBeenAccepted" ColumnName="HasBeenAccepted" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="AdressId" ColumnName="AdressId" />
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
@@ -1081,17 +1178,6 @@
               <MappingFragment StoreEntitySet="genders">
                 <ScalarProperty Name="genderid" ColumnName="genderid" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="news">
-            <EntityTypeMapping TypeName="DatabaseModel.news">
-              <MappingFragment StoreEntitySet="news">
-                <ScalarProperty Name="newsid" ColumnName="newsid" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="text" ColumnName="text" />
-                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
-                <ScalarProperty Name="date" ColumnName="date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1188,6 +1274,18 @@
               <ScalarProperty Name="vacancyid" ColumnName="vacancies_vacancyid" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="DatabaseModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="users_userid" ColumnName="users_userid" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="newsid" ColumnName="newsid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

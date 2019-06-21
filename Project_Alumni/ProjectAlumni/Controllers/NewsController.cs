@@ -106,7 +106,12 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+
+                news.users_userid = user.Id;
+
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

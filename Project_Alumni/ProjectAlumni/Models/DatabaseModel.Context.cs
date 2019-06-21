@@ -33,7 +33,6 @@ namespace ProjectAlumni.Models
         public virtual DbSet<chat> chats { get; set; }
         public virtual DbSet<cours> courses { get; set; }
         public virtual DbSet<gender> genders { get; set; }
-        public virtual DbSet<news> news { get; set; }
         public virtual DbSet<picture> pictures { get; set; }
         public virtual DbSet<post> posts { get; set; }
         public virtual DbSet<reply> replies { get; set; }
@@ -41,5 +40,6 @@ namespace ProjectAlumni.Models
         public virtual DbSet<tag> tags { get; set; }
         public virtual DbSet<usercours> usercourses { get; set; }
         public virtual DbSet<vacancy> vacancies { get; set; }
+        public virtual DbSet<news> news { get; set; }
     }
 }

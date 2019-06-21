@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
+    <link href="@Url.Content("~/Content/news.css")" rel="stylesheet" type="text/css" />
+<h2 style="color:white;text-align:center;">Nieuws</h2>
 
 <p>
     @if (User.IsInRole("Admin"))
@@ -40,7 +40,7 @@
                 {
                     var base64 = Convert.ToBase64String(item.thumbnail);
                     var imgSrc = String.Format("data:image;base64,{0}", base64);
-                    <img src="@imgSrc" />
+                    <img src="@imgSrc" class="image"/>
                 }
             }
         </td>
@@ -71,3 +71,4 @@
 }
 
 </table>
+<div class="background"></div>

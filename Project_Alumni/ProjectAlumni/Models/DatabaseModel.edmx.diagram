@@ -22,10 +22,8 @@
         <EntityTypeShape EntityType="DatabaseModel.usercours" Width="1.5" PointX="16.875" PointY="19.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.vacancy" Width="1.5" PointX="20.25" PointY="13.25" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.courses_addresses_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK_AspNetUsers_addresses" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" ></AssociationConnector>
-        <AssociationConnector Association="DatabaseModel.FK_AspNetUsers_genders" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_chat_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_chat_AspNetUsers1" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_news_AspNetUsers" ManuallyRouted="false" />

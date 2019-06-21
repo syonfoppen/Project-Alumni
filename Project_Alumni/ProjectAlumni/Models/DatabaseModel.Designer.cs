@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Data\School\Programeren\Scrum\My-Scrum\semester 2\Project Alumni\Project_Alumni\ProjectAlumni\Models\DatabaseModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\ikben\Source\Repos\Project-Alumni\Project_Alumni\ProjectAlumni\Models\DatabaseModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

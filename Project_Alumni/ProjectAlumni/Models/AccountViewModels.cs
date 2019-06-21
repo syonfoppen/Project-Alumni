@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ProjectAlumni.Models
@@ -81,6 +82,17 @@ namespace ProjectAlumni.Models
 
         [Required]
         public string Username { get; set; }
+
+        [Display(Name = "Profiel Foto")]
+        public Nullable<byte>[] ProfilePicture { get; set; }
+        [Display(Name = "Voornaam")]
+        public string Firstname { get; set; }
+        [Display(Name = "Achternaam")]
+        public string Lastname { get; set; }
+        [Display(Name = "Korte Bechrijving")]
+        public string Description { get; set; }
+        [Display(Name = "Afstudeer jaar")]
+        public Nullable<DateTime> GraduationYear { get; set; }
     }
 
     public class ResetPasswordViewModel

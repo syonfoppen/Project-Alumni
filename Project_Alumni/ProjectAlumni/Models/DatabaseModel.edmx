@@ -66,12 +66,6 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="DateOfBirth" Type="date" />
-          <Property Name="ProfilePicture" Type="varbinary(max)" />
-          <Property Name="AddressId" Type="int" />
-          <Property Name="genderid" Type="int" />
-          <Property Name="hasBeenAccepted" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="chat">
           <Key>
@@ -96,7 +90,7 @@
           <Key>
             <PropertyRef Name="genderid" />
           </Key>
-          <Property Name="genderid" Type="int" Nullable="false" />
+          <Property Name="genderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NAME" Type="varchar" MaxLength="25" Nullable="false" />
         </EntityType>
         <EntityType Name="news">
@@ -197,30 +191,6 @@
             </Principal>
             <Dependent Role="courses">
               <PropertyRef Name="addresses_addressid" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AspNetUsers_addresses">
-          <End Role="addresses" Type="Self.addresses" Multiplicity="0..1" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="addresses">
-              <PropertyRef Name="addressid" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="AddressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AspNetUsers_genders">
-          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="genders">
-              <PropertyRef Name="genderid" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="genderid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -484,14 +454,6 @@
             <End Role="addresses" EntitySet="addresses" />
             <End Role="courses" EntitySet="courses" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUsers_addresses" Association="Self.FK_AspNetUsers_addresses">
-            <End Role="addresses" EntitySet="addresses" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AspNetUsers_genders" Association="Self.FK_AspNetUsers_genders">
-            <End Role="genders" EntitySet="genders" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
           <AssociationSet Name="FK_chat_AspNetUsers" Association="Self.FK_chat_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="chat" EntitySet="chat" />
@@ -584,7 +546,6 @@
           <Property Name="street" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="streetnumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="courses" Relationship="Self.courses_addresses_fk" FromRole="addresses" ToRole="courses" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_addresses" FromRole="addresses" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
@@ -631,16 +592,8 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
-          <Property Name="ProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="AddressId" Type="Int32" />
-          <Property Name="genderid" Type="Int32" />
-          <Property Name="hasBeenAccepted" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="address" Relationship="Self.FK_AspNetUsers_addresses" FromRole="AspNetUsers" ToRole="addresses" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="gender" Relationship="Self.FK_AspNetUsers_genders" FromRole="AspNetUsers" ToRole="genders" />
           <NavigationProperty Name="chats" Relationship="Self.FK_chat_AspNetUsers" FromRole="AspNetUsers" ToRole="chat" />
           <NavigationProperty Name="chats1" Relationship="Self.FK_chat_AspNetUsers1" FromRole="AspNetUsers" ToRole="chat" />
           <NavigationProperty Name="news" Relationship="Self.FK_news_AspNetUsers" FromRole="AspNetUsers" ToRole="news" />
@@ -679,7 +632,6 @@
           </Key>
           <Property Name="genderid" Type="Int32" Nullable="false" />
           <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_genders" FromRole="genders" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="news">
           <Key>
@@ -782,18 +734,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_AspNetUsers_addresses">
-          <End Role="addresses" Type="Self.address" Multiplicity="0..1" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="addresses">
-              <PropertyRef Name="addressid" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="AddressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -819,18 +759,6 @@
             </Principal>
             <Dependent Role="AspNetUserLogins">
               <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AspNetUsers_genders">
-          <End Role="genders" Type="Self.gender" Multiplicity="0..1" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="genders">
-              <PropertyRef Name="genderid" />
-            </Principal>
-            <Dependent Role="AspNetUsers">
-              <PropertyRef Name="genderid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -999,10 +927,6 @@
             <End Role="addresses" EntitySet="addresses" />
             <End Role="courses" EntitySet="courses" />
           </AssociationSet>
-          <AssociationSet Name="FK_AspNetUsers_addresses" Association="Self.FK_AspNetUsers_addresses">
-            <End Role="addresses" EntitySet="addresses" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -1010,10 +934,6 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AspNetUsers_genders" Association="Self.FK_AspNetUsers_genders">
-            <End Role="genders" EntitySet="genders" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
           <AssociationSet Name="FK_chat_AspNetUsers" Association="Self.FK_chat_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -1132,13 +1052,7 @@
                 <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
                 <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
-                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-                <ScalarProperty Name="genderid" ColumnName="genderid" />
-                <ScalarProperty Name="hasBeenAccepted" ColumnName="hasBeenAccepted" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="chats">

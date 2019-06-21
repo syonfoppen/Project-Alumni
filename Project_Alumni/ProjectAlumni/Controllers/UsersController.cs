@@ -17,7 +17,7 @@ namespace ProjectAlumni.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var aspNetUsers = db.AspNetUsers.Include(a => a.address).Include(a => a.gender);
+            var aspNetUsers = db.AspNetUsers;
             return View(aspNetUsers.ToList());
         }
 
@@ -58,8 +58,7 @@ namespace ProjectAlumni.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AddressId = new SelectList(db.addresses, "addressid", "country", aspNetUser.AddressId);
-            ViewBag.genderid = new SelectList(db.genders, "genderid", "NAME", aspNetUser.genderid);
+
             return View(aspNetUser);
         }
 
@@ -75,8 +74,6 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AddressId = new SelectList(db.addresses, "addressid", "country", aspNetUser.AddressId);
-            ViewBag.genderid = new SelectList(db.genders, "genderid", "NAME", aspNetUser.genderid);
             return View(aspNetUser);
         }
 
@@ -93,8 +90,7 @@ namespace ProjectAlumni.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AddressId = new SelectList(db.addresses, "addressid", "country", aspNetUser.AddressId);
-            ViewBag.genderid = new SelectList(db.genders, "genderid", "NAME", aspNetUser.genderid);
+
             return View(aspNetUser);
         }
 

@@ -84,7 +84,7 @@ namespace ProjectAlumni.Models
         public string Username { get; set; }
 
         [Display(Name = "Profiel Foto")]
-        public Nullable<byte>[] ProfilePicture { get; set; }
+        public byte[] ProfilePicture { get; set; }
         [Display(Name = "Voornaam")]
         public string Firstname { get; set; }
         [Display(Name = "Achternaam")]

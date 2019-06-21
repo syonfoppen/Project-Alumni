@@ -25,6 +25,7 @@ namespace ProjectAlumni.Models
         public string text { get; set; }
         public string users_userid { get; set; }
         public System.DateTime date { get; set; }
+        public byte[] thumbnail { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

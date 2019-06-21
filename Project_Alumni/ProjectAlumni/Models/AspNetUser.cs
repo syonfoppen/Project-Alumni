@@ -21,12 +21,12 @@ namespace ProjectAlumni.Models
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.chats = new HashSet<chat>();
             this.chats1 = new HashSet<chat>();
-            this.news = new HashSet<news>();
             this.posts = new HashSet<post>();
             this.usercourses = new HashSet<usercours>();
             this.vacancies = new HashSet<vacancy>();
             this.AspNetRoles = new HashSet<AspNetRole>();
             this.tags = new HashSet<tag>();
+            this.news = new HashSet<news>();
         }
     
         public string Id { get; set; }
@@ -41,6 +41,15 @@ namespace ProjectAlumni.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public byte[] ProfilePicture { get; set; }
+        public Nullable<int> AdressId { get; set; }
+        public Nullable<int> GenderId { get; set; }
+        public Nullable<bool> HasBeenAccepted { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public string Description { get; set; }
+        public Nullable<int> GraduationYear { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -51,8 +60,6 @@ namespace ProjectAlumni.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<chat> chats1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<news> news { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<post> posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<usercours> usercourses { get; set; }
@@ -62,5 +69,9 @@ namespace ProjectAlumni.Models
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tag> tags { get; set; }
+        public virtual address address { get; set; }
+        public virtual gender gender { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<news> news { get; set; }
     }
 }

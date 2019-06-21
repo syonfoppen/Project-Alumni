@@ -14,7 +14,16 @@ namespace ProjectAlumni.Models
     
     public partial class gender
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public gender()
+        {
+            this.AspNetUsers = new HashSet<AspNetUser>();
+        }
+    
         public int genderid { get; set; }
         public string NAME { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

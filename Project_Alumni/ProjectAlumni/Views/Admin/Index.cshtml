@@ -1,4 +1,4 @@
-﻿
+﻿<link href="@Url.Content("~/Content/admin.css")" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,6 +6,9 @@
 
 <h2>Admin Tools</h2>
 
-<input type="button" value="Role Management" onclick="location.href='@Url.Action("Index", "Roles")'" />
-<input type="button" value="User Management" onclick="location.href='@Url.Action("Index", "Users")'" />
-<input type="button" value="Tag Management" onclick="location.href='@Url.Action("Index", "Tags")'" />
+<div class="div_adminpage">
+    <input type="button" value="Role Management" onclick="location.href='@Url.Action("Index", "Roles")'" class="adminbutton" />
+    <input type="button" value="User Management" onclick="location.href='@Url.Action("Index", "Users")'" class="adminbutton" />
+    <input type="button" value="Tag Management" onclick="location.href='@Url.Action("Index", "Tags")" class="adminbutton" />
+    <div class="background"></div>
+</div>

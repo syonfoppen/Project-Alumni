@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="DatabaseModel.chat" Width="1.5" PointX="14.5" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.cours" Width="1.5" PointX="17.75" PointY="22.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.gender" Width="1.5" PointX="14.5" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.news" Width="1.5" PointX="20.25" PointY="16.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.picture" Width="1.5" PointX="22.875" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.post" Width="1.5" PointX="20.25" PointY="10.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.reply" Width="1.5" PointX="22.875" PointY="10" IsExpanded="true" />
@@ -26,18 +25,21 @@
         <AssociationConnector Association="DatabaseModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" ></AssociationConnector>
         <AssociationConnector Association="DatabaseModel.FK_chat_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_chat_AspNetUsers1" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK_news_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_posts_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_usercourses_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_vacancies_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.usercourses_courses_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.pictures_news_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.replies_posts_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.reports_posts_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.reports_vacancies_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.usertags" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.vacancytags" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="DatabaseModel.FK_AspNetUsers_addresses" />
+        <AssociationConnector Association="DatabaseModel.FK_AspNetUsers_genders" />
+        <EntityTypeShape EntityType="DatabaseModel.news" Width="1.5" PointX="20" PointY="23.25" />
+        <AssociationConnector Association="DatabaseModel.FK_news_AspNetUsers" />
+        <AssociationConnector Association="DatabaseModel.pictures_news_fk" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

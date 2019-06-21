@@ -18,7 +18,7 @@ namespace ProjectAlumni.Models
         public string Lastname { get; set; }
         public Nullable<DateTime> DateOfBirth { get; set; }
         public string Description { get; set; }
-        public Nullable<DateTime> GraduationYear { get; set; }
+        public Nullable<int> GraduationYear { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

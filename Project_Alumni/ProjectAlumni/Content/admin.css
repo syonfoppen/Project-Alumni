@@ -1,0 +1,29 @@
+﻿body {
+    background-color: #E2001A;
+    color:ghostwhite;
+}
+.background {
+    top: 0;
+    z-index: -1;
+    position: fixed;
+    background-image: url(../Media/svg/background2.svg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.adminbutton {
+    width: 15vw;
+    height: 5vh;
+    border-radius: 5px;
+    border: none;
+    background-color: #0063AD !important;
+    color: ghostwhite;
+}
+.div_adminpage {
+    margin: 2% 1%;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 200px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.575);
+}

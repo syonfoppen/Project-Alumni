@@ -6,7 +6,7 @@
     <div class="row">
         <h1 style="text-align:center;">Registreren</h1>
 
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
         {
 
             <div style="width:0;height:0;">@Html.AntiForgeryToken()</div>
@@ -17,8 +17,10 @@
             @Html.TextBoxFor(m => m.Firstname, new { placeholder = "Voornaam", @class = "email" })
             @Html.TextBoxFor(m => m.Lastname, new { placeholder = "Achternaam", @class = "email" })
             @Html.TextAreaFor(m => m.Description, new { placeholder = "Beschijving", @class = "email" })
-            @Html.TextBoxFor(m => m.GraduationYear, new { placeholder = "Afstudeer jaar", @class = "email" })
-            <input type="file" name="ProfilePicture" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+            @Html.TextBoxFor(m => m.DateOfBirth, new { placeholder = "Geboorte Datum", @class = "email", Type = "date" })
+            @Html.TextBoxFor(m => m.GraduationYear, new { placeholder = "Afstudeer jaar", @class = "email", Type = "number" })
+            <input type="file" name="upload" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+
 
             <input type="submit" class="submit" value="Registreren" />
             <p class="register">

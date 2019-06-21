@@ -3,6 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -17,6 +18,7 @@ namespace ProjectAlumni.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        CultureInfo culture = new CultureInfo("nl-NL");
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private DatabaseEntities db = new DatabaseEntities();
@@ -165,33 +167,32 @@ namespace ProjectAlumni.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                byte[] imageData = null;
-                if (Request.Files.Count > 0)
+                var user = new ApplicationUser
                 {
-                    HttpPostedFileBase poImgFile = Request.Files["ProfilePicture"];
-
-                    using (var binary = new BinaryReader(poImgFile.InputStream))
-                    {
-                        imageData = binary.ReadBytes(poImgFile.ContentLength);
-                    }
-                }
-
-                var user = new ApplicationUser {
                     UserName = model.Username,
                     Email = model.Email,
                     Firstname = model.Firstname,
                     Lastname = model.Lastname,
+                    DateOfBirth = Convert.ToDateTime(model.DateOfBirth, culture),
                     GraduationYear = model.GraduationYear,
-                    ProfilePicture = imageData
-                    
-               
+                    Description = model.Description
                 };
+                if (upload != null && upload.ContentLength > 0)
+                {
 
-                
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        user.ProfilePicture = reader.ReadBytes(upload.ContentLength);
+                    }
+
+                }
+               
+
+
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

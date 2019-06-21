@@ -55,7 +55,7 @@ namespace ProjectAlumni.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "newsid,title,text,users_userid,date")] news news)
+        public ActionResult Create([Bind(Include = "newsid,title,text,users_userid,date")] news news, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,15 @@ namespace ProjectAlumni.Controllers
 
                 //Get the current data and add it to the News item
                 news.date = DateTime.Now;
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        news.thumbnail = reader.ReadBytes(upload.ContentLength);
+                    }
 
-                
+                }
+
 
                 db.news.Add(news);
                 db.SaveChanges();
@@ -102,7 +109,7 @@ namespace ProjectAlumni.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "newsid,title,text,users_userid,date")] news news)
+        public ActionResult Edit([Bind(Include = "newsid,title,text,users_userid,date")] news news, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -112,6 +119,15 @@ namespace ProjectAlumni.Controllers
 
                 news.date = DateTime.Now;
                 news.users_userid = user.Id;
+                if (upload != null && upload.ContentLength > 0)
+                {
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        news.thumbnail = reader.ReadBytes(upload.ContentLength);
+                    }
+
+                }
 
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();

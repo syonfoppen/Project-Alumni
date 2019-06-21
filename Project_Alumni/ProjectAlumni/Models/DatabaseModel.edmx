@@ -111,14 +111,15 @@
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="users_userid" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="thumbnail" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="pictures">
           <Key>
             <PropertyRef Name="pictureid" />
           </Key>
-          <Property Name="news_newsid" Type="int" Nullable="false" />
-          <Property Name="pictureid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="picture" Type="varbinary" MaxLength="1" Nullable="false" />
+          <Property Name="news_newsid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pictureid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="picture" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="posts">
           <Key>
@@ -693,7 +694,7 @@
           </Key>
           <Property Name="news_newsid" Type="Int32" Nullable="false" />
           <Property Name="pictureid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="picture1" Type="Binary" MaxLength="1" FixedLength="false" Nullable="false" />
+          <Property Name="picture1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <NavigationProperty Name="news" Relationship="DatabaseModel.pictures_news_fk" FromRole="picture" ToRole="news" />
         </EntityType>
         <EntityType Name="post">
@@ -1053,6 +1054,7 @@
           <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="AspNetUser" Relationship="DatabaseModel.FK_news_AspNetUsers" FromRole="news" ToRole="AspNetUser" />
           <NavigationProperty Name="pictures" Relationship="DatabaseModel.pictures_news_fk" FromRole="news" ToRole="picture" />
+          <Property Name="thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_news_AspNetUsers">
           <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
@@ -1275,6 +1277,7 @@
           <EntitySetMapping Name="news">
             <EntityTypeMapping TypeName="DatabaseModel.news">
               <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="thumbnail" ColumnName="thumbnail" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="users_userid" ColumnName="users_userid" />
                 <ScalarProperty Name="text" ColumnName="text" />

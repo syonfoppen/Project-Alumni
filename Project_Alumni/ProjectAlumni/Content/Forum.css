@@ -32,12 +32,15 @@
     border: #0063AD;
 }
 .container{
+    margin-top:100px;
     margin-bottom: 100px;
 }
 .post{
     overflow-x:hidden;
 }
-.post p {
-    width:100% !important;
-    word-break: break-all;
-}
+    .post p {
+    
+        text-overflow: ellipsis;
+        width: 100% !important;
+        word-break: break-all;
+    }

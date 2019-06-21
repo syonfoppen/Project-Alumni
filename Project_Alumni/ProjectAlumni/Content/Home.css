@@ -131,10 +131,20 @@ html {
     background-color: rgba(0, 0, 0, 0.575);
 }
 	.newsBox .text {
+        padding-top:2% !important;
 		padding: 5%;
 	}
-	.newsBox h2 {
-		text-align: center;
-	}
+    .newsBox h2 {
+        text-align: center;
+    }
+    .newsBox .image{
+        height: 200px;
+        margin:auto;
+    }
+    .news-container{
+        display:grid;
+        grid-template-columns: auto 80%;
+        padding-bottom:5%;
+    }
 
 

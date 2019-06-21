@@ -34,3 +34,10 @@
 .container{
     margin-bottom: 100px;
 }
+.post{
+    overflow-x:hidden;
+}
+.post p {
+    width:100% !important;
+    word-break: break-all;
+}

@@ -49,7 +49,7 @@ namespace ProjectAlumni.Models
         public string Lastname { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string Description { get; set; }
-        public Nullable<System.DateTime> GraduationYear { get; set; }
+        public Nullable<int> GraduationYear { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

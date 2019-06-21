@@ -101,7 +101,7 @@ namespace ProjectAlumni.Models
 
         [DataType(DataType.Text)]
         [Display(Name = "Afstudeer jaar")]
-        public string GraduationYear { get; set; }
+        public int GraduationYear { get; set; }
 
         [DataType(DataType.Text)]
         [Display(Name = "Geboortedatum")]

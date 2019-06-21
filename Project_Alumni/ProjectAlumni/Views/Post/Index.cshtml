@@ -21,6 +21,16 @@
                         <b>@Html.DisplayFor(modelItem => item.AspNetUser.UserName)</b><br />
                         <b style="font-size: 12px">Voor het laatst bewerkt:</b><br />
                         <p style="font-size: 12px"><b>@Html.DisplayFor(modelItem => item.date)</b></p>
+                        @{
+                            if (item.AspNetUser.ProfilePicture != null && item.AspNetUser.ProfilePicture.Length > 0)
+                            {
+                                var base64 = Convert.ToBase64String(item.AspNetUser.ProfilePicture);
+                                var imgSrc = String.Format("data:image;base64,{0}", base64);
+                                <img src="@imgSrc" />
+                            }
+
+                        }
+
                     </div>
                     <div class="post col-sm-8" style="max-height: 400px; overflow-y:auto">
                         <h2>@Html.DisplayFor(modelItem => item.title)</h2>

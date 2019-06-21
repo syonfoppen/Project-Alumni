@@ -19,6 +19,7 @@
             @Html.TextAreaFor(m => m.Description, new { placeholder = "Beschijving", @class = "email" })
             @Html.TextBoxFor(m => m.DateOfBirth, new { placeholder = "Geboorte Datum", @class = "email", Type = "date" })
             @Html.TextBoxFor(m => m.GraduationYear, new { placeholder = "Afstudeer jaar", @class = "email", Type = "number" })
+            <input type="file" name="upload" id="fileUpload" accept=".png,.jpg,.jpeg,.gif,.tif" />
 
 
             <input type="submit" class="submit" value="Registreren" />

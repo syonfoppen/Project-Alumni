@@ -178,7 +178,8 @@ namespace ProjectAlumni.Controllers
                     Firstname = model.Firstname,
                     Lastname = model.Lastname,
                     DateOfBirth = Convert.ToDateTime(model.DateOfBirth, culture),
-                    GraduationYear = DateTime.Parse(model.GraduationYear),
+                    GraduationYear = model.GraduationYear,
+                    Description = model.Description
                 };
                 if (upload != null && upload.ContentLength > 0)
                 {

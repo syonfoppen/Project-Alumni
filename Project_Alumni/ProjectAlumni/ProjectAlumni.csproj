@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201906210920097_Update UserTable3.Designer.cs">
       <DependentUpon>201906210920097_Update UserTable3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906211124139_DataUpdate.cs" />
+    <Compile Include="Migrations\201906211124139_DataUpdate.Designer.cs">
+      <DependentUpon>201906211124139_DataUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\address.cs">
@@ -427,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906210920097_Update UserTable3.resx">
       <DependentUpon>201906210920097_Update UserTable3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906211124139_DataUpdate.resx">
+      <DependentUpon>201906211124139_DataUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

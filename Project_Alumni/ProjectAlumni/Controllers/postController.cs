@@ -23,6 +23,7 @@ namespace ProjectAlumni.Controllers
             var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
             AspNetUser user = userid[0];
             ViewBag.userid = user.Id;
+            ViewBag.profilepicture = File(user.ProfilePicture, "image/jpg");
 
 
             var post = db.posts.OrderByDescending(x => x.postid).Take(5).ToList();

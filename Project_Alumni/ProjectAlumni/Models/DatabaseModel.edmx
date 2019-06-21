@@ -66,7 +66,7 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="ProfilePicture" Type="image" />
+          <Property Name="ProfilePicture" Type="varbinary(max)" />
           <Property Name="AdressId" Type="int" />
           <Property Name="GenderId" Type="int" />
           <Property Name="HasBeenAccepted" Type="bit" />
@@ -74,7 +74,7 @@
           <Property Name="Lastname" Type="varchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="datetime2" Precision="7" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="GraduationYear" Type="datetime2" Precision="7" />
+          <Property Name="GraduationYear" Type="int" />
         </EntityType>
         <EntityType Name="chat">
           <Key>
@@ -651,7 +651,7 @@
           <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="GraduationYear" Type="DateTime" Precision="7" />
+          <Property Name="GraduationYear" Type="Int32" />
           <NavigationProperty Name="address" Relationship="DatabaseModel.FK_AspNetUsers_addresses" FromRole="AspNetUser" ToRole="address" />
           <NavigationProperty Name="gender" Relationship="DatabaseModel.FK_AspNetUsers_genders" FromRole="AspNetUser" ToRole="gender" />
           <NavigationProperty Name="news" Relationship="DatabaseModel.FK_news_AspNetUsers" FromRole="AspNetUser" ToRole="news" />

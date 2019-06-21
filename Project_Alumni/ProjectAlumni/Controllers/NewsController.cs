@@ -110,6 +110,7 @@ namespace ProjectAlumni.Controllers
                 var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
                 AspNetUser user = userid[0];
 
+                news.date = DateTime.Now;
                 news.users_userid = user.Id;
 
                 db.Entry(news).State = EntityState.Modified;

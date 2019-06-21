@@ -83,16 +83,29 @@ namespace ProjectAlumni.Models
         [Required]
         public string Username { get; set; }
 
+        
         [Display(Name = "Profiel Foto")]
         public byte[] ProfilePicture { get; set; }
+
         [Display(Name = "Voornaam")]
+        [DataType(DataType.Text)]
         public string Firstname { get; set; }
+
+        [DataType(DataType.Text)]
         [Display(Name = "Achternaam")]
         public string Lastname { get; set; }
+
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Korte Bechrijving")]
         public string Description { get; set; }
+
+        [DataType(DataType.Text)]
         [Display(Name = "Afstudeer jaar")]
-        public Nullable<DateTime> GraduationYear { get; set; }
+        public string GraduationYear { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "Geboortedatum")]
+        public string DateOfBirth { get; set; }
     }
 
     public class ResetPasswordViewModel

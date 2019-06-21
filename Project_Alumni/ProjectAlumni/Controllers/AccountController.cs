@@ -18,6 +18,7 @@ namespace ProjectAlumni.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        CultureInfo culture = new CultureInfo("nl-NL");
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private DatabaseEntities db = new DatabaseEntities();
@@ -176,7 +177,8 @@ namespace ProjectAlumni.Controllers
                     Email = model.Email,
                     Firstname = model.Firstname,
                     Lastname = model.Lastname,
-                    GraduationYear = model.GraduationYear,
+                    DateOfBirth = Convert.ToDateTime(model.DateOfBirth, culture),
+                    GraduationYear = DateTime.Parse(model.GraduationYear),
                 };
                 if (upload != null && upload.ContentLength > 0)
                 {

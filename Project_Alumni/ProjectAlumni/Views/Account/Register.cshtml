@@ -17,7 +17,9 @@
             @Html.TextBoxFor(m => m.Firstname, new { placeholder = "Voornaam", @class = "email" })
             @Html.TextBoxFor(m => m.Lastname, new { placeholder = "Achternaam", @class = "email" })
             @Html.TextAreaFor(m => m.Description, new { placeholder = "Beschijving", @class = "email" })
-            @Html.TextBoxFor(m => m.GraduationYear, new { placeholder = "Afstudeer jaar", @class = "email" })
+            @Html.TextBoxFor(m => m.DateOfBirth, new { placeholder = "Geboorte Datum", @class = "email", Type = "date" })
+            @Html.TextBoxFor(m => m.GraduationYear, new { placeholder = "Afstudeer jaar", @class = "email", Type = "number" })
+
 
             <input type="submit" class="submit" value="Registreren" />
             <p class="register">

@@ -1,0 +1,44 @@
+﻿body {
+    background-color: #E2001A;
+}
+.image {
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 60px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 60px;
+    -moz-background-clip: padding;
+    border-radius: 60px;
+    background-clip: padding-box;
+    margin: 7px 0 0 5px;
+    float: left;
+    background-size: cover;
+    background-position: center center;
+}
+h2{
+    color:white;
+}
+.background {
+    top: 0;
+    z-index: -1;
+    position: fixed;
+    background-image: url(../Media/svg/background2.svg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh
+}
+table{
+    color:white;
+    background-color: rgba(0,0,0,0.6);
+}
+p a{
+    background-color:white;
+    padding: 5px;
+    border-radius:2px;
+    margin-left:1%;
+}
+.background2{
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    padding: 5% 1%;
+}

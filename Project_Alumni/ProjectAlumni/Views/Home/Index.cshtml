@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
 <header class="pc-header">
     <h2>Alumni</h2>
     <h1>Hotel School Almelo</h1>
@@ -12,28 +13,30 @@
         <h1>lorem ipsum</h1>
         Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten.
     </div>
-    
+
 </div>
 <div class="row information">
     @foreach (var item in Model)
     {
 
-    <div class="col-sm-12 newsBox">
+        <div class="col-sm-12 newsBox">
 
-        <h2>@Html.DisplayFor(modelItem => item.title)</h2>
-        @{
-            if (item.thumbnail != null && item.thumbnail.Length > 0)
-            {
-                var base64 = Convert.ToBase64String(item.thumbnail);
-                var imgSrc = String.Format("data:image;base64,{0}", base64);
-                <img src="@imgSrc" />
-            }
-        }
-        <div class="text">
-            @Html.DisplayFor(modelItem => item.text)
-        </div><!--plaats hier de nieuws of informatie-->
-        @Html.DisplayFor(modelItem => item.date)
-    </div>
+            <h2>@Html.DisplayFor(modelItem => item.title)</h2>
+            <div class="news-container">
+                @{
+                    if (item.thumbnail != null && item.thumbnail.Length > 0)
+                    {
+                        var base64 = Convert.ToBase64String(item.thumbnail);
+                        var imgSrc = String.Format("data:image;base64,{0}", base64);
+                        <div class="image" style="background-image:url('@imgSrc')"></div>
+                    }
+                }
+                <div class="text">
+                    @Html.DisplayFor(modelItem => item.text)
+                </div><!--plaats hier de nieuws of informatie-->
+            </div>
+
+        </div>
 
     }
 </div>

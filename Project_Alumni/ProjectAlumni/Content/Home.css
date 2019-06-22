@@ -131,10 +131,30 @@ html {
     background-color: rgba(0, 0, 0, 0.575);
 }
 	.newsBox .text {
+        padding-top:2% !important;
 		padding: 5%;
 	}
-	.newsBox h2 {
-		text-align: center;
-	}
+    .newsBox h2 {
+        text-align: center;
+    }
+    .newsBox .image {
+        width: 120px;
+        height: 120px;
+        -webkit-border-radius: 60px;
+        -webkit-background-clip: padding-box;
+        -moz-border-radius: 60px;
+        -moz-background-clip: padding;
+        border-radius: 60px;
+        background-clip: padding-box;
+        margin: 7px 0 0 5px;
+        float: left;
+        background-size: cover;
+        background-position: center center;
+    }
+    .news-container{
+        display:grid;
+        grid-template-columns: auto 80%;
+        padding-bottom:5%;
+    }
 
 

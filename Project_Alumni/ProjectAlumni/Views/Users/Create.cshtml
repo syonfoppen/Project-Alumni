@@ -128,27 +128,27 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AddressId, "AddressId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AdressId, "AddressId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("AddressId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AddressId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.AdressId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.genderid, "genderid", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.GenderId, "genderid", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("genderid", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.genderid, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.GenderId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.hasBeenAccepted, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.HasBeenAccepted, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.hasBeenAccepted)
-                    @Html.ValidationMessageFor(model => model.hasBeenAccepted, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.HasBeenAccepted)
+                    @Html.ValidationMessageFor(model => model.HasBeenAccepted, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

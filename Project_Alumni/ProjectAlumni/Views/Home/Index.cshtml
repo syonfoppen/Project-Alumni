@@ -4,11 +4,14 @@
     ViewBag.Title = "Home Page";
 }
 <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
-<header class="pc-header">
+<div class="news-button" onclick="news()">
+    <i class="fa fa-clone" style="font-size:40px; color:white; margin-top:10px; margin-left:10px;"></i>
+</div>
+<header class="pc-header" id="top">
     <h2>Alumni</h2>
-    <h1>Horeca & Horeca Management</h1>
+    <h1 style="padding:0 10%;">Horeca & Horeca Management</h1>
 </header>
-<div class="mobile-header">
+<div class="mobile-header" >
     <div class="box1"></div>
     <div class="box2"></div>
 </div>
@@ -19,7 +22,7 @@
     </div>
 
 </div>
-<div class="row information">
+<div class="row information" id="information">
     @foreach (var item in Model)
     {
 

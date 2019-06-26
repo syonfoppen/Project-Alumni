@@ -12,7 +12,7 @@ namespace ProjectAlumni.Models
     {
         public Byte[] ProfilePicture { get; set; }
         public Nullable<int> AdressId { get; set; }
-        public Nullable<int> GenderId { get; set; }
+        public int GenderId { get; set; }
         public Nullable<bool> HasBeenAccepted { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }

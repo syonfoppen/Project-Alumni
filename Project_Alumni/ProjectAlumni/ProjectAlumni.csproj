@@ -184,6 +184,7 @@
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VacanciesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,6 +209,10 @@
     <Compile Include="Migrations\201906211124139_DataUpdate.cs" />
     <Compile Include="Migrations\201906211124139_DataUpdate.Designer.cs">
       <DependentUpon>201906211124139_DataUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906260925531_Gender.cs" />
+    <Compile Include="Migrations\201906260925531_Gender.Designer.cs">
+      <DependentUpon>201906260925531_Gender.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -408,6 +413,7 @@
     <Content Include="Views\Vacancies\Details.cshtml" />
     <Content Include="Views\Vacancies\Edit.cshtml" />
     <Content Include="Views\Vacancies\Index.cshtml" />
+    <Content Include="Views\UserProfile\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -443,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906211124139_DataUpdate.resx">
       <DependentUpon>201906211124139_DataUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906260925531_Gender.resx">
+      <DependentUpon>201906260925531_Gender.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

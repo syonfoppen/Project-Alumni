@@ -1,7 +1,8 @@
 body,
 html {
-    width:100vw;
+    width: 100vw;
     font-size: 16px;
+    overflow-x: hidden;
 }
 *{
     margin: 0;
@@ -113,27 +114,23 @@ nav, .triangle{
     background-size: cover;
     background-image: url(../Media/svg/menu.svg);
 }
-
 .mobile-nav {
     position: fixed;
-    top: 60px;
+    top: 20px;
     left: auto;
     right: 0px;
     width: 100vw;
 }
 
     .mobile-nav .main {
-        
-        
         right: 0;
         left: auto;
         position: absolute;
-        
         background-color: rgb(170, 8, 8);
-        height: 80px;
+        height: 60px;
         display: grid;
         grid-template-columns: 60% auto;
-        width: 200px;
+        width: 160px;
     }
 
     .mobile-nav .icon {
@@ -142,9 +139,7 @@ nav, .triangle{
     }
 
     .mobile-nav .box1 {
-        height: 80px;
-        
-        
+        height: 60px;
         clip-path: polygon(0 0,80% 0,100% 100%,0 100%);
         background-color: rgb(116, 14, 14);
     }
@@ -153,12 +148,11 @@ nav, .triangle{
     }
 
 .mobile-links {
-    z-index:100;
-    
+    z-index: 100;
     position: fixed;
     right: -110vw;
     left: auto;
-    top: 170px;
+    top: 100px;
     width: 100%;
 }
 
@@ -168,11 +162,9 @@ nav, .triangle{
     }
 
     .mobile-links li {
-        
-        
         background-color: rgb(116, 14, 14);
         width: 90vw;
-        height: 80px;
+        height: 60px;
         display: grid;
         margin-top: 10px;
         grid-template-columns: 60% auto;
@@ -191,8 +183,7 @@ nav, .triangle{
     }
 
     .mobile-links .box1 {
-        height:80px;
-        
+        height: 60px;
         background-color: rgb(170, 8, 8);
         clip-path: polygon(0 0,100% 0,80% 100%,0 100%);
     }
@@ -215,34 +206,46 @@ nav, .triangle{
 }
 
     .mobile-background .box1 {
+        z-index:10;
         width: 100vw;
         height: 100vh;
         background-color: rgba(136, 2, 2, 0.8);
     }
 
     .mobile-background .box2 {
+        z-index:9;
         position: absolute;
         left: -1vw;
         width: 100vw;
         height: 100vh;
         background-color: rgba(10, 10, 124, 0.8);
     }
+
 .shadow {
     -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
     filter: drop-shadow(-5px 5px 10px rgba(0,0,0,0.6));
 }
+
 .mobile-nav, mobile-links {
-    z-index:100;
+    z-index: 100;
     opacity: 0;
 }
-@media only screen and (max-width: 650px) {
-    .hamburger, .navbar{
-        width: 0px !important;
-        height: 0px !important;
-        opacity: 0 !important;
-        display:none;
-    }
-    .mobile-nav, mobile-links{
-        opacity:1;
+@media only screen and (min-width: 650px) {
+    .mobile-nav *, .mobile-nav, .mobile-links *, .mobile-links{
+        width:0;
+        height:0;
+        right:-1000vw;
     }
 }
+    @media only screen and (max-width: 650px) {
+        .hamburger, .navbar {
+            width: 0px !important;
+            height: 0px !important;
+            opacity: 0 !important;
+            display: none;
+        }
+
+        .mobile-nav, .mobile-links * {
+            opacity: 1;
+        }
+    }

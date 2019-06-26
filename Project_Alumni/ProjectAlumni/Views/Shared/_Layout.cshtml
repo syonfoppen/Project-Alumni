@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
     <title>@ViewBag.Title - Alumni</title>
     @Styles.Render("~/Content/css")
     <link href="@Url.Content("~/Content/General.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/frontend.js"></script>
 
@@ -15,10 +16,10 @@
     <div class="mobile-nav" onclick="mobilenav()" id="mobile-nav">
         <div class="main" id="main">
             <div class="box1 shadow">
-                <i class="fa fa-navicon" style="font-size:42px; color:white; margin: 20px 20px;"></i>
+                <i class="fa fa-navicon" style="font-size:42px; color:white; margin: 10px 10px;"></i>
             </div>
             <div class="box2">
-                <i class="fa fa-search" style="font-size:42px; color:white;margin: 16px 16px;"></i>
+                <i class="fa fa-search" style="font-size:42px; color:white;margin: 10px 10px;"></i>
             </div>
         </div>
     </div>
@@ -26,7 +27,9 @@
         <ul>
             <li>
                 <div class="box1 shadow">
-                    <a>home</a>
+                    <span>
+                        @Html.ActionLink("Startpagina", "Index", "Home")
+                    </span>
                 </div>
                 <div class="box2">
 
@@ -34,28 +37,88 @@
             </li>
             <li>
                 <div class="box1 shadow">
-                    <a>nieuws</a>
+                    <span>
+                        @Html.ActionLink("Nieuws", "Index", "News")
+                    </span>
                 </div>
                 <div class="box2">
 
                 </div>
             </li>
-            <li>
-                <div class="box1 shadow">
-                    <a>inloggen</a>
-                </div>
-                <div class="box2">
+            @using Microsoft.AspNet.Identity
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
 
-                </div>
-            </li>
-            <li>
-                <div class="box1 shadow">
-                    <a>registreren</a>
-                </div>
-                <div class="box2">
+                    <li>
+                        <div class="box1 shadow">
+                            <span>@Html.ActionLink("Profiel", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</span>
+                        </div>
+                        <div class="box2">
 
-                </div>
-            </li>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="box1 shadow">
+                            <span><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></span>
+                        </div>
+                        <div class="box2">
+
+                        </div>
+                    </li>
+                }
+            }
+            else
+            {
+                <li>
+                    <div class="box1 shadow">
+                        <span>@Html.ActionLink("Registreer", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</span>
+                    </div>
+                    <div class="box2">
+
+                    </div>
+                </li>
+                <li>
+                    <div class="box1 shadow">
+                        <span>@Html.ActionLink("Inloggen", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</span>
+                    </div>
+                    <div class="box2">
+
+                    </div>
+                </li>
+            }
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li>
+                    <div class="box1 shadow">
+                        <span>
+                            @Html.ActionLink("Forum", "Index", "Post")
+                        </span>
+                    </div>
+                    <div class="box2">
+
+                    </div>
+                </li>
+
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <div class="box1 shadow">
+                        <span>@Html.ActionLink("Admin", "Index", "Admin")</span>
+                    </div>
+                    <div class="box2">
+
+                    </div>
+                </li>
+
+            }
+
+
 
         </ul>
     </div>
@@ -73,6 +136,7 @@
             {
 
                 <li>@Html.ActionLink("Forum", "Index", "Post")</li>
+                <li>@Html.ActionLink("Vacatures", "Index", "Vacancies")</li>
             }
             @if (User.IsInRole("Admin"))
             {

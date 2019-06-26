@@ -180,7 +180,7 @@ html {
         background-image: url('../media/foto/background-roc-almelo@2x.png');
         background-position: 40% center;
         background-size: cover;
-        clip-path: polygon(0 0, 0 75%, 100% 95%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
     }
         .mobile-header .box1 {
             position: absolute;
@@ -189,8 +189,8 @@ html {
             opacity: 1;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(190, 7, 7, 0.36); /*red*/
-            clip-path: polygon(0 0, 0 75%, 100% 95%, 0 100%);
+            background-color: rgba(255, 0, 13, 0.70); /*red*/
+            clip-path: polygon(0 0, 0 50%, 100% 95%, 0 100%);
         }
 
         .mobile-header .box2 {
@@ -205,4 +205,11 @@ html {
         }
 
 
+}
+.news-button{
+    width: 60px;
+    height:60px;
+    background-color:red;
+    position:fixed;
+    z-index:100;
 }

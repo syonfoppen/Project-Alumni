@@ -25,7 +25,7 @@ namespace ProjectAlumni.Controllers
             ViewBag.userid = user.Id;
 
 
-            var post = db.posts.OrderByDescending(x => x.postid).Take(5).ToList();
+            var post = db.posts.OrderByDescending(x => x.postid).ToList();
             return View(post);
         }
 

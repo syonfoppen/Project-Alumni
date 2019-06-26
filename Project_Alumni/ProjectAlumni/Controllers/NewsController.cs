@@ -19,7 +19,7 @@ namespace ProjectAlumni.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            var news = db.news.Include(n => n.AspNetUser);
+            var news = db.news.OrderByDescending(x => x.newsid).ToList();
             return View(news.ToList());
         }
 

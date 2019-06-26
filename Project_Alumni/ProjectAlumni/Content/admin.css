@@ -12,18 +12,23 @@
     height: 100vh;
 }
 .adminbutton {
-    width: 15vw;
+    margin: 3% auto;
+    width: 40vw;
     height: 5vh;
     border-radius: 5px;
     border: none;
     background-color: #0063AD !important;
     color: ghostwhite;
+    display:block;
+
 }
-.div_adminpage {
-    margin: 2% 1%;
+.div-adminpage {
+    margin: auto;
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     min-height: 200px;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.575);
+    width: 50vw;
+    padding: 3%;
 }

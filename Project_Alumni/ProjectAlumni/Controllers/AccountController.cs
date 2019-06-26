@@ -154,6 +154,7 @@ namespace ProjectAlumni.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
+                ViewBag.Genderid = new SelectList(db.genders, "genderid", "NAME");
                 return View();
             }
             else

@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="45a3699612ec4072b46617a631ea8ef3" Name="Diagram1" ZoomLevel="82">
-        <EntityTypeShape EntityType="DatabaseModel.address" Width="1.5" PointX="18.625" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.address" Width="1.5" PointX="18.625" PointY="19.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.AspNetRole" Width="1.5" PointX="14.5" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.AspNetUserClaim" Width="1.5" PointX="17.875" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.AspNetUserLogin" Width="1.5" PointX="14.5" PointY="15.5" IsExpanded="true" />
@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="DatabaseModel.reply" Width="1.5" PointX="22.875" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.report" Width="1.5" PointX="22.875" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.tag" Width="1.5" PointX="22.875" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.usercours" Width="1.5" PointX="16.875" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.usercours" Width="1.5" PointX="16.875" PointY="19.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.vacancy" Width="1.5" PointX="20.25" PointY="13.25" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.courses_addresses_fk" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />

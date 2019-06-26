@@ -48,16 +48,24 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "repliesid,text,date,posts_postid")] reply reply)
+        public ActionResult Create([Bind(Include = "repliesid,text")] reply reply, string postID)
         {
             if (ModelState.IsValid)
             {
+                reply.date = DateTime.Now;
+                reply.posts_postid = Convert.ToInt32(postID);
                 db.replies.Add(reply);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToRoute(new
+                {
+                    controller = "Post",
+                    action = "Details",
+                    id = Convert.ToInt32(postID)
+                });
             }
 
             ViewBag.posts_postid = new SelectList(db.posts, "postid", "title", reply.posts_postid);
+            
             return View(reply);
         }
 

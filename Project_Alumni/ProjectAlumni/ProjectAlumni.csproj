@@ -184,6 +184,7 @@
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VacanciesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -408,6 +409,7 @@
     <Content Include="Views\Vacancies\Details.cshtml" />
     <Content Include="Views\Vacancies\Edit.cshtml" />
     <Content Include="Views\Vacancies\Index.cshtml" />
+    <Content Include="Views\UserProfile\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -49,7 +49,7 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,ProfilePicture,AdressId,GenderId,HasBeenAccepted,Firstname,Lastname,DateOfBirth,Description,GraduationYear,ProfilePicture")] AspNetUser aspNetUser, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "Id,Email,PhoneNumber,UserName,ProfilePicture,AdressId,GenderId,Firstname,Lastname,DateOfBirth,Description,GraduationYear,ProfilePicture")] AspNetUser aspNetUser, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {

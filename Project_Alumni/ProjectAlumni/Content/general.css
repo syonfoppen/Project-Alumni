@@ -1,7 +1,8 @@
 body,
 html {
-    width:100vw;
+    width: 100vw;
     font-size: 16px;
+    overflow-x: hidden;
 }
 *{
     margin: 0;
@@ -113,7 +114,6 @@ nav, .triangle{
     background-size: cover;
     background-image: url(../Media/svg/menu.svg);
 }
-
 .mobile-nav {
     position: fixed;
     top: 60px;
@@ -123,12 +123,9 @@ nav, .triangle{
 }
 
     .mobile-nav .main {
-        
-        
         right: 0;
         left: auto;
         position: absolute;
-        
         background-color: rgb(170, 8, 8);
         height: 80px;
         display: grid;
@@ -143,8 +140,6 @@ nav, .triangle{
 
     .mobile-nav .box1 {
         height: 80px;
-        
-        
         clip-path: polygon(0 0,80% 0,100% 100%,0 100%);
         background-color: rgb(116, 14, 14);
     }
@@ -153,8 +148,7 @@ nav, .triangle{
     }
 
 .mobile-links {
-    z-index:100;
-    
+    z-index: 100;
     position: fixed;
     right: -110vw;
     left: auto;
@@ -168,8 +162,6 @@ nav, .triangle{
     }
 
     .mobile-links li {
-        
-        
         background-color: rgb(116, 14, 14);
         width: 90vw;
         height: 80px;
@@ -191,8 +183,7 @@ nav, .triangle{
     }
 
     .mobile-links .box1 {
-        height:80px;
-        
+        height: 80px;
         background-color: rgb(170, 8, 8);
         clip-path: polygon(0 0,100% 0,80% 100%,0 100%);
     }
@@ -227,22 +218,32 @@ nav, .triangle{
         height: 100vh;
         background-color: rgba(10, 10, 124, 0.8);
     }
+
 .shadow {
     -webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
     filter: drop-shadow(-5px 5px 10px rgba(0,0,0,0.6));
 }
+
 .mobile-nav, mobile-links {
-    z-index:100;
+    z-index: 100;
     opacity: 0;
 }
-@media only screen and (max-width: 650px) {
-    .hamburger, .navbar{
-        width: 0px !important;
-        height: 0px !important;
-        opacity: 0 !important;
-        display:none;
-    }
-    .mobile-nav, mobile-links{
-        opacity:1;
+@media only screen and (min-width: 650px) {
+    .mobile-nav *, .mobile-nav, .mobile-links *, .mobile-links{
+        width:0;
+        height:0;
+        right:-1000vw;
     }
 }
+    @media only screen and (max-width: 650px) {
+        .hamburger, .navbar {
+            width: 0px !important;
+            height: 0px !important;
+            opacity: 0 !important;
+            display: none;
+        }
+
+        .mobile-nav, .mobile-links * {
+            opacity: 1;
+        }
+    }

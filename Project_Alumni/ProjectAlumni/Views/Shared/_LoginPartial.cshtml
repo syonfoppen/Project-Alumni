@@ -5,7 +5,7 @@
     {
     @Html.AntiForgeryToken()
         <li>
-            @Html.ActionLink("Profiel", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Profiel", "Index", "UserProfile", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     }

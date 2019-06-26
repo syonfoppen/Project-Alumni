@@ -1,0 +1,60 @@
+﻿body {
+    background-color: #E2001A;
+}
+.vac-container {
+    margin:auto;
+    color:white;
+    background-color: rgba(0,0,0,0.6);
+    width:80vw;
+    padding:5vw;
+    border-radius:2vw;
+}
+.background {
+    top: 0;
+    z-index: -1;
+    position: fixed;
+    background-image: url(../Media/svg/background2.svg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh
+}
+.table-head{
+    color:black;
+    background-color:white;
+}
+.table{
+    border:none;
+
+}
+.vac-box{
+    margin-top:10px;
+    padding:60px;
+    padding-bottom: 0;
+    border-radius:20px;
+    background-color:white;
+    color:black;
+}
+.table .column {
+    
+    display: grid;
+    grid-template-columns: auto 70%;
+}.title{
+    text-align: center;
+    width:100%;
+}
+.load {
+    height:30px;
+    margin-right:auto;
+    margin: 50px auto;
+    width: 33%;
+    background-color: #0063AD;
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+.text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:100%;
+}

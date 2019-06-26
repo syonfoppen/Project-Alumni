@@ -3,49 +3,45 @@
 @{
     ViewBag.Title = "Index";
 }
+    <link href="@Url.Content("~/Content/vacancies.css")" rel="stylesheet" type="text/css" />
 
-<h2>Index</h2>
+<div class="vac-container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="table">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            var counter = 0;
+            counter++;
+            string idName = "id='text" + Convert.ToString(counter)+"'";
+        <div class="vac-box">
+            <span class="title">
+                <h2>@Html.DisplayFor(modelItem => item.title)</h2>
+                
+            </span>
+            <div class="column">
+                <div class="info">
+                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)<br />
+                    @Html.DisplayFor(modelItem => item.date)<br />
+                    <div class="edit">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.vacancyid })
+                        @Html.ActionLink("Details", "Details", new { id = item.vacancyid })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.vacancyid })
+                    </div>
+                </div>
+                <span class="text" idName><!--hier moet de idkomen met telkesn een hogere nummer-->
+                    @Html.DisplayFor(modelItem => item.text)
+                </span>
+            </div>
+           <button onclick="loadMore()" class="load">Laad meer</button><!--hier moet je de nummer in de paramters geven-->
+        </div>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.vacancyid }) |
-            @Html.ActionLink("Details", "Details", new { id=item.vacancyid }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.vacancyid })
-        </td>
-    </tr>
-}
+    </div>
+</div>
+<div class="background">
 
-</table>
+</div>
+

@@ -2,7 +2,7 @@
 function nav() {
 	if (x == false) {
 		document.getElementById("navbar").style.transition = "right 0.25s";
-		document.getElementById("navbar").style.right = "-450px";
+		document.getElementById("navbar").style.right = "-100vw";
 		x = true;
 	}
 	else {
@@ -41,3 +41,19 @@ function news() {
     }
     
 };
+//white - space: nowrap;
+//overflow: hidden;
+//text - overflow: ellipsis;
+let textToggle = false;
+function loadMore() {
+    if (textToggle == false) {
+        textToggle = true;
+        document.getElementById("text").style.whiteSpace = "normal";
+        document.getElementById("text").style.textOverflow = "clip";
+    }
+    else {
+        textToggle = false;
+        document.getElementById("text").style.whiteSpace = "nowrap";
+        document.getElementById("text").style.textOverflow = "ellipsis";
+    }
+}

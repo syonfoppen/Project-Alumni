@@ -83,7 +83,10 @@ namespace ProjectAlumni.Models
         [Required]
         public string Username { get; set; }
 
-        
+        [DataType(DataType.Text)]
+        [Display(Name = "Geslacht")]
+        public int Genderid { get; set; }
+
         [Display(Name = "Profiel Foto")]
         public byte[] ProfilePicture { get; set; }
 

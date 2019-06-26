@@ -20,7 +20,7 @@ namespace ProjectAlumni.Controllers
             var username = User.Identity.Name;
             var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
             AspNetUser user = userid[0];
-            return RedirectToAction(user.Id);
+            return RedirectToAction("Edit", new { user.Id });
         }
         
         // GET: UserProfile/Edit/5

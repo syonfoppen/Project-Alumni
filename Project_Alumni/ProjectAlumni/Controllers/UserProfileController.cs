@@ -21,17 +21,20 @@ namespace ProjectAlumni.Controllers
             var username = User.Identity.Name;
             var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
             AspNetUser user = userid[0];
-            return RedirectToAction("Edit", new { user.Id });
+            return RedirectToAction("Edit");
         }
         
         // GET: UserProfile/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            var username = User.Identity.Name;
+            var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+            AspNetUser user = userid[0];
+            if (user.Id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            AspNetUser aspNetUser = db.AspNetUsers.Find(user.Id);
             if (aspNetUser == null)
             {
                 return HttpNotFound();

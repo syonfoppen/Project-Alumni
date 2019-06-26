@@ -7,7 +7,7 @@
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm("Edit", "Profile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "UserProfile", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -120,11 +120,8 @@
             <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
+    <hr />
+    @Html.ActionLink("Verander Wachtwoord", "ChangePassword", "Manage")
 
-    <input type="button" value="Verander Wachtwoord" onclick="location.href='@Url.Action("ChangePassword", "Manage")" class="adminbutton" />
 </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

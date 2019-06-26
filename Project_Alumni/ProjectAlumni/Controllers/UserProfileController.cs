@@ -10,6 +10,7 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [Authorize]
     public class UserProfileController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();
@@ -45,10 +46,18 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,ProfilePicture,AdressId,GenderId,HasBeenAccepted,Firstname,Lastname,DateOfBirth,Description,GraduationYear")] AspNetUser aspNetUser)
+        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,ProfilePicture,AdressId,GenderId,HasBeenAccepted,Firstname,Lastname,DateOfBirth,Description,GraduationYear,ProfilePicture")] AspNetUser aspNetUser, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        aspNetUser.ProfilePicture = reader.ReadBytes(upload.ContentLength);
+                    }
+                }
                 db.Entry(aspNetUser).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

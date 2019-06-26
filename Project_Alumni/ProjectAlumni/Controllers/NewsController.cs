@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ProjectAlumni.Models;
@@ -109,16 +110,10 @@ namespace ProjectAlumni.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "newsid,title,text,users_userid,date")] news news, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "newsid,title,text,users_userid,date,thumbnail")] news news, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                string username = User.Identity.Name.ToString();
-                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
-                AspNetUser user = userid[0];
-
-                news.date = DateTime.Now;
-                news.users_userid = user.Id;
                 if (upload != null && upload.ContentLength > 0)
                 {
 
@@ -128,6 +123,15 @@ namespace ProjectAlumni.Controllers
                     }
 
                 }
+
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+
+                news.date = DateTime.Now;
+                news.users_userid = user.Id;
+                
+
 
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();

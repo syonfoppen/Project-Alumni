@@ -29,3 +29,15 @@ function mobilenav() {
     }
 }
 // if pressed mobile-nav width  100% and right:0; of mobile-links
+let newsToggle = false;
+function news() {
+    if (newsToggle == false) {
+        newsToggle = true;
+        document.getElementById('information').scrollIntoView();
+    }
+    else {
+        newsToggle = false;
+        document.getElementById('top').scrollIntoView();
+    }
+    
+};

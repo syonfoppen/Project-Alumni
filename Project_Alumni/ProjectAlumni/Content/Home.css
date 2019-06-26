@@ -206,3 +206,10 @@ html {
 
 
 }
+.news-button{
+    width: 60px;
+    height:60px;
+    background-color:red;
+    position:fixed;
+    z-index:100;
+}

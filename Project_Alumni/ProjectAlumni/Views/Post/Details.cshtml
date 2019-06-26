@@ -37,4 +37,4 @@
         }
     }
     </div>
-<input type="button" value="Reageer" onclick="location.href='@Url.Action("Create", "Replies")'" />
+<input type="button" value="Reageer" onclick="location.href='@Url.Action("Create", "Replies", new { postID = ViewBag.postid })'" />

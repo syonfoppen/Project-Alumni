@@ -1,4 +1,5 @@
-﻿@{
+﻿<link href="@Url.Content("~/Content/roles.css")" rel="stylesheet" type="text/css" />
+@{
     ViewBag.Title = "ManageUserRoles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -36,7 +37,7 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h4>Create A New Role</h4>
+                <h4>maak een nieuwe rol</h4>
             </div>
             <div class="panel-body">
                 @using (Html.BeginForm("Create", "Roles", new { @class = "form-horizontal" }))
@@ -45,7 +46,7 @@
                     @Html.ValidationSummary(true)
 
                     <div>
-                        Role name: @Html.TextBox("RoleName")
+                        Rol naam: @Html.TextBox("RoleName")
                         <input type="submit" value="Save" class="btn-primary" />
                     </div>
                 }
@@ -57,7 +58,7 @@
     <div class="col-sm-6 col-lg-6 col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h4>Add a Role to a User</h4>
+                <h4>geef een rol aan een gebruiker</h4>
             </div>
             <div class="panel-body">
                 @using (Html.BeginForm("RoleAddToUser", "Roles"))
@@ -65,8 +66,8 @@
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
-                    <p>User Name: @Html.DropDownList("UserName",(IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
-                    <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
+                    <p>gebruiker Naam: @Html.DropDownList("UserName",(IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
+                    <p>Rol Naam: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
                     <p><input type="submit" value="Save" class="btn-primary" /></p>
 
                 }
@@ -76,14 +77,14 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h4>List Roles for a User</h4>
+                <h4>laat rollen van een gebruiker zien</h4>
             </div>
             <div class="panel-body">
                 @using (Html.BeginForm("GetRoles", "Roles"))
                 {
                     @Html.AntiForgeryToken()
                     <p>
-                        User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
+                        gebruiker naam: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")
                         <input type="submit" value="Get Roles for this User" class="btn-primary" />
                     </p>
                 }
@@ -91,7 +92,7 @@
                 @if (ViewBag.RolesForThisUser != null)
                 {
                     <div class="alert-info">
-                        <strong>Roles for this user </strong>
+                        <strong>Rollen van deze gebruiker zijn: </strong>
                         <ol>
                             @foreach (string s in ViewBag.RolesForThisUser)
                             {
@@ -105,7 +106,7 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h4>Remove Role from User</h4>
+                <h4>verwijder rol van gebruiker</h4>
             </div>
             <div class="panel-body">
                 @using (Html.BeginForm("DeleteRoleForUser", "Roles"))
@@ -113,8 +114,8 @@
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
 
-                    <p>User Name: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
-                    <p>Role Name: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
+                    <p>gebruiker Naam: @Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Select ...")</p>
+                    <p>Rol Naam: @Html.DropDownList("RoleName", (IEnumerable<SelectListItem>)ViewBag.Roles, "Select ...")</p>
                     <p><input type="submit" value="Delete this user from Role" class="btn-primary" /></p>
 
                 }
@@ -128,3 +129,4 @@
 <div class="alert-info col-sm-12 col-lg-12 col-md-12">
     @ViewBag.Message
 </div>
+<div class="background"></div>

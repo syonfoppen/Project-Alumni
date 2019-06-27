@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ProjectAlumni.Controllers
 {
+    [HandleError]
     public class HomeController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();

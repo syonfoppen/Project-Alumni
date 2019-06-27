@@ -9,6 +9,7 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [HandleError]
     [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {

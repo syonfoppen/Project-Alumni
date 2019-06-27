@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 namespace ProjectAlumni.Controllers
 {
+    [HandleError]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         public ActionResult Index()

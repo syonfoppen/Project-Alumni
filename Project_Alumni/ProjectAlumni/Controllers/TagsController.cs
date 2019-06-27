@@ -10,6 +10,8 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [HandleError]
     public class TagsController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();

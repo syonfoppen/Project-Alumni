@@ -16,6 +16,7 @@ using ProjectAlumni.Models;
 namespace ProjectAlumni.Controllers
 {
     [Authorize]
+    [HandleError]
     public class AccountController : Controller
     {
         CultureInfo culture = new CultureInfo("nl-NL");
@@ -180,8 +181,7 @@ namespace ProjectAlumni.Controllers
                     Lastname = model.Lastname,
                     DateOfBirth = Convert.ToDateTime(model.DateOfBirth, culture),
                     GraduationYear = model.GraduationYear,
-                    Description = model.Description,
-                    GenderId = model.Genderid
+
                     
                 };
                 if (upload != null && upload.ContentLength > 0)

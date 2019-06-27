@@ -11,6 +11,7 @@ using ProjectAlumni.Models;
 namespace ProjectAlumni.Controllers
 {
     [Authorize]
+    [HandleError]
     public class UserProfileController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();

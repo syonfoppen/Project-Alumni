@@ -10,6 +10,8 @@ using ProjectAlumni.Models;
 
 namespace ProjectAlumni.Controllers
 {
+    [Authorize]
+    [HandleError]
     public class VacanciesController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();

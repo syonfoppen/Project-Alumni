@@ -44,19 +44,24 @@ function news() {
 //white - space: nowrap;
 //overflow: hidden;
 //text - overflow: ellipsis;
-let textToggle = false;
-var name = "";
+var load = [];
+let counter = 0;
 function loadMore(name) {
-    if (textToggle == false) {
-        textToggle = true;
+    counter++;
+    if (load[name] == null) {
+        load[name] = false;
+    }
+    if (load[name] == false) {
+        load[name] = true;
         console.log(name);
         document.getElementById(name).style.whiteSpace = "normal";
         document.getElementById(name).style.textOverflow = "clip";
     }
     else {
-        textToggle = false;
+        load[name] = false;
         console.log(name);
         document.getElementById(name).style.whiteSpace = "nowrap";
         document.getElementById(name).style.textOverflow = "ellipsis";
     }
+    return name;
 }

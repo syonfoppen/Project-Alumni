@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
+
     <link href="@Url.Content("~/Content/vacancies.css")" rel="stylesheet" type="text/css" />
 
 <div class="vac-container">
@@ -10,33 +11,36 @@
         @Html.ActionLink("Create New", "Create")
     </p>
     <div class="table">
-
+        @{ 
+            int counter = 0;
+        }
         @foreach (var item in Model)
         {
-            var counter = 0;
+
             counter++;
-            string idName = "text" + Convert.ToString(counter);
-        <div class="vac-box">
-            <div class="title">
-                <h2>@Html.DisplayFor(modelItem => item.title)</h2>
-                
-            </div>
-            <div class="column">
-                <div class="info">
-                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)<br />
-                    @Html.DisplayFor(modelItem => item.date)<br />
-                    <div class="edit">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.vacancyid })
-                        @Html.ActionLink("Details", "Details", new { id = item.vacancyid })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.vacancyid })
-                    </div>
+            <div class="vac-box">
+                <div class="title">
+                    <h2>@Html.DisplayFor(modelItem => item.title)</h2>
+
                 </div>
-                <span class="text" id="@idName">
-                    @Html.DisplayFor(modelItem => item.text)
-                </span>
+                <div class="column">
+                    <div class="info">
+                        @Html.DisplayFor(modelItem => item.AspNetUser.Email)<br />
+                        @Html.DisplayFor(modelItem => item.date)<br />
+                        <div class="edit">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.vacancyid })
+                            @Html.ActionLink("Details", "Details", new { id = item.vacancyid })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.vacancyid })
+
+                        </div>
+                    </div>
+
+                    <span class="text" id="@counter">
+                        @Html.DisplayFor(modelItem => item.text)
+                    </span>
+                </div>
+                <button onclick="loadMore(@counter)" class="load">Meer weergeven</button><!--hier moet je de nummer in de paramters geven-->
             </div>
-           <button onclick="loadMore(@idName)" class="load">Laad meer</button><!--hier moet je de nummer in de paramters geven-->
-        </div>
         }
 
     </div>

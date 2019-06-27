@@ -11,16 +11,13 @@ html,body{
 }
 @keyframes background {
     0% {
-        filter: grayscale();
         background-image: url('../Media/foto/background-restaurant1@2x.png');
     }
 
     50% {
-        filter: grayscale();
         background-image: url('../Media/foto/restaurants-background-2@2x.png');
     }
     100% {
-        filter: grayscale();
         background-image: url('../Media/foto/background-restaurant1@2x.png');
     }
 }
@@ -39,14 +36,16 @@ html,body{
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    clip-path:polygon(0 0,100% 0,100% 100%,0 80%);
 }
     .pc-header::before {
         filter: grayscale(100%);
     }
     .pc-header h1 {
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
         width: 100%;
         position: relative;
-        margin-top: 10vw;
+        margin-top: 30vh;
         padding-top: 150px;
         font-family: 'Segoe UI';
         font-size: 6em;
@@ -66,9 +65,9 @@ html,body{
 	}
 
 
-.seperation {
+/*.seperation {
     color:white;
-    /*transform: rotate(-5deg);*/
+    transform: rotate(-5deg);
 	width: 120vw;
 	min-height: 800px;
 	z-index: 100;
@@ -85,7 +84,7 @@ html,body{
     width: 55%;
     margin:auto;
     padding-top: 7%;
-}
+}*/
 .information {
     padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
@@ -95,7 +94,7 @@ html,body{
 	border-radius: 40px;
 	width: 90%;
 	
-	margin: 100px auto 100px auto;
+	margin: 120vh auto 100px auto;
 	box-shadow: 8px 8px 25px black;
 }
 .pc-footer {    

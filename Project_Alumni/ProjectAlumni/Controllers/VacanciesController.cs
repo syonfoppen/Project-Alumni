@@ -54,6 +54,13 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                string username = User.Identity.Name.ToString();
+                var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + username + "'").ToList();
+                AspNetUser user = userid[0];
+
+                vacancy.users_userid = user.Id;
+                vacancy.date = DateTime.Now;
+
                 db.vacancies.Add(vacancy);
                 db.SaveChanges();
                 return RedirectToAction("Index");

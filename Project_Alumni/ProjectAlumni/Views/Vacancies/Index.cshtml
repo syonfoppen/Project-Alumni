@@ -23,16 +23,20 @@
             </span>
             <div class="column">
                 <div class="info">
+                    @Html.DisplayFor(modelItem => item.AspNetUser.UserName)<br />
                     @Html.DisplayFor(modelItem => item.AspNetUser.Email)<br />
                     @Html.DisplayFor(modelItem => item.date)<br />
                     <div class="edit">
-                        @Html.ActionLink("Edit", "Edit", new { id = item.vacancyid })
-                        @Html.ActionLink("Details", "Details", new { id = item.vacancyid })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.vacancyid })
+                        @Html.ActionLink("Reacties", "Details", new { id = item.vacancyid}) <br />
+                    @if (Convert.ToString(ViewBag.userid) == Convert.ToString(item.users_userid) || User.IsInRole("Admin"))
+                    {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.vacancyid }) <br />
+                            @Html.ActionLink("Delete", "Delete", new { id = item.vacancyid }) <br />
+                    }
                     </div>
                 </div>
                 <span class="text" idName><!--hier moet de idkomen met telkesn een hogere nummer-->
-                    @Html.DisplayFor(modelItem => item.text)
+                    @Html.DisplayWithLinksFor(DisplayWithLinksFor => item.text)
                 </span>
             </div>
            <button onclick="loadMore()" class="load">Laad meer</button><!--hier moet je de nummer in de paramters geven-->

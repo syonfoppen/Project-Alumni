@@ -26,6 +26,7 @@ namespace ProjectAlumni.Models
 
         [Required(ErrorMessage = "Dit veld is verplicht")]
         [StringLength(100, ErrorMessage = "Je mag Maximaal 100 tekens invoeren")]
+        
         public string title { get; set; }
 
         [Required(ErrorMessage = "Dit veld is verplicht")]

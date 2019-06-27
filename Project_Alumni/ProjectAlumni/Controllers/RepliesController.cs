@@ -55,6 +55,7 @@ namespace ProjectAlumni.Controllers
             if (ModelState.IsValid)
             {
                 reply.date = DateTime.Now;
+                reply.username = User.Identity.Name;
                 reply.posts_postid = Convert.ToInt32(postID);
                 db.replies.Add(reply);
                 db.SaveChanges();
@@ -96,6 +97,7 @@ namespace ProjectAlumni.Controllers
         {
             if (ModelState.IsValid)
             {
+                reply.username = User.Identity.Name;
                 db.Entry(reply).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

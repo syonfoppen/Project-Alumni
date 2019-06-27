@@ -139,6 +139,7 @@
           <Property Name="text" Type="nvarchar(max)" Nullable="false" />
           <Property Name="date" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="posts_postid" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="reports">
           <Key>
@@ -719,6 +720,7 @@
           <Property Name="date" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="posts_postid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="post" Relationship="Self.replies_posts_fk" FromRole="replies" ToRole="posts" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="report">
           <Key>
@@ -1204,6 +1206,7 @@
           <EntitySetMapping Name="replies">
             <EntityTypeMapping TypeName="DatabaseModel.reply">
               <MappingFragment StoreEntitySet="replies">
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="repliesid" ColumnName="repliesid" />
                 <ScalarProperty Name="text" ColumnName="text" />
                 <ScalarProperty Name="date" ColumnName="date" />

@@ -11,11 +11,11 @@
         <EntityTypeShape EntityType="DatabaseModel.AspNetUserLogin" Width="1.5" PointX="14.5" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.AspNetUser" Width="1.5" PointX="17.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.chat" Width="1.5" PointX="14.5" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.cours" Width="1.5" PointX="17.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.cours" Width="1.5" PointX="17.25" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.gender" Width="1.5" PointX="14.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.picture" Width="1.5" PointX="22.875" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.post" Width="1.5" PointX="20.25" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.reply" Width="1.5" PointX="22.875" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.reply" Width="1.5" PointX="22.875" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.report" Width="1.5" PointX="22.875" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.tag" Width="1.5" PointX="22.875" PointY="15.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.usercours" Width="1.5" PointX="16.875" PointY="19.625" IsExpanded="true" />

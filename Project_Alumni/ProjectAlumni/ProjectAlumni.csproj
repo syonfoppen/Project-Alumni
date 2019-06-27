@@ -276,6 +276,7 @@
     <Content Include="Content\Login.css" />
     <Content Include="Content\news.css" />
     <Content Include="Content\roles.css" />
+    <Content Include="Content\UserProfileDetails.css" />
     <Content Include="Content\vacancies.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -390,6 +391,7 @@
     <Content Include="Views\Vacancies\Edit.cshtml" />
     <Content Include="Views\Vacancies\Index.cshtml" />
     <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\UserProfile\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

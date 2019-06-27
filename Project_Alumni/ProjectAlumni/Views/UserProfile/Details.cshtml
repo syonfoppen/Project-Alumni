@@ -1,0 +1,150 @@
+﻿@model ProjectAlumni.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="@Url.Content("~/Content/UserProfileDetails.css")" rel="stylesheet" type="text/css" />
+
+
+<div>
+    <div class="container" style="background-color:#f5f5f5; padding: 5%;border-radius: 40px;">
+        <div class="row">
+            
+            <div class="col-sm-2" style="width: 250px;">
+                    @{
+                        if (Model.ProfilePicture != null && Model.ProfilePicture.Length > 0)
+                        {
+                            var base64 = Convert.ToBase64String(Model.ProfilePicture);
+                            var imgSrc = String.Format("data:image;base64,{0}", base64);
+                            <div class="image" style="background-image:url('@imgSrc')"><span></span></div>
+                        }
+                    }
+                    <h3>Beschrijving</h3>
+                    <p>@Html.DisplayFor(model => model.Description)</p>
+
+                </div>
+            <div class="col-sm-9" style="margin-top: -50px">
+                <h1>@Html.DisplayFor(model => model.UserName)</h1>
+                <hr style="height: 2px; background-color:black;" />
+                <h3>Persoonlijke Gegevens</h3>
+                <table class="table">
+                    <tr>
+                        <td><b>Voornaam:    </b></td>
+                        <td>
+                            @{
+                                if (Model.Firstname != null)
+                                {
+                                    @Html.DisplayFor(model => model.Firstname)
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Achternaam:    </b></td>
+                        <td>
+                            @{
+                                if (Model.Lastname != null)
+                                {
+                                    @Html.DisplayFor(model => model.Lastname)
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Geslacht:    </b></td>
+                        <td>
+                            @{
+                                if (Model.gender != null)
+                                {
+                                    @Html.DisplayFor(model => model.gender.NAME)
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Geboortedatum:    </b></td>
+                        <td>
+                            @{
+                                if (Model.DateOfBirth != null)
+                                {
+                                    DateTime Date = Model.DateOfBirth ?? DateTime.Now;
+                                    @Date.ToString("dd-mm-yyyy")
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Afstudeerjaar:    </b></td>
+                        <td>
+                            @{
+                                if (Model.GraduationYear != null)
+                                {
+                                    @Html.DisplayFor(model => model.GraduationYear)
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                </table>
+                <h3>Contact Gegevens</h3>
+                <table class="table">
+                    <tr>
+                        <td><b>Email:    </b></td>
+                        <td>
+                            @{
+                                if (Model.Email != null)
+                                {
+                                    <A HREF="mailto:@Model.Email">@Model.Email</A>
+                                    
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Telefoonnummer:    </b></td>
+                        <td>
+                            @{
+                                if (Model.PhoneNumber != null)
+                                {
+                                    @Html.DisplayFor(model => model.PhoneNumber)
+                                }
+                                else
+                                {
+                                    <p>Niet Bekend </p>
+                                }
+                            }
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="background">
+
+</div>
+

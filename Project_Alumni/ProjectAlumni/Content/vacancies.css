@@ -28,33 +28,40 @@
 }
 .vac-box{
     margin-top:10px;
-    padding:60px;
-    padding-bottom: 0;
+    padding: 10px 60px;
+    padding-bottom: 2%;
     border-radius:20px;
     background-color:white;
     color:black;
 }
-.table .column {
+.column {
     
-    display: grid;
-    grid-template-columns: auto 70%;
+    display: grid !important;
+    grid-template-columns: 30% auto;
 }.title{
     text-align: center;
     width:100%;
 }
 .load {
-    height:30px;
-    margin-right:auto;
-    margin: 50px auto;
-    width: 33%;
+    text-align: center;
+    padding: 5px;
+    height: 30px;
+    margin: 5px auto 0 auto;
+    min-width: 20%;
     background-color: #0063AD;
     border-radius: 5px;
     color: white;
     border: none;
 }
+
 .text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width:100%;
+}
+.background2 {
+    border-radius: 20px;
+    background-color: rgba(0,0,0,0.6);
+    padding: 1% 3% 4% 3%;
 }

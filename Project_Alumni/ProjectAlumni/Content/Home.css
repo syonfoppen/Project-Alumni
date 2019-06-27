@@ -137,10 +137,12 @@ html,body{
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.575);
 }
-	.newsBox .text {
-        padding-top:2% !important;
-        width:90%;
-	}
+    .newsBox .text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
     .newsBox h2 {
         text-align: center;
     }
@@ -219,4 +221,15 @@ html,body{
     background-color: rgb(5, 5, 129);
     position: fixed;
     z-index: 100;
+}
+.load {
+    text-align:center;
+    padding:5px;
+    height: 30px;
+    margin: 2px auto 20px auto;
+    min-width: 20%;
+    background-color: #0063AD;
+    border-radius: 5px;
+    color: white;
+    border: none;
 }

@@ -31,13 +31,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-        </div>
-    </div>
     @{
         if (Model.ProfilePicture != null && Model.ProfilePicture.Length > 0)
         {
@@ -89,6 +82,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            huidige datum: @ViewBag.date
+            <br>
             @Html.TextBoxFor(m => m.DateOfBirth, new { placeholder = "Geboorte Datum", @class = "email", Type = "date" })
             @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
         </div>

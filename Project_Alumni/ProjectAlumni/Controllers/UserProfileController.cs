@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -14,6 +15,7 @@ namespace ProjectAlumni.Controllers
     [HandleError]
     public class UserProfileController : Controller
     {
+        CultureInfo culture = new CultureInfo("nl-NL");
         private DatabaseEntities db = new DatabaseEntities();
         
         
@@ -27,13 +29,10 @@ namespace ProjectAlumni.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AspNetUser aspNetUser = db.AspNetUsers.Find(user.Id);
-            if (aspNetUser == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.GenderId = new SelectList(db.genders, "genderid", "NAME", aspNetUser.GenderId);
-            return View(aspNetUser);
+            user.DateOfBirth = Convert.ToDateTime(user.DateOfBirth, culture);
+            ViewBag.date = user.DateOfBirth;
+            ViewBag.GenderId = new SelectList(db.genders, "genderid", "NAME", user.GenderId);
+            return View(user);
         }
 
         // POST: UserProfile/Edit/5
@@ -41,7 +40,7 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,PhoneNumber,UserName,ProfilePicture,AdressId,GenderId,Firstname,Lastname,DateOfBirth,Description,GraduationYear,ProfilePicture")] AspNetUser aspNetUser, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "Id,Email,PhoneNumber,ProfilePicture,AdressId,GenderId,Firstname,Lastname,DateOfBirth,Description,GraduationYear,ProfilePicture")] AspNetUser aspNetUser, HttpPostedFileBase upload)
         {
             AspNetUser currentUser = new AspNetUser();
             if (ModelState.IsValid)
@@ -71,10 +70,6 @@ namespace ProjectAlumni.Controllers
                 if (aspNetUser.PhoneNumber != String.Empty && aspNetUser.PhoneNumber != "" && aspNetUser.PhoneNumber != null)
                 {
                     currentUser.PhoneNumber = aspNetUser.PhoneNumber;
-                }
-                if (aspNetUser.UserName != String.Empty && aspNetUser.UserName != "" && aspNetUser.UserName != null)
-                {
-                    currentUser.UserName = aspNetUser.UserName;
                 }
                 if (aspNetUser.Firstname != String.Empty && aspNetUser.Firstname != "" && aspNetUser.Firstname != null)
                 {

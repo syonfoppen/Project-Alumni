@@ -18,6 +18,7 @@ namespace ProjectAlumni.Models
         public string text { get; set; }
         public System.DateTime date { get; set; }
         public int posts_postid { get; set; }
+        public string username { get; set; }
     
         public virtual post post { get; set; }
     }

@@ -83,12 +83,7 @@ namespace ProjectAlumni.Models
         [Required]
         public string Username { get; set; }
 
-        [DataType(DataType.Text)]
-        [Display(Name = "Geslacht")]
-        public int Genderid { get; set; }
 
-        [Display(Name = "Profiel Foto")]
-        public byte[] ProfilePicture { get; set; }
 
         [Display(Name = "Voornaam")]
         [DataType(DataType.Text)]
@@ -98,9 +93,6 @@ namespace ProjectAlumni.Models
         [Display(Name = "Achternaam")]
         public string Lastname { get; set; }
 
-        [DataType(DataType.MultilineText)]
-        [Display(Name = "Korte Bechrijving")]
-        public string Description { get; set; }
 
         [DataType(DataType.Text)]
         [Display(Name = "Afstudeer jaar")]

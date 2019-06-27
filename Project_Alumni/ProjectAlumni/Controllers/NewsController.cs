@@ -12,6 +12,7 @@ using ProjectAlumni.Models;
 namespace ProjectAlumni.Controllers
 {
     [Authorize]
+    [HandleError]
     public class NewsController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();

@@ -183,7 +183,6 @@
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\VacanciesController.cs" />
@@ -191,29 +190,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DisplayWithLinksFor.cs" />
-    <Compile Include="Migrations\201906181308519_InitialCreate.cs" />
-    <Compile Include="Migrations\201906181308519_InitialCreate.Designer.cs">
-      <DependentUpon>201906181308519_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906210842440_Update UserTable.cs" />
-    <Compile Include="Migrations\201906210842440_Update UserTable.Designer.cs">
-      <DependentUpon>201906210842440_Update UserTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906210848394_Update UserTable2.cs" />
-    <Compile Include="Migrations\201906210848394_Update UserTable2.Designer.cs">
-      <DependentUpon>201906210848394_Update UserTable2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906210920097_Update UserTable3.cs" />
-    <Compile Include="Migrations\201906210920097_Update UserTable3.Designer.cs">
-      <DependentUpon>201906210920097_Update UserTable3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211124139_DataUpdate.cs" />
-    <Compile Include="Migrations\201906211124139_DataUpdate.Designer.cs">
-      <DependentUpon>201906211124139_DataUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906260925531_Gender.cs" />
-    <Compile Include="Migrations\201906260925531_Gender.Designer.cs">
-      <DependentUpon>201906260925531_Gender.cs</DependentUpon>
+    <Compile Include="Migrations\201906271010182_revert.cs" />
+    <Compile Include="Migrations\201906271010182_revert.Designer.cs">
+      <DependentUpon>201906271010182_revert.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -400,11 +379,6 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Tags\Create.cshtml" />
-    <Content Include="Views\Tags\Delete.cshtml" />
-    <Content Include="Views\Tags\Details.cshtml" />
-    <Content Include="Views\Tags\Edit.cshtml" />
-    <Content Include="Views\Tags\Index.cshtml" />
     <Content Include="Views\Replies\Create.cshtml" />
     <Content Include="Views\Replies\Delete.cshtml" />
     <Content Include="Views\Replies\Details.cshtml" />
@@ -415,7 +389,7 @@
     <Content Include="Views\Vacancies\Details.cshtml" />
     <Content Include="Views\Vacancies\Edit.cshtml" />
     <Content Include="Views\Vacancies\Index.cshtml" />
-    <Content Include="Views\UserProfile\Edit.cshtml" />
+    <Content Include="Views\UserProfile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -437,23 +411,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906181308519_InitialCreate.resx">
-      <DependentUpon>201906181308519_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906210842440_Update UserTable.resx">
-      <DependentUpon>201906210842440_Update UserTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906210848394_Update UserTable2.resx">
-      <DependentUpon>201906210848394_Update UserTable2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906210920097_Update UserTable3.resx">
-      <DependentUpon>201906210920097_Update UserTable3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211124139_DataUpdate.resx">
-      <DependentUpon>201906211124139_DataUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906260925531_Gender.resx">
-      <DependentUpon>201906260925531_Gender.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906271010182_revert.resx">
+      <DependentUpon>201906271010182_revert.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

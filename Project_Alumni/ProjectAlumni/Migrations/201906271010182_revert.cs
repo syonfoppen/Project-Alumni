@@ -3,7 +3,7 @@ namespace ProjectAlumni.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class revert : DbMigration
     {
         public override void Up()
         {
@@ -35,6 +35,15 @@ namespace ProjectAlumni.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        ProfilePicture = c.Binary(),
+                        AdressId = c.Int(),
+                        GenderId = c.Int(),
+                        HasBeenAccepted = c.Boolean(),
+                        Firstname = c.String(),
+                        Lastname = c.String(),
+                        DateOfBirth = c.DateTime(),
+                        Description = c.String(),
+                        GraduationYear = c.Int(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

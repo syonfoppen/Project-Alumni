@@ -7,13 +7,13 @@ namespace ProjectAlumni.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UpdateUserTable : IMigrationMetadata
+    public sealed partial class revert : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateUserTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(revert));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906210842440_Update UserTable"; }
+            get { return "201906271010182_revert"; }
         }
         
         string IMigrationMetadata.Source

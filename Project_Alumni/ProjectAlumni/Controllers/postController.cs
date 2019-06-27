@@ -11,6 +11,7 @@ using ProjectAlumni.Models;
 namespace ProjectAlumni.Controllers
 {
     [Authorize]
+    [HandleError]
     public class PostController : Controller
     {
         private DatabaseEntities db = new DatabaseEntities();
@@ -59,6 +60,7 @@ namespace ProjectAlumni.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "postid,title,text,users_userid,date")] post post)
         {

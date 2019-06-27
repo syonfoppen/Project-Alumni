@@ -25,11 +25,11 @@ namespace ProjectAlumni.Models
         public int postid { get; set; }
 
         [Required(ErrorMessage = "Dit veld is verplicht")]
-        [StringLength(60, ErrorMessage = "Je mag Maximaal 60 tekens invoeren")]
+        [StringLength(100, ErrorMessage = "Je mag Maximaal 100 tekens invoeren")]
         public string title { get; set; }
 
         [Required(ErrorMessage = "Dit veld is verplicht")]
-        [StringLength(300, ErrorMessage = "Je mag Maximaal 300 tekens invoeren")]
+        [StringLength(600, ErrorMessage = "Je mag Maximaal 600 tekens invoeren")]
         public string text { get; set; }
         public string users_userid { get; set; }
         public System.DateTime date { get; set; }

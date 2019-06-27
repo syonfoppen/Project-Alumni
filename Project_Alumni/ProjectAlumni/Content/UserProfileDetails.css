@@ -1,0 +1,32 @@
+﻿body {
+    background-color: #E2001A;
+}
+.background {
+    top: 0;
+    z-index: -1;
+    position: fixed;
+    background-image: url(../Media/svg/background2.svg);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh
+}
+.container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    -webkit-border-radius: 100px;
+    -webkit-background-clip: padding-box;
+    -moz-border-radius: 100px;
+    -moz-background-clip: padding;
+    border-radius: 100px;
+    background-clip: padding-box;
+    margin: 7px 0 0 5px;
+    float: left;
+    background-size: cover;
+    background-position: center center;
+
+}

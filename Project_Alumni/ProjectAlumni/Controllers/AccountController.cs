@@ -28,7 +28,7 @@ namespace ProjectAlumni.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -40,9 +40,9 @@ namespace ProjectAlumni.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -72,7 +72,7 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            
+
         }
 
         //
@@ -85,16 +85,6 @@ namespace ProjectAlumni.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
-            }
-            
-            var userid = db.AspNetUsers.SqlQuery("SELECT * FROM AspNetUsers WHERE UserName = " + "'" + model.Username + "'").ToList();
-            AspNetUser user = userid[0];
-            if (user != null)
-            {
-                if (!user.EmailConfirmed)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
             }
 
             // This doesn't count login failures towards account lockout
@@ -144,7 +134,7 @@ namespace ProjectAlumni.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -192,7 +182,7 @@ namespace ProjectAlumni.Controllers
                     DateOfBirth = Convert.ToDateTime(model.DateOfBirth, culture),
                     GraduationYear = model.GraduationYear,
 
-                    
+
                 };
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -203,25 +193,20 @@ namespace ProjectAlumni.Controllers
                     }
 
                 }
-               
+
 
 
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                         + "before you can log in.";
-
-                    //return View("Info");
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);

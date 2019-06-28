@@ -1,19 +1,23 @@
 ﻿/* home no login ----------------------------------------------------------------------------------------------------------*/
 html {
-	overflow-x: hidden;
+	
+}
+html,body{
+    overflow-x: hidden;
+    margin:0;
+    padding:0;
+    left:0;
+    right:0;
 }
 @keyframes background {
     0% {
-        filter: grayscale();
         background-image: url('../Media/foto/background-restaurant1@2x.png');
     }
 
     50% {
-        filter: grayscale();
         background-image: url('../Media/foto/restaurants-background-2@2x.png');
     }
     100% {
-        filter: grayscale();
         background-image: url('../Media/foto/background-restaurant1@2x.png');
     }
 }
@@ -32,14 +36,16 @@ html {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    clip-path:polygon(0 0,100% 0,100% 100%,0 80%);
 }
     .pc-header::before {
         filter: grayscale(100%);
     }
     .pc-header h1 {
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
         width: 100%;
         position: relative;
-        margin-top: 10vw;;
+        margin-top: 30vh;
         padding-top: 150px;
         font-family: 'Segoe UI';
         font-size: 6em;
@@ -49,7 +55,7 @@ html {
     }
 	.pc-header h2 {
         top:5vw;
-        left: 3vw;;
+        left: 80px;
 		position: absolute;
 		padding-left: 3vw;
 		font-family: 'Segoe UI';
@@ -59,12 +65,12 @@ html {
 	}
 
 
-.seperation {
+/*.seperation {
     color:white;
     transform: rotate(-5deg);
 	width: 120vw;
 	min-height: 800px;
-	z-index: 150;
+	z-index: 100;
     display:block;
 	background-image: url("../Media/svg/informatie.svg");
 	background-position: top;
@@ -78,7 +84,7 @@ html {
     width: 55%;
     margin:auto;
     padding-top: 7%;
-}
+}*/
 .information {
     padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
@@ -87,8 +93,8 @@ html {
 	background-size: cover;
 	border-radius: 40px;
 	width: 90%;
-	min-height: 100vh;
-	margin: 100px auto 100px auto;
+	
+	margin: 120vh auto 100px auto;
 	box-shadow: 8px 8px 25px black;
 }
 .pc-footer {    
@@ -131,10 +137,12 @@ html {
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.575);
 }
-	.newsBox .text {
-        padding-top:2% !important;
-		padding: 5%;
-	}
+    .newsBox .text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+    }
     .newsBox h2 {
         text-align: center;
     }
@@ -206,10 +214,22 @@ html {
 
 
 }
-.news-button{
+.news-button {
+    top: 120px;
     width: 60px;
-    height:60px;
-    background-color:red;
-    position:fixed;
-    z-index:100;
+    height: 60px;
+    background-color: rgb(5, 5, 129);
+    position: fixed;
+    z-index: 100;
+}
+.load {
+    text-align:center;
+    padding:5px;
+    height: 30px;
+    margin: 2px auto 20px auto;
+    min-width: 20%;
+    background-color: #0063AD;
+    border-radius: 5px;
+    color: white;
+    border: none;
 }

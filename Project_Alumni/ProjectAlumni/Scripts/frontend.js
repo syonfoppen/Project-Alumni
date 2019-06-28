@@ -17,14 +17,14 @@ function mobilenav() {
         y = true;
         document.getElementById("main").style.transition = "width 0.25s";
         document.getElementById("mobile-links").style.transition = "right 0.25s ease-in-out";
-        document.getElementById("main").style.width = "98vw";
-        document.getElementById("mobile-links").style.right = "-8vw";
+        document.getElementById("main").style.width = "84vw";
+        document.getElementById("mobile-links").style.right = "-20vw";
     }
     else {
         y = false;
         document.getElementById("main").style.transition = "width 0.25s ease-in-out";
         document.getElementById("mobile-links").style.transition = "right 0.25s ease-in-out";
-        document.getElementById("main").style.width = "200px";
+        document.getElementById("main").style.width = "160px";
         document.getElementById("mobile-links").style.right = "-110vw";
     }
 }
@@ -44,16 +44,24 @@ function news() {
 //white - space: nowrap;
 //overflow: hidden;
 //text - overflow: ellipsis;
-let textToggle = false;
-function loadMore() {
-    if (textToggle == false) {
-        textToggle = true;
-        document.getElementById("text").style.whiteSpace = "normal";
-        document.getElementById("text").style.textOverflow = "clip";
+var load = [];
+let counter = 0;
+function loadMore(name) {
+    counter++;
+    if (load[name] == null) {
+        load[name] = false;
+    }
+    if (load[name] == false) {
+        load[name] = true;
+        console.log(name);
+        document.getElementById(name).style.whiteSpace = "normal";
+        document.getElementById(name).style.textOverflow = "clip";
     }
     else {
-        textToggle = false;
-        document.getElementById("text").style.whiteSpace = "nowrap";
-        document.getElementById("text").style.textOverflow = "ellipsis";
+        load[name] = false;
+        console.log(name);
+        document.getElementById(name).style.whiteSpace = "nowrap";
+        document.getElementById(name).style.textOverflow = "ellipsis";
     }
+    return name;
 }

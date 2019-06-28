@@ -11,9 +11,8 @@
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <h4>AspNetUser</h4>
-    <hr />
+<div class="form-horizontal" style="background-color:rgba(0,0,0,0.6);width:90vw;margin:auto;">
+    <h1>user profiel</h1>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
 

@@ -102,5 +102,20 @@ namespace ProjectAlumni.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        // GET: Users/Details/5
+        public ActionResult Details(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AspNetUser aspNetUser = db.AspNetUsers.Find(id);
+            if (aspNetUser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(aspNetUser);
+        }
     }
 }

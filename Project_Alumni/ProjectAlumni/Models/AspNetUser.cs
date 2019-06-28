@@ -11,8 +11,7 @@ namespace ProjectAlumni.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class AspNetUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -35,30 +34,21 @@ namespace ProjectAlumni.Models
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
         public string SecurityStamp { get; set; }
-        [Display(Name = "Telefoonnummer")]
         public string PhoneNumber { get; set; }
         public bool PhoneNumberConfirmed { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
-        [Display(Name = "Gebruikersnaam")]
         public string UserName { get; set; }
-        [Display(Name = "Profielfoto")]
         public byte[] ProfilePicture { get; set; }
         public Nullable<int> AdressId { get; set; }
-        [Display(Name = "Geslacht")]
         public Nullable<int> GenderId { get; set; }
         public Nullable<bool> HasBeenAccepted { get; set; }
-        [Display(Name = "Voornaam")]
         public string Firstname { get; set; }
-        [Display(Name = "Achternaam")]
         public string Lastname { get; set; }
-        [Display(Name = "Geboortedatum")]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
-        [Display(Name = "Beschrijving")]
         public string Description { get; set; }
-        [Display(Name = "Afstudeerjaar")]
         public Nullable<int> GraduationYear { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

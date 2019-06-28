@@ -27,7 +27,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.text)
+            @Html.DisplayWithLinksFor(modelItem => item.text)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.date)

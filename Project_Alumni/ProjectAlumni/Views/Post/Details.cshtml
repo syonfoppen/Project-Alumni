@@ -33,6 +33,7 @@
 
     @{ foreach (var reply in ViewBag.replies)
         {
+            <b>@reply.username</b>
             <p>@reply.text</p>
         }
     }

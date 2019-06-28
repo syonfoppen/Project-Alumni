@@ -22,12 +22,6 @@
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
         </th>
         <th>
@@ -49,12 +43,6 @@
             @Html.DisplayNameFor(model => model.ProfilePicture)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HasBeenAccepted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address.country)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.gender.NAME)
         </th>
         <th></th>
@@ -70,12 +58,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
@@ -96,21 +78,29 @@
             @Html.DisplayFor(modelItem => item.DateOfBirth)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProfilePicture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HasBeenAccepted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address.country)
+            @{
+                if (item.ProfilePicture != null && item.ProfilePicture.Length > 0)
+                {
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            @{
+                                var base64 = Convert.ToBase64String(item.ProfilePicture);
+                                var imgSrc = String.Format("data:image;base64,{0}", base64);
+
+                            }
+                            <img src="@imgSrc" class="image" />
+                        </div>
+                    </div>
+                }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.gender.NAME)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }

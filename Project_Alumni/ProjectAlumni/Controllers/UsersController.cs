@@ -73,6 +73,10 @@ namespace ProjectAlumni.Controllers
                 {
                     currentUser.Email = aspNetUser.Email;
                 }
+                if (aspNetUser.EmailConfirmed != false)
+                {
+                    currentUser.EmailConfirmed = aspNetUser.EmailConfirmed;
+                }
                 if (aspNetUser.PhoneNumber != String.Empty && aspNetUser.PhoneNumber != "" && aspNetUser.PhoneNumber != null)
                 {
                     currentUser.PhoneNumber = aspNetUser.PhoneNumber;

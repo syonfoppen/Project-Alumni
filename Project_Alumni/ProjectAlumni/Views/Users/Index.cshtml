@@ -16,6 +16,9 @@
             @Html.DisplayNameFor(model => model.Email)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
@@ -40,9 +43,6 @@
             @Html.DisplayNameFor(model => model.ProfilePicture)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HasBeenAccepted)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.gender.NAME)
         </th>
         <th></th>
@@ -52,6 +52,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailConfirmed)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneNumber)
@@ -91,9 +94,6 @@
                     </div>
                 }
             }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HasBeenAccepted)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.gender.NAME)

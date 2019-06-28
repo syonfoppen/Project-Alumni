@@ -65,26 +65,6 @@ html,body{
 	}
 
 
-/*.seperation {
-    color:white;
-    transform: rotate(-5deg);
-	width: 120vw;
-	min-height: 800px;
-	z-index: 100;
-    display:block;
-	background-image: url("../Media/svg/informatie.svg");
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: 120vw auto;
-    margin: 55vh -10vw auto -10vw;
-}
-.seperation div{
-    height:270px;
-    transform: rotate(5deg);
-    width: 55%;
-    margin:auto;
-    padding-top: 7%;
-}*/
 .information {
     padding: 3%;
 	background-image: url("../Media/svg/information-background.svg");
@@ -136,6 +116,7 @@ html,body{
     min-height: 200px;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.575);
+    padding-bottom:2%;
 }
     .newsBox .text {
         white-space: nowrap;
@@ -217,12 +198,13 @@ html,body{
 .news-button {
     top: 120px;
     width: 60px;
-    height: 60px;
+    height: 80px;
     background-color: rgb(5, 5, 129);
     position: fixed;
     z-index: 100;
 }
-.load {
+.load {margin-bottom:50px;
+    width:200px;
     text-align:center;
     padding:5px;
     height: 30px;

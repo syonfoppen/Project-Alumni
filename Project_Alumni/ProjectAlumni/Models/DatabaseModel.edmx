@@ -832,7 +832,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_posts_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" ></End>
           <End Role="posts" Type="Self.post" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -856,7 +856,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_vacancies_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" ></End>
           <End Role="vacancies" Type="Self.vacancy" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -880,7 +880,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="replies_posts_fk">
-          <End Role="posts" Type="Self.post" Multiplicity="1" />
+          <End Role="posts" Type="Self.post" Multiplicity="1" ></End>
           <End Role="replies" Type="Self.reply" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="posts">
@@ -892,7 +892,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="reports_posts_fk">
-          <End Role="posts" Type="Self.post" Multiplicity="1" />
+          <End Role="posts" Type="Self.post" Multiplicity="1" ></End>
           <End Role="reports" Type="Self.report" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="posts">
@@ -904,7 +904,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="reports_vacancies_fk">
-          <End Role="vacancies" Type="Self.vacancy" Multiplicity="1" />
+          <End Role="vacancies" Type="Self.vacancy" Multiplicity="1" ></End>
           <End Role="reports" Type="Self.report" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="vacancies">
@@ -920,11 +920,11 @@
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
         <Association Name="usertags">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" ></End>
           <End Role="tags" Type="Self.tag" Multiplicity="*" />
         </Association>
         <Association Name="vacancytags">
-          <End Role="tags" Type="Self.tag" Multiplicity="*" />
+          <End Role="tags" Type="Self.tag" Multiplicity="*" ></End>
           <End Role="vacancies" Type="Self.vacancy" Multiplicity="*" />
         </Association>
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
@@ -1022,8 +1022,8 @@
           </AssociationSet>
         </EntityContainer>
         <Association Name="FK_AspNetUsers_addresses">
-          <End Type="DatabaseModel.address" Role="address" Multiplicity="0..1" />
-          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <End Type="DatabaseModel.address" Role="address" Multiplicity="0..1" ></End>
+          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="*" ></End>
           <ReferentialConstraint>
             <Principal Role="address">
               <PropertyRef Name="addressid" />
@@ -1059,7 +1059,7 @@
           <Property Name="thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_news_AspNetUsers">
-          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DatabaseModel.AspNetUser" Role="AspNetUser" Multiplicity="1" ></End>
           <End Type="DatabaseModel.news" Role="news" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUser">
@@ -1071,7 +1071,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="pictures_news_fk">
-          <End Type="DatabaseModel.news" Role="news" Multiplicity="1" />
+          <End Type="DatabaseModel.news" Role="news" Multiplicity="1" ></End>
           <End Type="DatabaseModel.picture" Role="picture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="news">

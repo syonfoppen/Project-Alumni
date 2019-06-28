@@ -42,7 +42,7 @@ namespace ProjectAlumni.Controllers
             {
                 return HttpNotFound();
             }
-            var replies = db.replies.SqlQuery("SELECT * FROM replies WHERE posts_postid = " + "'" + post.postid + "'").ToList();
+            var replies = db.replies.SqlQuery("SELECT * FROM replies WHERE posts_postid = " + "'" + post.postid + "'").OrderByDescending(x => x.repliesid).ToList();
             ViewBag.postid = post.postid;
             ViewBag.replies = replies;
             return View(post);

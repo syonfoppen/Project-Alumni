@@ -16,28 +16,6 @@ namespace ProjectAlumni.Controllers
     {
         private DatabaseEntities db = new DatabaseEntities();
 
-        // GET: Replies
-        public ActionResult Index()
-        {
-            var replies = db.replies.Include(r => r.post);
-            return View(replies.ToList());
-        }
-
-        // GET: Replies/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            reply reply = db.replies.Find(id);
-            if (reply == null)
-            {
-                return HttpNotFound();
-            }
-            return View(reply);
-        }
-
         // GET: Replies/Create
         public ActionResult Create()
         {
@@ -73,7 +51,7 @@ namespace ProjectAlumni.Controllers
         }
 
         // GET: Replies/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id , int? postid)
         {
             if (id == null)
             {
@@ -93,14 +71,21 @@ namespace ProjectAlumni.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "repliesid,text,date,posts_postid")] reply reply)
+        public ActionResult Edit([Bind(Include = "repliesid,text,date,posts_postid")] reply reply, int postid)
         {
             if (ModelState.IsValid)
             {
+                reply.date = DateTime.Now;
+                reply.posts_postid = postid;
                 reply.username = User.Identity.Name;
                 db.Entry(reply).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToRoute(new
+                {
+                    controller = "Post",
+                    action = "Details",
+                    id = postid
+                });
             }
             ViewBag.posts_postid = new SelectList(db.posts, "postid", "title", reply.posts_postid);
             return View(reply);
@@ -129,7 +114,7 @@ namespace ProjectAlumni.Controllers
             reply reply = db.replies.Find(id);
             db.replies.Remove(reply);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Post");
         }
 
         protected override void Dispose(bool disposing)

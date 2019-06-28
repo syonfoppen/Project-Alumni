@@ -49,10 +49,10 @@
                     @if (Convert.ToString(ViewBag.userid) == Convert.ToString(item.users_userid) || User.IsInRole("Admin"))
                     {
                         <div class="col-sm-3">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.postid }, new { @class = "actions btn btn-danger" })
+                            @Html.ActionLink("Wijzigen", "Edit", new { id = item.postid }, new { @class = "actions btn btn-danger" })
                         </div>
                         <div class="col-sm-3">
-                            @Html.ActionLink("Delete", "Delete", new { id = item.postid }, new { @class = "actions btn btn-danger" })
+                            @Html.ActionLink("Verwijderen", "Delete", new { id = item.postid }, new { @class = "actions btn btn-danger" })
                         </div>
                     }
                 </div>

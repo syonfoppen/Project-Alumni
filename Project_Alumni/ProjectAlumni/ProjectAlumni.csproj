@@ -277,6 +277,7 @@
     <Content Include="Content\Login.css" />
     <Content Include="Content\news.css" />
     <Content Include="Content\roles.css" />
+    <Content Include="Content\Users.css" />
     <Content Include="Content\vacancies.css" />
     <Content Include="Errors\404.html" />
     <Content Include="Errors\Index.html" />

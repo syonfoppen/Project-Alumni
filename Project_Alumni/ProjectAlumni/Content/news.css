@@ -2,15 +2,14 @@
     background-color: #E2001A;
 }
 .image {
-    width: 120px;
-    height: 120px;
+    padding:30%;
     -webkit-border-radius: 60px;
     -webkit-background-clip: padding-box;
     -moz-border-radius: 60px;
     -moz-background-clip: padding;
-    border-radius: 60px;
+    border-radius: 2px;
     background-clip: padding-box;
-    margin: 7px 0 0 5px;
+    margin: 15px;
     float: left;
     background-size: cover;
     background-position: center center;
@@ -31,11 +30,15 @@ table{
     color:white;
     background-color: rgba(0,0,0,0.6);
 }
-p a{
-    background-color:white;
+p a {
+    color: ghostwhite;
+    background-color: #0063AD;
     padding: 5px;
-    border-radius:2px;
-    margin-left:1%;
+    border-radius: 2px;
+    margin-left: 1%;
+}
+p a:hover{
+    color:white;
 }
 .background2{
     border-radius:20px;
@@ -45,6 +48,7 @@ p a{
 }
 #text{color:black;}
 .news-box{
+    margin-bottom:3%;
     background-color:white;
     padding:2% 5%;
     border-radius:15px;
@@ -58,4 +62,23 @@ p a{
 .rows{
     display:grid;
     grid-template-columns: 20% auto;
+}
+.row2{
+    border-left:2px solid black;
+}
+.row2 .text{
+    padding-left:2%;
+    overflow:hidden;
+}
+.button{
+    text-align:center;
+    margin:2px;
+    color: ghostwhite;
+    background-color: #0063AD;
+    padding: 5px;
+    border-radius: 2px;
+    margin-left: 1%;
+}
+.button a{
+    color:ghostwhite;
 }
